@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio_logger/dio_logger.dart';
+import 'package:money_magnet/auth/shared/providers.dart';
 import 'package:money_magnet/common/presentation/component/theme.dart';
 import 'package:money_magnet/common/presentation/routes/app_router.gr.dart';
 import 'package:money_magnet/common/shared/providers.dart';
@@ -27,7 +28,7 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
       receiveTimeout: 10000,
       sendTimeout: 10000,
     )
-    // ..interceptors.add(ref.read(oauth2InterceptorProvider))
+    ..interceptors.add(ref.read(oauth2InterceptorProvider))
     ..interceptors.add(dioLoggerInterceptor); // TODO : for debug only
 
   return unit;
