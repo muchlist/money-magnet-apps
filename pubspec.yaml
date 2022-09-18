@@ -21,6 +21,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  another_flushbar: ^1.10.29
   auto_route: ^4.0.1
   cached_network_image: ^3.2.1
   cupertino_icons: ^1.0.4
@@ -32,6 +33,7 @@ dependencies:
   flutter_secure_storage: ^5.0.2
   flutter_svg: ^1.0.3
   freezed_annotation: ^2.0.3
+  google_fonts: ^3.0.1
   json_annotation: ^4.5.0
   material_design_icons_flutter: ^5.0.6595
   material_floating_search_bar: ^0.3.7
