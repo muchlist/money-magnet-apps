@@ -23,13 +23,12 @@ mixin _$User {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: '')
-  String get token => throw _privateConstructorUsedError;
-  int get expired => throw _privateConstructorUsedError;
-  String get fcm => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
-  String get picture => throw _privateConstructorUsedError;
-  int get created => throw _privateConstructorUsedError;
+  @JsonKey(name: 'access_token')
+  String get accessToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'refresh_token')
+  String get refreshToken => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: [])
+  List<String> get roles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,12 +43,9 @@ abstract class $UserCopyWith<$Res> {
       {String id,
       String email,
       String name,
-      @JsonKey(defaultValue: '') String token,
-      int expired,
-      String fcm,
-      String phone,
-      String picture,
-      int created});
+      @JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'refresh_token') String refreshToken,
+      @JsonKey(defaultValue: []) List<String> roles});
 }
 
 /// @nodoc
@@ -65,12 +61,9 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? id = freezed,
     Object? email = freezed,
     Object? name = freezed,
-    Object? token = freezed,
-    Object? expired = freezed,
-    Object? fcm = freezed,
-    Object? phone = freezed,
-    Object? picture = freezed,
-    Object? created = freezed,
+    Object? accessToken = freezed,
+    Object? refreshToken = freezed,
+    Object? roles = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -85,30 +78,18 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      token: token == freezed
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      accessToken: accessToken == freezed
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      expired: expired == freezed
-          ? _value.expired
-          : expired // ignore: cast_nullable_to_non_nullable
-              as int,
-      fcm: fcm == freezed
-          ? _value.fcm
-          : fcm // ignore: cast_nullable_to_non_nullable
+      refreshToken: refreshToken == freezed
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: phone == freezed
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      picture: picture == freezed
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: created == freezed
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as int,
+      roles: roles == freezed
+          ? _value.roles
+          : roles // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -122,12 +103,9 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {String id,
       String email,
       String name,
-      @JsonKey(defaultValue: '') String token,
-      int expired,
-      String fcm,
-      String phone,
-      String picture,
-      int created});
+      @JsonKey(name: 'access_token') String accessToken,
+      @JsonKey(name: 'refresh_token') String refreshToken,
+      @JsonKey(defaultValue: []) List<String> roles});
 }
 
 /// @nodoc
@@ -144,12 +122,9 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? id = freezed,
     Object? email = freezed,
     Object? name = freezed,
-    Object? token = freezed,
-    Object? expired = freezed,
-    Object? fcm = freezed,
-    Object? phone = freezed,
-    Object? picture = freezed,
-    Object? created = freezed,
+    Object? accessToken = freezed,
+    Object? refreshToken = freezed,
+    Object? roles = freezed,
   }) {
     return _then(_$_User(
       id: id == freezed
@@ -164,30 +139,18 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      token: token == freezed
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      accessToken: accessToken == freezed
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      expired: expired == freezed
-          ? _value.expired
-          : expired // ignore: cast_nullable_to_non_nullable
-              as int,
-      fcm: fcm == freezed
-          ? _value.fcm
-          : fcm // ignore: cast_nullable_to_non_nullable
+      refreshToken: refreshToken == freezed
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: phone == freezed
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      picture: picture == freezed
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: created == freezed
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as int,
+      roles: roles == freezed
+          ? _value._roles
+          : roles // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -199,13 +162,11 @@ class _$_User extends _User {
       {required this.id,
       required this.email,
       required this.name,
-      @JsonKey(defaultValue: '') required this.token,
-      required this.expired,
-      required this.fcm,
-      required this.phone,
-      required this.picture,
-      required this.created})
-      : super._();
+      @JsonKey(name: 'access_token') required this.accessToken,
+      @JsonKey(name: 'refresh_token') required this.refreshToken,
+      @JsonKey(defaultValue: []) required final List<String> roles})
+      : _roles = roles,
+        super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -216,22 +177,22 @@ class _$_User extends _User {
   @override
   final String name;
   @override
-  @JsonKey(defaultValue: '')
-  final String token;
+  @JsonKey(name: 'access_token')
+  final String accessToken;
   @override
-  final int expired;
+  @JsonKey(name: 'refresh_token')
+  final String refreshToken;
+  final List<String> _roles;
   @override
-  final String fcm;
-  @override
-  final String phone;
-  @override
-  final String picture;
-  @override
-  final int created;
+  @JsonKey(defaultValue: [])
+  List<String> get roles {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_roles);
+  }
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, name: $name, token: $token, expired: $expired, fcm: $fcm, phone: $phone, picture: $picture, created: $created)';
+    return 'User(id: $id, email: $email, name: $name, accessToken: $accessToken, refreshToken: $refreshToken, roles: $roles)';
   }
 
   @override
@@ -242,12 +203,11 @@ class _$_User extends _User {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.expired, expired) &&
-            const DeepCollectionEquality().equals(other.fcm, fcm) &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.picture, picture) &&
-            const DeepCollectionEquality().equals(other.created, created));
+            const DeepCollectionEquality()
+                .equals(other.accessToken, accessToken) &&
+            const DeepCollectionEquality()
+                .equals(other.refreshToken, refreshToken) &&
+            const DeepCollectionEquality().equals(other._roles, _roles));
   }
 
   @JsonKey(ignore: true)
@@ -257,12 +217,9 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(expired),
-      const DeepCollectionEquality().hash(fcm),
-      const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(picture),
-      const DeepCollectionEquality().hash(created));
+      const DeepCollectionEquality().hash(accessToken),
+      const DeepCollectionEquality().hash(refreshToken),
+      const DeepCollectionEquality().hash(_roles));
 
   @JsonKey(ignore: true)
   @override
@@ -282,12 +239,9 @@ abstract class _User extends User {
       {required final String id,
       required final String email,
       required final String name,
-      @JsonKey(defaultValue: '') required final String token,
-      required final int expired,
-      required final String fcm,
-      required final String phone,
-      required final String picture,
-      required final int created}) = _$_User;
+      @JsonKey(name: 'access_token') required final String accessToken,
+      @JsonKey(name: 'refresh_token') required final String refreshToken,
+      @JsonKey(defaultValue: []) required final List<String> roles}) = _$_User;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -299,18 +253,14 @@ abstract class _User extends User {
   @override
   String get name;
   @override
-  @JsonKey(defaultValue: '')
-  String get token;
+  @JsonKey(name: 'access_token')
+  String get accessToken;
   @override
-  int get expired;
+  @JsonKey(name: 'refresh_token')
+  String get refreshToken;
   @override
-  String get fcm;
-  @override
-  String get phone;
-  @override
-  String get picture;
-  @override
-  int get created;
+  @JsonKey(defaultValue: [])
+  List<String> get roles;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

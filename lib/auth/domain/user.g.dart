@@ -10,22 +10,18 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       id: json['id'] as String,
       email: json['email'] as String,
       name: json['name'] as String,
-      token: json['token'] as String? ?? '',
-      expired: json['expired'] as int,
-      fcm: json['fcm'] as String,
-      phone: json['phone'] as String,
-      picture: json['picture'] as String,
-      created: json['created'] as int,
+      accessToken: json['access_token'] as String,
+      refreshToken: json['refresh_token'] as String,
+      roles:
+          (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+              [],
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
       'name': instance.name,
-      'token': instance.token,
-      'expired': instance.expired,
-      'fcm': instance.fcm,
-      'phone': instance.phone,
-      'picture': instance.picture,
-      'created': instance.created,
+      'access_token': instance.accessToken,
+      'refresh_token': instance.refreshToken,
+      'roles': instance.roles,
     };

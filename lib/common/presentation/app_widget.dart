@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio_logger/dio_logger.dart';
+import 'package:money_magnet/auth/application/auth_notifier.dart';
 import 'package:money_magnet/auth/shared/providers.dart';
 import 'package:money_magnet/common/presentation/component/theme.dart';
 import 'package:money_magnet/common/presentation/routes/app_router.gr.dart';
@@ -29,7 +30,7 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
       sendTimeout: 10000,
     )
     ..interceptors.add(ref.read(oauth2InterceptorProvider))
-    ..interceptors.add(dioLoggerInterceptor); // TODO : for debug only
+    ..interceptors.add(dioLoggerInterceptor);
 
   return unit;
 });
@@ -44,25 +45,27 @@ class AppWidget extends ConsumerWidget {
     // run initializationProvider just for init dependency
     ref.listen(initializationProvider, (_, __) {});
 
-    // ref.listen<ConfigState>(
-    //   configNotifierProvider,
-    //   (prev, state) {
-    //     state.maybeMap(
-    //       orElse: () {
-    //         appRouter.pushAndPopUntil(
-    //           const OnBoardingRoute(),
-    //           predicate: (route) => false,
-    //         );
-    //       },
-    //       failure: (f) {
-    //         appRouter.pushAndPopUntil(
-    //           const OnBoardingRoute(),
-    //           predicate: (route) => false,
-    //         );
-    //       },
-    //     );
-    //   },
-    // );
+    ref.listen<AuthState>(
+      authNotifierProvider,
+      (prev, state) {
+        state.maybeMap(
+          unauthenticated: (_) {
+            appRouter.pushAndPopUntil(
+              const LoginRoute(),
+              predicate: (route) => false,
+            );
+          },
+          authenticated: (_) {},
+          failure: (_) {},
+          orElse: () {
+            appRouter.pushAndPopUntil(
+              const LoginRoute(),
+              predicate: (route) => false,
+            );
+          },
+        );
+      },
+    );
 
     return MaterialApp.router(
       title: 'Money Magnet',

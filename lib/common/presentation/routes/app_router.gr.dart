@@ -11,38 +11,53 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/material.dart' as _i3;
+import 'package:auto_route/auto_route.dart' as _i3;
+import 'package:flutter/material.dart' as _i4;
 
-import '../../../splash/presentation/splash_page.dart' as _i1;
+import '../../../auth/presentation/login_page.dart' as _i1;
+import '../../../splash/presentation/splash_page.dart' as _i2;
 
-class AppRouter extends _i2.RootStackRouter {
-  AppRouter([_i3.GlobalKey<_i3.NavigatorState>? navigatorKey])
+class AppRouter extends _i3.RootStackRouter {
+  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i2.PageFactory> pagesMap = {
-    SplashRoute.name: (routeData) {
-      return _i2.CustomPage<dynamic>(
+  final Map<String, _i3.PageFactory> pagesMap = {
+    LoginRoute.name: (routeData) {
+      return _i3.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i1.SplashPage(),
-        transitionsBuilder: _i2.TransitionsBuilders.fadeIn,
+        child: const _i1.LoginPage(),
+        transitionsBuilder: _i3.TransitionsBuilders.fadeIn,
         durationInMilliseconds: 400,
         opaque: true,
         barrierDismissible: false,
       );
-    }
+    },
+    SplashRoute.name: (routeData) {
+      return _i3.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i2.SplashPage(),
+        transitionsBuilder: _i3.TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 400,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
   };
 
   @override
-  List<_i2.RouteConfig> get routes => [
-        _i2.RouteConfig(
+  List<_i3.RouteConfig> get routes => [
+        _i3.RouteConfig(
           '/#redirect',
           path: '/',
-          redirectTo: '/splash',
+          redirectTo: '/login',
           fullMatch: true,
         ),
-        _i2.RouteConfig(
+        _i3.RouteConfig(
+          LoginRoute.name,
+          path: '/login',
+        ),
+        _i3.RouteConfig(
           SplashRoute.name,
           path: '/splash',
         ),
@@ -50,8 +65,20 @@ class AppRouter extends _i2.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.SplashPage]
-class SplashRoute extends _i2.PageRouteInfo<void> {
+/// [_i1.LoginPage]
+class LoginRoute extends _i3.PageRouteInfo<void> {
+  const LoginRoute()
+      : super(
+          LoginRoute.name,
+          path: '/login',
+        );
+
+  static const String name = 'LoginRoute';
+}
+
+/// generated route for
+/// [_i2.SplashPage]
+class SplashRoute extends _i3.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,

@@ -5,7 +5,6 @@ import 'package:money_magnet/common/infrastructure/dio_extentions.dart';
 import 'package:money_magnet/common/infrastructure/dio_options.dart';
 import 'package:money_magnet/common/infrastructure/network_exceptions.dart';
 import 'package:money_magnet/common/infrastructure/remote_response.dart';
-import 'package:money_magnet/common/utils/parse_response_error.dart';
 
 class UserRemoteService {
   final Dio _dio;
@@ -15,7 +14,7 @@ class UserRemoteService {
   Future<RemoteResponse<LoginDTO>> login(String email, String password) async {
     final requestUri = Uri.https(
       RemoteConfig.baseURL,
-      '/api/v1/login',
+      '/api/user/login',
     );
 
     try {
@@ -36,8 +35,7 @@ class UserRemoteService {
         // Bad request from user
         try {
           final data = LoginResponseDTO.fromJson(response.data);
-          throw RestApiException(
-              response.statusCode, getErrorMessage(data.errors));
+          throw RestApiException(response.statusCode, data.error);
         } on FormatException catch (_) {
           throw RestApiException(response.statusCode, response.statusMessage);
         }

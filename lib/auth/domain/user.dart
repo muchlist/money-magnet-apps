@@ -11,12 +11,9 @@ class User with _$User {
     required String id,
     required String email,
     required String name,
-    @JsonKey(defaultValue: '') required String token,
-    required int expired,
-    required String fcm,
-    required String phone,
-    required String picture,
-    required int created,
+    @JsonKey(name: 'access_token') required String accessToken,
+    @JsonKey(name: 'refresh_token') required String refreshToken,
+    @JsonKey(defaultValue: []) required List<String> roles,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -24,7 +21,7 @@ class User with _$User {
   // ** SEMBAST HELPER
   Map<String, dynamic> toSembast() {
     final json = toJson();
-    json['token'] = '';
+    json['access_token'] = '';
     return json;
   }
 

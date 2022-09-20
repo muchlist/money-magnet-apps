@@ -8,9 +8,8 @@ part 'user_login_dto.g.dart';
 class LoginResponseDTO with _$LoginResponseDTO {
   const LoginResponseDTO._();
   const factory LoginResponseDTO({
-    @JsonKey(name: 'message') required String message,
     @JsonKey(name: 'data') required LoginDTO? data,
-    @JsonKey(name: 'errors') required Map<String, String>? errors,
+    @JsonKey(name: 'error') required String? error,
   }) = _LoginResponseDTO;
 
   factory LoginResponseDTO.fromJson(Map<String, dynamic> json) =>
@@ -21,10 +20,12 @@ class LoginResponseDTO with _$LoginResponseDTO {
 class LoginDTO with _$LoginDTO {
   const LoginDTO._();
   const factory LoginDTO({
-    @JsonKey(name: 'access_token', defaultValue: "")
-        required String accessToken,
-    @JsonKey(name: 'expired_token', defaultValue: 0) required int expiredToken,
-    required MemberDTO member,
+    required String id,
+    required String email,
+    required String name,
+    @JsonKey(defaultValue: []) required List<String> roles,
+    @JsonKey(name: 'access_token') required String accessToken,
+    @JsonKey(name: 'refresh_token') required String refreshToken,
   }) = _LoginDTO;
 
   factory LoginDTO.fromJson(Map<String, dynamic> json) =>
@@ -32,34 +33,11 @@ class LoginDTO with _$LoginDTO {
 
   User toDomain() {
     return User(
-      id: member.id,
-      email: member.email,
-      name: member.name,
-      phone: member.phone,
-      picture: member.picture,
-      token: accessToken,
-      expired: expiredToken,
-      fcm: '',
-      created: member.createdAt,
-    );
+        id: id,
+        email: email,
+        name: name,
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        roles: roles);
   }
-}
-
-@freezed
-class MemberDTO with _$MemberDTO {
-  const MemberDTO._();
-  const factory MemberDTO({
-    @JsonKey(defaultValue: "") required String id,
-    required String name,
-    required String email,
-    @JsonKey(defaultValue: "") required String phone,
-    @JsonKey(defaultValue: "") required String picture,
-    @JsonKey(name: 'is_verified') required bool isVerified,
-    @JsonKey(name: 'created_at') required int createdAt,
-    @JsonKey(name: 'activation_link', defaultValue: '')
-        required String activationLink,
-  }) = _MemberDTO;
-
-  factory MemberDTO.fromJson(Map<String, dynamic> json) =>
-      _$MemberDTOFromJson(json);
 }
