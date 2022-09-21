@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio_logger/dio_logger.dart';
 import 'package:money_magnet/auth/application/auth_notifier.dart';
@@ -12,10 +11,10 @@ import 'package:money_magnet/common/shared/providers.dart';
 
 final initializationProvider = FutureProvider<Unit>((ref) async {
   // Set notification bar tot transfarent
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarIconBrightness: Brightness.dark,
-    statusBarColor: Colors.transparent,
-  ));
+  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  //   statusBarIconBrightness: Brightness.dark,
+  //   statusBarColor: Colors.transparent,
+  // ));
 
   // init sembast database
   await ref.read(sembastprovider).init();
