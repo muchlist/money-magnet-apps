@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:money_magnet/common/presentation/component/colors.dart';
 
@@ -69,8 +68,8 @@ AppBarTheme appBarTheme() {
   return const AppBarTheme(
     color: Colors.white,
     elevation: 0,
-    systemOverlayStyle: SystemUiOverlayStyle.light,
-    iconTheme: IconThemeData(color: Colors.white),
+    // systemOverlayStyle: SystemUiOverlayStyle.light,
+    iconTheme: IconThemeData(color: kBlackColor),
     // toolbarTextStyle: ,
     // titleTextStyle:
   );

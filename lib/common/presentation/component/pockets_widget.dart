@@ -11,7 +11,7 @@ class PocketWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 123,
-      width: screenWidthPercentage(context, percent: 44 / 100),
+      width: screenWidthPercentage(context, percent: 35 / 100),
       decoration: BoxDecoration(
         color: kGreyColor,
         borderRadius: BorderRadius.circular(15),

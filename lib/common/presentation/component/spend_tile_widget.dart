@@ -46,7 +46,22 @@ class SpendTileWidget extends StatelessWidget {
                   style: Theme.of(context).textTheme.caption!,
                 ),
               ],
-            )
+            ),
+            const Spacer(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "- 40.000",
+                  style: Theme.of(context).textTheme.bodyText2!,
+                ),
+                Text(
+                  "Food",
+                  style: Theme.of(context).textTheme.caption!,
+                ),
+              ],
+            ),
           ],
         ),
       ),
