@@ -14,7 +14,8 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
   // Set notification bar tot transfarent
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarIconBrightness: Brightness.dark,
-    statusBarColor: Colors.transparent,
+    // systemStatusBarContrastEnforced: true,
+    statusBarColor: Colors.white,
   ));
 
   // init sembast database
