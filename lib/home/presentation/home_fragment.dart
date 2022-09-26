@@ -37,7 +37,7 @@ class HomeBody extends StatelessWidget {
           SliverAppBar(
             pinned: true,
             title: Text(
-              "HOME",
+              "Home",
               style: Theme.of(context)
                   .textTheme
                   .headline4!
@@ -70,7 +70,7 @@ class HomeBody extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
-                  PocketWidget(),
+                  PocketHomeWidget(),
                   PocketMonitorWidget(),
                 ],
               ),
