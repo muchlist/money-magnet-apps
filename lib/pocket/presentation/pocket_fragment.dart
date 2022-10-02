@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/common/presentation/component/balance_widget.dart';
+import 'package:money_magnet/common/presentation/component/colors.dart';
 import 'package:money_magnet/common/presentation/component/disable_glow.dart';
 import 'package:money_magnet/common/presentation/component/pockets_widget.dart';
+import 'package:money_magnet/common/presentation/routes/app_router.gr.dart';
 
 class PocketFragment extends ConsumerStatefulWidget {
   const PocketFragment({Key? key}) : super(key: key);
@@ -25,8 +28,6 @@ class PocketBody extends StatelessWidget {
   const PocketBody({
     Key? key,
   }) : super(key: key);
-
-  get kBlackColor => null;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,13 @@ class PocketBody extends StatelessWidget {
                   if (index == 2) {
                     return const PocketWidgetButton();
                   }
-                  return const PocketWidget();
+                  return GestureDetector(
+                      onTap: () {
+                        AutoRouter.of(context).push(
+                          PocketRoute(pocketName: "Main Pocket"),
+                        );
+                      },
+                      child: const PocketWidget());
                 },
                 childCount: 3,
               ),
