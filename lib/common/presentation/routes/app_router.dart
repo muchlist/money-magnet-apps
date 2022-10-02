@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:money_magnet/auth/presentation/login_page.dart';
 import 'package:money_magnet/home/presentation/navigation_page.dart';
+import 'package:money_magnet/pocket/presentation/pocket_page.dart';
 import 'package:money_magnet/splash/presentation/splash_page.dart';
 
 @CustomAutoRouter(
@@ -18,6 +19,10 @@ import 'package:money_magnet/splash/presentation/splash_page.dart';
         page: NavigationPage,
         path: '/navigation',
         initial: true,
+      ),
+      AutoRoute(
+        page: PocketPage,
+        path: '/pocket',
       ),
     ],
     replaceInRouteName: 'Page,Route',

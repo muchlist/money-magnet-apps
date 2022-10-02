@@ -4,30 +4,39 @@ import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/common/presentation/component/balance_widget.dart';
 import 'package:money_magnet/common/presentation/component/colors.dart';
 import 'package:money_magnet/common/presentation/component/disable_glow.dart';
-import 'package:money_magnet/common/presentation/component/pocket_monitor_widget.dart';
-import 'package:money_magnet/common/presentation/component/pockets_widget.dart';
-import 'package:money_magnet/common/presentation/component/spend_tile_widget.dart';
+import 'package:money_magnet/common/presentation/component/ui_helper.dart';
+import 'package:money_magnet/pocket/presentation/search_bar.dart';
 
-class HomeFragment extends ConsumerStatefulWidget {
-  const HomeFragment({Key? key}) : super(key: key);
+import '../../common/presentation/component/spend_tile_widget.dart';
+
+class PocketPage extends ConsumerStatefulWidget {
+  const PocketPage(this.pocketName, {Key? key}) : super(key: key);
+  final String pocketName;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomeFragmentState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _PocketPageState();
 }
 
-class _HomeFragmentState extends ConsumerState<HomeFragment> {
+class _PocketPageState extends ConsumerState<PocketPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: HomeBody(),
+    return Scaffold(
+      body: PocketPageBody(pocketName: widget.pocketName),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(LineIcons.plus),
+        onPressed: () {},
+      ),
     );
   }
 }
 
-class HomeBody extends StatelessWidget {
-  const HomeBody({
+class PocketPageBody extends StatelessWidget {
+  const PocketPageBody({
     Key? key,
+    required this.pocketName,
   }) : super(key: key);
+
+  final String pocketName;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +46,7 @@ class HomeBody extends StatelessWidget {
           SliverAppBar(
             pinned: true,
             title: Text(
-              "Home",
+              pocketName,
               style: Theme.of(context)
                   .textTheme
                   .headline4!
@@ -65,13 +74,13 @@ class HomeBody extends StatelessWidget {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             sliver: SliverToBoxAdapter(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
-                  PocketHomeWidget(),
-                  PocketMonitorWidget(),
+                  Expanded(child: SearchBar()),
+                  horizontalSpaceSmall,
+                  Icon(LineIcons.horizontalSliders),
                 ],
               ),
             ),

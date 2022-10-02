@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/home/presentation/home_fragment.dart';
+import 'package:money_magnet/pocket/presentation/pocket_fragment.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class _HomePageState extends State<NavigationPage> {
   int _selectedIndex = 0;
   final _screen = [
     const HomeFragment(),
-    const Center(child: Text("Pockets")),
+    const PocketFragment(),
     const Center(child: Text("Search")),
     const Center(child: Text("Profile")),
   ];
