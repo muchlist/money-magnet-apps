@@ -40,7 +40,7 @@ class HomeBody extends StatelessWidget {
               "Home",
               style: Theme.of(context)
                   .textTheme
-                  .headline4!
+                  .headlineMedium!
                   .copyWith(color: kBlackColor),
             ),
             actions: const [
@@ -64,12 +64,12 @@ class HomeBody extends StatelessWidget {
               ),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
             sliver: SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   PocketHomeWidget(),
                   PocketMonitorWidget(),
                 ],
@@ -86,14 +86,14 @@ class HomeBody extends StatelessWidget {
                     "Today --",
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1!
+                        .titleMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "- 200.000",
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1!
+                        .titleMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -125,14 +125,14 @@ class HomeBody extends StatelessWidget {
                     "Agustus --",
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1!
+                        .titleMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "- 7.000.000",
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1!
+                        .titleMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],

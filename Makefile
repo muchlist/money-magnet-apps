@@ -20,11 +20,11 @@ run/release:
 
 ## gen/build: run code generator 1 time
 gen/build:
-	flutter pub run build_runner build --delete-conflicting-outputs
+	dart run build_runner build --delete-conflicting-outputs
 
 ## gen/watch: run and watch code change to generate code
 gen/watch:
-	flutter pub run build_runner watch --delete-conflicting-outputs
+	dart run build_runner watch --delete-conflicting-outputs
 
 
 .PHONY: help confirm run/release gen/build gen/watch

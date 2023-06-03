@@ -14,7 +14,7 @@ class UserRemoteService {
   Future<RemoteResponse<LoginDTO>> login(String email, String password) async {
     final requestUri = Uri.https(
       RemoteConfig.baseURL,
-      '/api/user/login',
+      '/user/login',
     );
 
     try {

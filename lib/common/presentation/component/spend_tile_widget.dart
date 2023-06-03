@@ -39,11 +39,11 @@ class SpendTileWidget extends StatelessWidget {
               children: [
                 Text(
                   "Makan Siang",
-                  style: Theme.of(context).textTheme.bodyText2!,
+                  style: Theme.of(context).textTheme.bodyMedium!,
                 ),
                 Text(
                   "28 Agustus 2022",
-                  style: Theme.of(context).textTheme.caption!,
+                  style: Theme.of(context).textTheme.bodySmall!,
                 ),
               ],
             ),
@@ -54,11 +54,11 @@ class SpendTileWidget extends StatelessWidget {
               children: [
                 Text(
                   "- 40.000",
-                  style: Theme.of(context).textTheme.bodyText2!,
+                  style: Theme.of(context).textTheme.bodyMedium!,
                 ),
                 Text(
                   "Food",
-                  style: Theme.of(context).textTheme.caption!,
+                  style: Theme.of(context).textTheme.bodySmall!,
                 ),
               ],
             ),

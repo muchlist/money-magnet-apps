@@ -1,3 +1,3 @@
 class RemoteConfig {
-  static const String baseURL = 'money-magnet.muchlis.dev';
+  static const String baseURL = 'magnet.muchlis.dev';
 }

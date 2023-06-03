@@ -22,7 +22,7 @@ dependencies:
   flutter:
     sdk: flutter
   another_flushbar: ^1.10.29
-  auto_route: ^4.0.1
+  auto_route: ^7.4.0
   cached_network_image: ^3.2.1
   cupertino_icons: ^1.0.4
   dartz: ^0.10.1
@@ -33,20 +33,24 @@ dependencies:
   flutter_secure_storage: ^5.0.2
   flutter_svg: ^1.0.3
   freezed_annotation: ^2.0.3
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.3
   json_annotation: ^4.5.0
   material_design_icons_flutter: ^5.0.6595
   material_floating_search_bar: ^0.3.7
-  package_info_plus: ^1.4.2
+  package_info_plus: ^4.0.2
   path: ^1.8.1
   sembast: ^3.2.0
   shimmer: ^2.0.0
   google_nav_bar: ^5.0.6
   line_icons: ^2.0.1
   
+dependency_overrides:
+  package_info_plus: any
+  wakelock_windows: any
+  win32: any
 
 dev_dependencies:
-  auto_route_generator: ^4.0.0
+  auto_route_generator: ^7.1.1
   build_runner: ^2.1.10
   flutter_lints: ^2.0.1
   flutter_test:

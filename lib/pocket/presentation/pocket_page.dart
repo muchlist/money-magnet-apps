@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
@@ -5,10 +6,10 @@ import 'package:money_magnet/common/presentation/component/balance_widget.dart';
 import 'package:money_magnet/common/presentation/component/colors.dart';
 import 'package:money_magnet/common/presentation/component/disable_glow.dart';
 import 'package:money_magnet/common/presentation/component/ui_helper.dart';
-import 'package:money_magnet/pocket/presentation/search_bar.dart';
 
 import '../../common/presentation/component/spend_tile_widget.dart';
 
+@RoutePage()
 class PocketPage extends ConsumerStatefulWidget {
   const PocketPage(this.pocketName, {Key? key}) : super(key: key);
   final String pocketName;
@@ -49,7 +50,7 @@ class PocketPageBody extends StatelessWidget {
               pocketName,
               style: Theme.of(context)
                   .textTheme
-                  .headline4!
+                  .headlineMedium!
                   .copyWith(color: kBlackColor),
             ),
             actions: const [
@@ -73,11 +74,11 @@ class PocketPageBody extends StatelessWidget {
               ),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             sliver: SliverToBoxAdapter(
               child: Row(
-                children: const [
+                children: [
                   Expanded(child: SearchBar()),
                   horizontalSpaceSmall,
                   Icon(LineIcons.horizontalSliders),
@@ -95,14 +96,14 @@ class PocketPageBody extends StatelessWidget {
                     "Today --",
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1!
+                        .titleMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "- 200.000",
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1!
+                        .titleMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -134,14 +135,14 @@ class PocketPageBody extends StatelessWidget {
                     "Agustus --",
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1!
+                        .titleMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "- 7.000.000",
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle1!
+                        .titleMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],

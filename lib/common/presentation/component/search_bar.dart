@@ -63,14 +63,14 @@ class _SearchBarState extends ConsumerState<SearchBar> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(widget.title, style: Theme.of(context).textTheme.headline6),
-          Text('Tap to search 👆', style: Theme.of(context).textTheme.caption)
+          Text(widget.title, style: Theme.of(context).textTheme.titleLarge),
+          Text('Tap to search 👆', style: Theme.of(context).textTheme.bodySmall)
         ],
       ),
       hint: widget.hint,
       automaticallyImplyBackButton: false,
       leadingActions: [
-        if ((AutoRouter.of(context).canPopSelfOrChildren) &&
+        if ((AutoRouter.of(context).canPop()) &&
             (Platform.isIOS || Platform.isMacOS))
           IconButton(
               icon: const Icon(Icons.arrow_back_ios),
@@ -78,7 +78,7 @@ class _SearchBarState extends ConsumerState<SearchBar> {
               onPressed: () {
                 AutoRouter.of(context).pop();
               })
-        else if (AutoRouter.of(context).canPopSelfOrChildren)
+        else if (AutoRouter.of(context).canPop())
           IconButton(
               icon: const Icon(Icons.arrow_back),
               splashRadius: 18,

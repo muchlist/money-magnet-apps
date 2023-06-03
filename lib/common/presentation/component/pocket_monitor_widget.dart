@@ -31,7 +31,7 @@ class PocketMonitorWidget extends StatelessWidget {
                 const Spacer(),
                 Text(
                   "Today %",
-                  style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 const Spacer(),
@@ -39,28 +39,28 @@ class PocketMonitorWidget extends StatelessWidget {
                   "Need",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2!
+                      .bodyMedium!
                       .copyWith(color: Colors.white),
                 ),
                 Text(
                   "Love",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2!
+                      .bodyMedium!
                       .copyWith(color: Colors.white),
                 ),
                 Text(
                   "Like",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2!
+                      .bodyMedium!
                       .copyWith(color: Colors.white),
                 ),
                 Text(
                   "Want",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2!
+                      .bodyMedium!
                       .copyWith(color: Colors.white),
                 ),
               ],
@@ -77,28 +77,28 @@ class PocketMonitorWidget extends StatelessWidget {
                   "40.000 (30 %)",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2!
+                      .bodyMedium!
                       .copyWith(color: Colors.white),
                 ),
                 Text(
                   "",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2!
+                      .bodyMedium!
                       .copyWith(color: Colors.white),
                 ),
                 Text(
                   "40.000 (30 %)",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2!
+                      .bodyMedium!
                       .copyWith(color: Colors.white),
                 ),
                 Text(
                   "40.000 (30 %)",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2!
+                      .bodyMedium!
                       .copyWith(color: Colors.white),
                 ),
               ],

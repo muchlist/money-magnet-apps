@@ -29,8 +29,8 @@ class _ProgressButtonState extends State<ProgressButton> {
         shape: const StadiumBorder(),
       ),
       child: isLoading
-          ? Row(
-              children: const [
+          ? const Row(
+              children: [
                 CircularProgressIndicator(
                   color: Colors.white,
                 ),
@@ -109,7 +109,6 @@ class _AnimatedProgressBtnState extends State<AnimatedProgressBtn> {
         setState(() {
           state = ButtonState.init;
         });
-
       },
     );
   }

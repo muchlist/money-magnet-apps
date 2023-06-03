@@ -37,29 +37,31 @@ InputDecorationTheme inputDecorationTheme() {
 
 TextTheme textTheme() {
   return TextTheme(
-    headline1: GoogleFonts.poppins(
+    displayLarge: GoogleFonts.poppins(
         fontSize: 93, fontWeight: FontWeight.w300, letterSpacing: -1.5),
-    headline2: GoogleFonts.poppins(
+    displayMedium: GoogleFonts.poppins(
         fontSize: 58, fontWeight: FontWeight.w300, letterSpacing: -0.5),
-    headline3: GoogleFonts.poppins(fontSize: 46, fontWeight: FontWeight.w400),
-    headline4: GoogleFonts.poppins(
+    displaySmall:
+        GoogleFonts.poppins(fontSize: 46, fontWeight: FontWeight.w400),
+    headlineMedium: GoogleFonts.poppins(
         fontSize: 33, fontWeight: FontWeight.w400, letterSpacing: 0.25),
-    headline5: GoogleFonts.poppins(fontSize: 23, fontWeight: FontWeight.w400),
-    headline6: GoogleFonts.poppins(
+    headlineSmall:
+        GoogleFonts.poppins(fontSize: 23, fontWeight: FontWeight.w400),
+    titleLarge: GoogleFonts.poppins(
         fontSize: 19, fontWeight: FontWeight.w500, letterSpacing: 0.15),
-    subtitle1: GoogleFonts.poppins(
+    titleMedium: GoogleFonts.poppins(
         fontSize: 15, fontWeight: FontWeight.w400, letterSpacing: 0.15),
-    subtitle2: GoogleFonts.poppins(
+    titleSmall: GoogleFonts.poppins(
         fontSize: 13, fontWeight: FontWeight.w500, letterSpacing: 0.1),
-    bodyText1: GoogleFonts.lato(
+    bodyLarge: GoogleFonts.lato(
         fontSize: 17, fontWeight: FontWeight.w400, letterSpacing: 0.5),
-    bodyText2: GoogleFonts.lato(
+    bodyMedium: GoogleFonts.lato(
         fontSize: 15, fontWeight: FontWeight.w400, letterSpacing: 0.25),
-    button: GoogleFonts.lato(
+    labelLarge: GoogleFonts.lato(
         fontSize: 15, fontWeight: FontWeight.w500, letterSpacing: 1.25),
-    caption: GoogleFonts.lato(
+    bodySmall: GoogleFonts.lato(
         fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.4),
-    overline: GoogleFonts.lato(
+    labelSmall: GoogleFonts.lato(
         fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
   );
 }

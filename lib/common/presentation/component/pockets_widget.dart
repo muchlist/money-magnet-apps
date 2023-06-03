@@ -39,14 +39,14 @@ class PocketWidget extends StatelessWidget {
                 "Main-Pocket",
                 style: Theme.of(context)
                     .textTheme
-                    .subtitle1!
+                    .titleMedium!
                     .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
               ),
               Text(
                 "RP.300.000",
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2!
+                    .bodyMedium!
                     .copyWith(color: Colors.black45),
               ),
             ],
@@ -91,14 +91,14 @@ class PocketHomeWidget extends StatelessWidget {
               "Main-Pocket",
               style: Theme.of(context)
                   .textTheme
-                  .subtitle1!
+                  .titleMedium!
                   .copyWith(color: Colors.black),
             ),
             Text(
               "RP.300.000",
               style: Theme.of(context)
                   .textTheme
-                  .bodyText2!
+                  .bodyMedium!
                   .copyWith(color: Colors.black45),
             ),
           ],
@@ -142,7 +142,7 @@ class PocketWidgetButton extends StatelessWidget {
                 "Create Pocket",
                 style: Theme.of(context)
                     .textTheme
-                    .subtitle1!
+                    .titleMedium!
                     .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
               ),
               const Spacer(),

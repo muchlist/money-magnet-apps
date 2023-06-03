@@ -19,7 +19,7 @@ class ButtonW extends StatelessWidget {
       child: ElevatedButton(
         onPressed: !disabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
-          primary: !disabled ? kPrimaryColor : Colors.grey,
+          backgroundColor: !disabled ? kPrimaryColor : Colors.grey,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
           minimumSize: const Size.fromHeight(55),
@@ -48,7 +48,7 @@ class ButtonWLoading extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          primary: kBlue,
+          backgroundColor: kBlue,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
           // minimumSize: const Size.fromHeight(46),

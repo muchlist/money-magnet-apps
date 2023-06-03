@@ -16,12 +16,12 @@ class BalanceWidget extends StatelessWidget {
           children: [
             Text(
               "My Balance",
-              style: Theme.of(context).textTheme.subtitle1!,
+              style: Theme.of(context).textTheme.titleMedium!,
             ),
             const Spacer(),
             Text(
               balanceValue,
-              style: Theme.of(context).textTheme.subtitle1!,
+              style: Theme.of(context).textTheme.titleMedium!,
             ),
           ],
         ),

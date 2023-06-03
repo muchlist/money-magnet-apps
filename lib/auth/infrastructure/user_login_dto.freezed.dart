@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_login_dto.dart';
 
@@ -35,7 +35,8 @@ mixin _$LoginResponseDTO {
 abstract class $LoginResponseDTOCopyWith<$Res> {
   factory $LoginResponseDTOCopyWith(
           LoginResponseDTO value, $Res Function(LoginResponseDTO) then) =
-      _$LoginResponseDTOCopyWithImpl<$Res>;
+      _$LoginResponseDTOCopyWithImpl<$Res, LoginResponseDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'data') LoginDTO? data,
       @JsonKey(name: 'error') String? error});
@@ -44,39 +45,42 @@ abstract class $LoginResponseDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoginResponseDTOCopyWithImpl<$Res>
+class _$LoginResponseDTOCopyWithImpl<$Res, $Val extends LoginResponseDTO>
     implements $LoginResponseDTOCopyWith<$Res> {
   _$LoginResponseDTOCopyWithImpl(this._value, this._then);
 
-  final LoginResponseDTO _value;
   // ignore: unused_field
-  final $Res Function(LoginResponseDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? data = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
-      data: data == freezed
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as LoginDTO?,
-      error: error == freezed
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $LoginDTOCopyWith<$Res>? get data {
     if (_value.data == null) {
       return null;
     }
 
     return $LoginDTOCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value));
+      return _then(_value.copyWith(data: value) as $Val);
     });
   }
 }
@@ -88,6 +92,7 @@ abstract class _$$_LoginResponseDTOCopyWith<$Res>
           _$_LoginResponseDTO value, $Res Function(_$_LoginResponseDTO) then) =
       __$$_LoginResponseDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'data') LoginDTO? data,
       @JsonKey(name: 'error') String? error});
@@ -98,26 +103,24 @@ abstract class _$$_LoginResponseDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_LoginResponseDTOCopyWithImpl<$Res>
-    extends _$LoginResponseDTOCopyWithImpl<$Res>
+    extends _$LoginResponseDTOCopyWithImpl<$Res, _$_LoginResponseDTO>
     implements _$$_LoginResponseDTOCopyWith<$Res> {
   __$$_LoginResponseDTOCopyWithImpl(
       _$_LoginResponseDTO _value, $Res Function(_$_LoginResponseDTO) _then)
-      : super(_value, (v) => _then(v as _$_LoginResponseDTO));
+      : super(_value, _then);
 
-  @override
-  _$_LoginResponseDTO get _value => super._value as _$_LoginResponseDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? data = freezed,
     Object? error = freezed,
   }) {
     return _then(_$_LoginResponseDTO(
-      data: data == freezed
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as LoginDTO?,
-      error: error == freezed
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -153,19 +156,17 @@ class _$_LoginResponseDTO extends _LoginResponseDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginResponseDTO &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, data, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoginResponseDTOCopyWith<_$_LoginResponseDTO> get copyWith =>
       __$$_LoginResponseDTOCopyWithImpl<_$_LoginResponseDTO>(this, _$identity);
 
@@ -224,7 +225,8 @@ mixin _$LoginDTO {
 /// @nodoc
 abstract class $LoginDTOCopyWith<$Res> {
   factory $LoginDTOCopyWith(LoginDTO value, $Res Function(LoginDTO) then) =
-      _$LoginDTOCopyWithImpl<$Res>;
+      _$LoginDTOCopyWithImpl<$Res, LoginDTO>;
+  @useResult
   $Res call(
       {String id,
       String email,
@@ -235,48 +237,51 @@ abstract class $LoginDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoginDTOCopyWithImpl<$Res> implements $LoginDTOCopyWith<$Res> {
+class _$LoginDTOCopyWithImpl<$Res, $Val extends LoginDTO>
+    implements $LoginDTOCopyWith<$Res> {
   _$LoginDTOCopyWithImpl(this._value, this._then);
 
-  final LoginDTO _value;
   // ignore: unused_field
-  final $Res Function(LoginDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? email = freezed,
-    Object? name = freezed,
-    Object? roles = freezed,
-    Object? accessToken = freezed,
-    Object? refreshToken = freezed,
+    Object? id = null,
+    Object? email = null,
+    Object? name = null,
+    Object? roles = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      roles: roles == freezed
+      roles: null == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      accessToken: accessToken == freezed
+      accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      refreshToken: refreshToken == freezed
+      refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -286,6 +291,7 @@ abstract class _$$_LoginDTOCopyWith<$Res> implements $LoginDTOCopyWith<$Res> {
           _$_LoginDTO value, $Res Function(_$_LoginDTO) then) =
       __$$_LoginDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String email,
@@ -296,46 +302,45 @@ abstract class _$$_LoginDTOCopyWith<$Res> implements $LoginDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoginDTOCopyWithImpl<$Res> extends _$LoginDTOCopyWithImpl<$Res>
+class __$$_LoginDTOCopyWithImpl<$Res>
+    extends _$LoginDTOCopyWithImpl<$Res, _$_LoginDTO>
     implements _$$_LoginDTOCopyWith<$Res> {
   __$$_LoginDTOCopyWithImpl(
       _$_LoginDTO _value, $Res Function(_$_LoginDTO) _then)
-      : super(_value, (v) => _then(v as _$_LoginDTO));
+      : super(_value, _then);
 
-  @override
-  _$_LoginDTO get _value => super._value as _$_LoginDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? email = freezed,
-    Object? name = freezed,
-    Object? roles = freezed,
-    Object? accessToken = freezed,
-    Object? refreshToken = freezed,
+    Object? id = null,
+    Object? email = null,
+    Object? name = null,
+    Object? roles = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_$_LoginDTO(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      roles: roles == freezed
+      roles: null == roles
           ? _value._roles
           : roles // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      accessToken: accessToken == freezed
+      accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      refreshToken: refreshToken == freezed
+      refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
@@ -369,6 +374,7 @@ class _$_LoginDTO extends _LoginDTO {
   @override
   @JsonKey(defaultValue: [])
   List<String> get roles {
+    if (_roles is EqualUnmodifiableListView) return _roles;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_roles);
   }
@@ -390,29 +396,24 @@ class _$_LoginDTO extends _LoginDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginDTO &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._roles, _roles) &&
-            const DeepCollectionEquality()
-                .equals(other.accessToken, accessToken) &&
-            const DeepCollectionEquality()
-                .equals(other.refreshToken, refreshToken));
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(_roles),
-      const DeepCollectionEquality().hash(accessToken),
-      const DeepCollectionEquality().hash(refreshToken));
+  int get hashCode => Object.hash(runtimeType, id, email, name,
+      const DeepCollectionEquality().hash(_roles), accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoginDTOCopyWith<_$_LoginDTO> get copyWith =>
       __$$_LoginDTOCopyWithImpl<_$_LoginDTO>(this, _$identity);
 

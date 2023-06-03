@@ -22,7 +22,7 @@ class CircularButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: !disabled ? onPressed : null,
       style: ElevatedButton.styleFrom(
-        primary: !disabled ? buttonColor : Colors.grey,
+        backgroundColor: !disabled ? buttonColor : Colors.grey,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         minimumSize: const Size.fromHeight(40),

@@ -40,7 +40,7 @@ class PocketBody extends StatelessWidget {
               "Pockets",
               style: Theme.of(context)
                   .textTheme
-                  .headline4!
+                  .headlineMedium!
                   .copyWith(color: kBlackColor),
             ),
             actions: const [

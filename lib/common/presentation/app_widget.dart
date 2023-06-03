@@ -7,6 +7,7 @@ import 'package:dio_logger/dio_logger.dart';
 import 'package:money_magnet/auth/application/auth_notifier.dart';
 import 'package:money_magnet/auth/shared/providers.dart';
 import 'package:money_magnet/common/presentation/component/theme.dart';
+import 'package:money_magnet/common/presentation/routes/app_router.dart';
 import 'package:money_magnet/common/presentation/routes/app_router.gr.dart';
 import 'package:money_magnet/common/shared/providers.dart';
 

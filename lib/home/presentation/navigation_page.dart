@@ -1,17 +1,22 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/home/presentation/home_fragment.dart';
 import 'package:money_magnet/pocket/presentation/pocket_fragment.dart';
 
-class NavigationPage extends StatefulWidget {
+import '../../auth/shared/providers.dart';
+
+@RoutePage()
+class NavigationPage extends ConsumerStatefulWidget {
   const NavigationPage({Key? key}) : super(key: key);
 
   @override
-  State<NavigationPage> createState() => _HomePageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<NavigationPage> {
+class _HomePageState extends ConsumerState<NavigationPage> {
   int _selectedIndex = 0;
   final _screen = [
     const HomeFragment(),
@@ -19,6 +24,12 @@ class _HomePageState extends State<NavigationPage> {
     const Center(child: Text("Search")),
     const Center(child: Text("Profile")),
   ];
+
+  @override
+  void initState() {
+    ref.read(authNotifierProvider.notifier).checkAndUpdateAuthStatus();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money_magnet/auth/application/auth_notifier.dart';
@@ -7,8 +8,9 @@ import 'package:money_magnet/common/presentation/component/flushbar.dart';
 import 'package:money_magnet/common/presentation/component/input_decorator.dart';
 import 'package:money_magnet/common/presentation/component/ui_helper.dart';
 import 'package:money_magnet/common/presentation/component/white_button.dart';
+import 'package:money_magnet/common/presentation/routes/app_router.gr.dart';
 
-// ConsumerStatefulWidget >
+@RoutePage()
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -41,9 +43,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       next.maybeWhen(
           orElse: () {},
           authenticated: () {
-            // AutoRouter.of(context).push(
-            //   const HomeNavRoute(),
-            // );
+            AutoRouter.of(context).replace(const NavigationRoute());
           },
           failure: (failure) {
             failure.when(server: (msg) {
@@ -78,7 +78,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
                     Text(
                       'Welcome to\nMoney Magnet',
-                      style: Theme.of(context).textTheme.headline4!,
+                      style: Theme.of(context).textTheme.headlineMedium!,
                       textAlign: TextAlign.left,
                     ),
 
@@ -90,7 +90,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       'Login',
                       style: Theme.of(context)
                           .textTheme
-                          .headline5!
+                          .headlineSmall!
                           .copyWith(color: Colors.grey),
                       textAlign: TextAlign.left,
                     ),
@@ -98,7 +98,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     verticalSpaceMedium,
                     // LOGIN text edit =====================================
                     TextFormField(
-                      style: Theme.of(context).textTheme.subtitle2!,
+                      style: Theme.of(context).textTheme.titleSmall!,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       decoration: mainInputDecoration("Email", null),
@@ -116,7 +116,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     verticalSpaceSmall,
                     // PASSWORD text edit ================================
                     TextFormField(
-                      style: Theme.of(context).textTheme.subtitle2!,
+                      style: Theme.of(context).textTheme.titleSmall!,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
                       decoration: mainInputDecoration("Password", null),
@@ -137,7 +137,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           onPressed: () {},
                           child: Text(
                             "Forget password ?",
-                            style: Theme.of(context).textTheme.subtitle2!,
+                            style: Theme.of(context).textTheme.titleSmall!,
                           )),
                     ),
                     // Button or Progress indicator
