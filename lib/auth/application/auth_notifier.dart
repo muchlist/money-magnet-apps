@@ -34,4 +34,15 @@ class AuthNotifier extends StateNotifier<AuthState> {
       (r) => const AuthState.authenticated(),
     );
   }
+
+  void toggleLoading() {
+    state.maybeWhen(
+      loading: () {
+        state = const AuthState.initial();
+      },
+      orElse: () {
+        state = const AuthState.loading();
+      },
+    );
+  }
 }

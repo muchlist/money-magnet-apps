@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money_magnet/auth/application/auth_notifier.dart';
+import 'package:money_magnet/auth/shared/controller_providers.dart';
 import 'package:money_magnet/auth/shared/providers.dart';
 import 'package:money_magnet/common/presentation/component/disable_glow.dart';
 import 'package:money_magnet/common/presentation/component/flushbar.dart';
@@ -11,30 +12,37 @@ import 'package:money_magnet/common/presentation/component/white_button.dart';
 import 'package:money_magnet/common/presentation/routes/app_router.gr.dart';
 
 @RoutePage()
-class LoginPage extends ConsumerStatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _LoginPageState createState() => _LoginPageState();
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35),
+          child: DisableGlow(
+            child: SingleChildScrollView(
+              child: LoginBody(),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-class _LoginPageState extends ConsumerState<LoginPage> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+class LoginBody extends ConsumerStatefulWidget {
+  const LoginBody({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _LoginBodyState();
+}
+
+class _LoginBodyState extends ConsumerState<LoginBody> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,108 +66,95 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           });
     });
 
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35),
-          child: DisableGlow(
-            child: SingleChildScrollView(
-              // physics: const ClampingScrollPhysics(),
-              child: Form(
-                key: _formkey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    verticalSpaceLarge,
-                    verticalSpaceLarge,
+    return Form(
+      key: _formkey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          verticalSpaceLarge,
+          verticalSpaceLarge,
 
-                    Text(
-                      'Welcome to\nMoney Magnet',
-                      style: Theme.of(context).textTheme.headlineMedium!,
-                      textAlign: TextAlign.left,
-                    ),
+          Text(
+            'Welcome to\nMoney Magnet',
+            style: Theme.of(context).textTheme.headlineMedium!,
+            textAlign: TextAlign.left,
+          ),
 
-                    SizedBox(
-                      height: screenHeightPercentage(context, percent: 0.10),
-                    ),
+          SizedBox(
+            height: screenHeightPercentage(context, percent: 0.10),
+          ),
 
-                    Text(
-                      'Login',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall!
-                          .copyWith(color: Colors.grey),
-                      textAlign: TextAlign.left,
-                    ),
+          Text(
+            'Login',
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall!
+                .copyWith(color: Colors.grey),
+            textAlign: TextAlign.left,
+          ),
 
-                    verticalSpaceMedium,
-                    // LOGIN text edit =====================================
-                    TextFormField(
-                      style: Theme.of(context).textTheme.titleSmall!,
-                      keyboardType: TextInputType.emailAddress,
-                      textInputAction: TextInputAction.next,
-                      decoration: mainInputDecoration("Email", null),
-                      validator: (String? text) {
-                        if (text == null || text.isEmpty) {
-                          return 'email tidak boleh kosong';
-                        }
-                        // if (!text.isValidEmail()) {
-                        //   return 'email tidak valid';
-                        // }
-                        return null;
-                      },
-                      controller: _emailController,
-                    ),
-                    verticalSpaceSmall,
-                    // PASSWORD text edit ================================
-                    TextFormField(
-                      style: Theme.of(context).textTheme.titleSmall!,
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: true,
-                      decoration: mainInputDecoration("Password", null),
-                      validator: (String? text) {
-                        if (text == null || text.isEmpty) {
-                          return 'password tidak boleh kosong';
-                        }
-                        return null;
-                      },
-                      controller: _passwordController,
-                    ),
+          verticalSpaceMedium,
+          // LOGIN text edit =====================================
+          TextFormField(
+            style: Theme.of(context).textTheme.titleSmall!,
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
+            decoration: mainInputDecoration("Email", null),
+            validator: (String? text) {
+              if (text == null || text.isEmpty) {
+                return 'email tidak boleh kosong';
+              }
+              // if (!text.isValidEmail()) {
+              //   return 'email tidak valid';
+              // }
+              return null;
+            },
+            controller: ref.watch(emailControllerProvider),
+          ),
+          verticalSpaceSmall,
+          // PASSWORD text edit ================================
+          TextFormField(
+            style: Theme.of(context).textTheme.titleSmall!,
+            keyboardType: TextInputType.visiblePassword,
+            obscureText: true,
+            decoration: mainInputDecoration("Password", null),
+            validator: (String? text) {
+              if (text == null || text.isEmpty) {
+                return 'password tidak boleh kosong';
+              }
+              return null;
+            },
+            controller: ref.watch(passwordControllerProvider),
+          ),
 
-                    verticalSpaceLarge,
+          verticalSpaceLarge,
 
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Forget password ?",
-                            style: Theme.of(context).textTheme.titleSmall!,
-                          )),
-                    ),
-                    // Button or Progress indicator
-                    state.maybeWhen(
-                      loading: () =>
-                          const ButtonWLoading(title: "Sedang memuat..."),
-                      authenticated: () => ButtonW(
-                        title: "Ok",
-                        onPressed: () {},
-                      ),
-                      orElse: () => ButtonW(
-                        title: "Masuk",
-                        onPressed: _login,
-                      ),
-                    ),
-                    verticalSpaceSmall,
-                  ],
-                ),
-              ),
+          Align(
+            alignment: Alignment.topRight,
+            child: TextButton(
+                onPressed: () {
+                  ref.read(authNotifierProvider.notifier).toggleLoading();
+                },
+                child: Text(
+                  "Forget password ?",
+                  style: Theme.of(context).textTheme.titleSmall!,
+                )),
+          ),
+          // Button or Progress indicator
+          state.maybeWhen(
+            loading: () => const ButtonWLoading(title: "Sedang memuat..."),
+            authenticated: () => ButtonW(
+              title: "Ok",
+              onPressed: () {},
+            ),
+            orElse: () => ButtonW(
+              title: "Masuk",
+              onPressed: _login,
             ),
           ),
-        ),
+          verticalSpaceSmall,
+        ],
       ),
     );
   }
@@ -167,8 +162,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   void _login() async {
     if (_formkey.currentState?.validate() ?? false) {
       // Success
-      String email = _emailController.text;
-      String password = _passwordController.text;
+      String email = ref.read(emailControllerProvider).text;
+      String password = ref.read(passwordControllerProvider).text;
       await ref.read(authNotifierProvider.notifier).signIn(email, password);
     }
   }

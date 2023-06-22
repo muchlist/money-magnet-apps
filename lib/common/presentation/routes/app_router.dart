@@ -4,20 +4,22 @@ import 'package:money_magnet/common/presentation/routes/app_router.gr.dart';
 @AutoRouterConfig()
 class AppRouter extends $AppRouter {
   @override
-  RouteType get defaultRouteType =>
-      const RouteType.material(); //.cupertino, .adaptive ..etc
-
-  @override
   List<AutoRoute> get routes => [
         AutoRoute(
           page: SplashRoute.page,
           path: '/splash',
         ),
-        AutoRoute(
-          page: LoginRoute.page,
-          path: '/login',
-          initial: true,
-        ),
+        CustomRoute(
+            page: LoginRoute.page,
+            path: '/login',
+            initial: true,
+            transitionsBuilder: TransitionsBuilders.slideBottom,
+            durationInMilliseconds: 400),
+        // AutoRoute(
+        //   page: LoginRoute.page,
+        //   path: '/login',
+        //   initial: true,
+        // ),
         AutoRoute(
           page: NavigationRoute.page,
           path: '/navigation',

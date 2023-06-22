@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:dio_logger/dio_logger.dart';
+// import 'package:dio_logger/dio_logger.dart';
 import 'package:money_magnet/auth/application/auth_notifier.dart';
 import 'package:money_magnet/auth/shared/providers.dart';
 import 'package:money_magnet/common/presentation/component/theme.dart';
@@ -27,12 +27,12 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
     ..options = BaseOptions(
       validateStatus: (status) =>
           status != null && status >= 200 && status < 400,
-      connectTimeout: 10000, // 10 second
-      receiveTimeout: 10000,
-      sendTimeout: 10000,
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
+      sendTimeout: const Duration(seconds: 10),
     )
-    ..interceptors.add(ref.read(oauth2InterceptorProvider))
-    ..interceptors.add(dioLoggerInterceptor);
+    ..interceptors.add(ref.read(oauth2InterceptorProvider));
+  // ..interceptors.add(dioLoggerInterceptor);
 
   return unit;
 });
@@ -60,10 +60,11 @@ class AppWidget extends ConsumerWidget {
           authenticated: (_) {},
           failure: (_) {},
           orElse: () {
-            appRouter.pushAndPopUntil(
-              const LoginRoute(),
-              predicate: (route) => false,
-            );
+            // TODO : solve this
+            // appRouter.pushAndPopUntil(
+            //   const LoginRoute(),
+            //   predicate: (route) => false,
+            // );
           },
         );
       },

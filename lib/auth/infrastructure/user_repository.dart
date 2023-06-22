@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
+import 'package:logger/logger.dart';
 import 'package:money_magnet/auth/domain/auth_failure.dart';
 import 'package:money_magnet/auth/domain/user.dart';
 import 'package:money_magnet/auth/infrastructure/credential_storage/credential_storage.dart';
@@ -15,6 +14,8 @@ class UserRepository {
   final CredentialStorage _credentialsStorage;
   UserRepository(
       this._remoteService, this._localService, this._credentialsStorage);
+
+  var logg = Logger();
 
   Future<Either<AuthFailure, User?>> signIn(
       String email, String password) async {
@@ -44,6 +45,7 @@ class UserRepository {
     } on RestApiException catch (e) {
       return left(AuthFailure.server(e.message));
     } catch (e) {
+      logg.d(e.toString());
       return left(AuthFailure.server(e.toString()));
     }
   }
@@ -52,7 +54,7 @@ class UserRepository {
     try {
       return await _localService.getUserDetail();
     } catch (e) {
-      log(e.toString());
+      logg.d(e.toString());
       return null;
     }
   }

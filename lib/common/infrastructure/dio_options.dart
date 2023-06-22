@@ -7,6 +7,6 @@ final customOption = Options(
       status == 404 ||
       status == 422,
   responseType: ResponseType.json,
-  receiveTimeout: 10000,
-  sendTimeout: 10000,
+  receiveTimeout: const Duration(seconds: 10),
+  sendTimeout: const Duration(seconds: 10),
 );

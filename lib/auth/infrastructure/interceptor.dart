@@ -32,7 +32,7 @@ class OAuth2Interceptor extends Interceptor {
       //     : await _authenticator.clearCredentialsStorage();
 
       // trigger to login screen
-      await _authNotifier.checkAndUpdateAuthStatus();
+      // await _authNotifier.checkAndUpdateAuthStatus();
 
       // TODO : use refreshed token if can refresh
       final refreshCredentials = await _repository.getToken();
