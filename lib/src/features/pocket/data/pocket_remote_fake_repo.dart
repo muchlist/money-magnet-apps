@@ -16,4 +16,17 @@ class FakePocketRemoteRepository implements IPocketRemoteRepository {
     Future.delayed(const Duration(milliseconds: 3000));
     return Future.value(RemoteResponse.withNewData(data: dummyPockets[0]));
   }
+
+  @override
+  Future<RemoteResponse<PocketDTO>> create(String pocketName, String currency) {
+    // TODO: implement create
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<RemoteResponse<PocketDTO>> update(
+      String pocketID, String pocketName, String currency) {
+    // TODO: implement update
+    throw UnimplementedError();
+  }
 }

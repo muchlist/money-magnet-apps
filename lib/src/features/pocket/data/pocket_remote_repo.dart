@@ -10,11 +10,23 @@ import 'package:money_magnet/src/features/pocket/data/pocket_list_dto.dart';
 
 abstract class IPocketRemoteRepository {
   Future<RemoteResponse<PocketDTO>> get(String pocketID);
+
   Future<RemoteResponse<List<PocketDTO>>> find({
     int page = 1,
     int pageSize = 50,
     String sort = "pocket_name",
   });
+
+  Future<RemoteResponse<PocketDTO>> create(
+    String pocketName,
+    String currency,
+  );
+
+  Future<RemoteResponse<PocketDTO>> update(
+    String pocketID,
+    String pocketName,
+    String currency,
+  );
 }
 
 class PocketRemoteRepository implements IPocketRemoteRepository {
@@ -96,6 +108,101 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
         // Bad request from Pocket
         try {
           final data = PocketListResponseDTO.fromJson(response.data);
+          throw RestApiException(response.statusCode, data.error);
+        } on FormatException catch (_) {
+          throw RestApiException(response.statusCode, response.statusMessage);
+        }
+      } else {
+        // Server error
+        throw RestApiException(response.statusCode, response.statusMessage);
+      }
+    } on DioError catch (e) {
+      if (e.isNoConnectionError) {
+        return const RemoteResponse.noConnection();
+      } else if (e.response != null) {
+        throw RestApiException(e.response?.statusCode, e.message);
+      } else {
+        rethrow;
+      }
+    } on FormatException catch (e) {
+      throw RestApiException(0, "parsing:${e.message}");
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<RemoteResponse<PocketDTO>> create(
+      String pocketName, String currency) async {
+    final requestUri = Uri.https(
+      RemoteConfig.baseURL,
+      '/pockets',
+    );
+
+    try {
+      final response = await _dio.postUri(requestUri,
+          options: customOption,
+          data: {"pocket_name": pocketName, "currency": currency});
+
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        // Success
+        final data = PocketResponseDTO.fromJson(response.data);
+        return RemoteResponse.withNewData(data: data.data!);
+      } else if (response.statusCode! == 400 || response.statusCode! == 422) {
+        // Bad request from Pocket
+        try {
+          final data = PocketResponseDTO.fromJson(response.data);
+          throw RestApiException(response.statusCode, data.error);
+        } on FormatException catch (_) {
+          throw RestApiException(response.statusCode, response.statusMessage);
+        }
+      } else {
+        // Server error
+        throw RestApiException(response.statusCode, response.statusMessage);
+      }
+    } on DioError catch (e) {
+      if (e.isNoConnectionError) {
+        return const RemoteResponse.noConnection();
+      } else if (e.response != null) {
+        throw RestApiException(e.response?.statusCode, e.message);
+      } else {
+        rethrow;
+      }
+    } on FormatException catch (e) {
+      throw RestApiException(0, "parsing:${e.message}");
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<RemoteResponse<PocketDTO>> update(
+    String pocketID,
+    String pocketName,
+    String currency,
+  ) async {
+    if (pocketID.isEmpty) {
+      throw RestApiException(0, "pocketID cannot be empty");
+    }
+
+    final requestUri = Uri.https(
+      RemoteConfig.baseURL,
+      '/pockets/$pocketID',
+    );
+
+    try {
+      final response = await _dio.postUri(requestUri,
+          options: customOption,
+          data: {"pocket_name": pocketName, "currency": currency});
+
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        // Success
+        final data = PocketResponseDTO.fromJson(response.data);
+        return RemoteResponse.withNewData(data: data.data!);
+      } else if (response.statusCode! == 400 || response.statusCode! == 422) {
+        // Bad request from Pocket
+        try {
+          final data = PocketResponseDTO.fromJson(response.data);
           throw RestApiException(response.statusCode, data.error);
         } on FormatException catch (_) {
           throw RestApiException(response.statusCode, response.statusMessage);
