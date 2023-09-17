@@ -83,7 +83,7 @@ class HomeBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Today --",
+                    "Hari ini",
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!

@@ -43,7 +43,7 @@ class UserRemoteRepository {
         // Server error
         throw RestApiException(response.statusCode, response.statusMessage);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.isNoConnectionError) {
         return const RemoteResponse.noConnection();
       } else if (e.response != null) {

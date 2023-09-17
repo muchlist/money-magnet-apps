@@ -2,16 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 
-class SearchBar extends StatefulWidget {
-  const SearchBar({
+class CustomSearchBar extends StatefulWidget {
+  const CustomSearchBar({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<SearchBar> createState() => _SearchBarState();
+  State<CustomSearchBar> createState() => _SearchBarState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class _SearchBarState extends State<CustomSearchBar> {
   final TextEditingController _nameController = TextEditingController();
 
   @override

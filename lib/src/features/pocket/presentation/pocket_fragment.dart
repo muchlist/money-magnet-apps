@@ -5,9 +5,12 @@ import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/src/commons/widgets/balance_widget.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
+import 'package:money_magnet/src/commons/widgets/flushbar.dart';
 import 'package:money_magnet/src/commons/widgets/pockets_widget.dart';
+import 'package:money_magnet/src/features/pocket/application/pocket_notifier.dart';
 import 'package:money_magnet/src/features/pocket/provider/providers.dart';
 import 'package:money_magnet/src/routes/app_router.gr.dart';
+import 'package:money_magnet/src/utils/strings.dart';
 
 class PocketFragment extends StatelessWidget {
   const PocketFragment({Key? key}) : super(key: key);
@@ -41,6 +44,22 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(pocketNotifierProvider);
+    ref.listen<PocketState>(pocketNotifierProvider, (_, next) {
+      next.maybeWhen(
+          orElse: () {},
+          failure: (_, failure) {
+            failure.when(server: (msg) {
+              showToastError(
+                  context: context,
+                  message: msg ?? 'unknown failure',
+                  onTop: false);
+            }, storage: () {
+              showToastError(
+                  context: context, message: 'storage failure', onTop: false);
+            });
+          });
+    });
+
     final pocketCount = state.map(
         initial: (s) => 0,
         loading: (s) => s.pockets.length,
@@ -79,6 +98,7 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
               child: BalanceWidget(
                 balanceValue: state.maybeWhen(
                     success: (_, balanceInfo, __) => balanceInfo,
+                    loading: (_, balanceInfo) => balanceInfo,
                     orElse: () => '0'),
               ),
             ),
@@ -98,12 +118,13 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
                     return GestureDetector(
                         onTap: () {
                           AutoRouter.of(context).push(
-                            PocketRoute(pocketName: "Main Pocket"),
+                            PocketRoute(pocketDetail: state.pockets[index]),
                           );
                         },
                         child: PocketWidget(
                           name: state.pockets[index].pocketName,
-                          balance: '${state.pockets[index].balance}',
+                          balance:
+                              state.pockets[index].balance.toCurrencyString(),
                         ));
                   },
                   childCount: pocketCount + 1,

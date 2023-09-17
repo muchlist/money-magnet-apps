@@ -9,11 +9,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/material.dart' as _i6;
+import 'package:flutter/material.dart' as _i7;
 import 'package:money_magnet/src/features/auth/presentation/login_page.dart'
     as _i4;
 import 'package:money_magnet/src/features/home/presentation/navigation_page.dart'
     as _i2;
+import 'package:money_magnet/src/features/pocket/domain/pocket.dart' as _i6;
 import 'package:money_magnet/src/features/pocket/presentation/pocket_page.dart'
     as _i1;
 import 'package:money_magnet/src/features/splash/presentation/splash_page.dart'
@@ -29,7 +30,7 @@ abstract class $AppRouter extends _i5.RootStackRouter {
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.PocketPage(
-          args.pocketName,
+          args.pocketDetail,
           key: args.key,
         ),
       );
@@ -59,13 +60,13 @@ abstract class $AppRouter extends _i5.RootStackRouter {
 /// [_i1.PocketPage]
 class PocketRoute extends _i5.PageRouteInfo<PocketRouteArgs> {
   PocketRoute({
-    required String pocketName,
-    _i6.Key? key,
+    required _i6.Pocket pocketDetail,
+    _i7.Key? key,
     List<_i5.PageRouteInfo>? children,
   }) : super(
           PocketRoute.name,
           args: PocketRouteArgs(
-            pocketName: pocketName,
+            pocketDetail: pocketDetail,
             key: key,
           ),
           initialChildren: children,
@@ -79,17 +80,17 @@ class PocketRoute extends _i5.PageRouteInfo<PocketRouteArgs> {
 
 class PocketRouteArgs {
   const PocketRouteArgs({
-    required this.pocketName,
+    required this.pocketDetail,
     this.key,
   });
 
-  final String pocketName;
+  final _i6.Pocket pocketDetail;
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 
   @override
   String toString() {
-    return 'PocketRouteArgs{pocketName: $pocketName, key: $key}';
+    return 'PocketRouteArgs{pocketDetail: $pocketDetail, key: $key}';
   }
 }
 

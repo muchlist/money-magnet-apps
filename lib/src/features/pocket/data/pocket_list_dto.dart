@@ -9,7 +9,7 @@ class PocketListResponseDTO with _$PocketListResponseDTO {
   const PocketListResponseDTO._();
   const factory PocketListResponseDTO({
     @JsonKey(name: 'data', defaultValue: []) required List<PocketDTO>? data,
-    @JsonKey(name: 'meta_data') required MetadataDTO metaData,
+    @JsonKey(name: 'metadata') required MetadataDTO metaData,
     @JsonKey(name: 'error') required String? error,
   }) = _PocketListResponseDTO;
 

@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:money_magnet/src/commons/infrastructure/data_failure.dart';
 import 'package:money_magnet/src/features/pocket/application/pocket_service.dart';
 import 'package:money_magnet/src/features/pocket/domain/pocket.dart';
+import 'package:money_magnet/src/utils/strings.dart';
 
 part 'pocket_notifier.freezed.dart';
 
@@ -69,6 +70,27 @@ class PocketNotifier extends StateNotifier<PocketState> {
     for (var element in pockets) {
       balance = balance + element.balance;
     }
-    return '$balance';
+    return balance.toCurrencyString();
+  }
+
+  Future<void> createPocket(String pocketName, String currency) async {
+    state = PocketState.loading(state.pockets, _getTotalBalance(state.pockets));
+    final failureOrSuccess = await _service.createPocket(pocketName, currency);
+    state = failureOrSuccess.fold(
+      (l) {
+        return PocketState.failure(state.pockets, l);
+      },
+      (r) {
+        final pockets = state.pockets;
+        pockets.add(r!);
+        final totalBalance = _getTotalBalance(
+            state.pockets); // new pocket is 0, so sum pocket before
+        return PocketState.success(
+          pockets,
+          totalBalance,
+          isNextPageAvailable: _service.hasNextPage(),
+        );
+      },
+    );
   }
 }

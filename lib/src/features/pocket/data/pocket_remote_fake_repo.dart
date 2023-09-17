@@ -1,7 +1,7 @@
 import 'package:money_magnet/src/commons/infrastructure/remote_response.dart';
 import 'package:money_magnet/src/dummy_data/pocket.dart';
 import 'package:money_magnet/src/features/pocket/data/pocket_dto.dart';
-import 'package:money_magnet/src/features/pocket/data/pocket_remote_repo.dart';
+import 'package:money_magnet/src/features/pocket/data/pocket_remote_interface.dart';
 
 class FakePocketRemoteRepository implements IPocketRemoteRepository {
   @override

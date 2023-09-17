@@ -23,7 +23,8 @@ class OAuth2Interceptor extends Interceptor {
   }
 
   @override
-  Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
+  Future<void> onError(
+      DioException err, ErrorInterceptorHandler handler) async {
     final errorResponse = err.response;
     if (errorResponse != null && errorResponse.statusCode == 401) {
       // final credentials = await _repository.getToken();
@@ -32,9 +33,8 @@ class OAuth2Interceptor extends Interceptor {
       //     : await _authenticator.clearCredentialsStorage();
 
       // trigger to login screen
-      // await _authNotifier.checkAndUpdateAuthStatus();
+      await _authNotifier.checkAndUpdateAuthStatus();
 
-      // TODO : use refreshed token if can refresh
       final refreshCredentials = await _service.getToken();
       if (refreshCredentials != null) {
         handler.resolve(

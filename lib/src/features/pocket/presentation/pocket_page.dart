@@ -6,13 +6,17 @@ import 'package:money_magnet/src/commons/widgets/balance_widget.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
+import 'package:money_magnet/src/features/pocket/domain/pocket.dart';
+import 'package:money_magnet/src/features/pocket/presentation/search_bar.dart';
+import 'package:money_magnet/src/utils/strings.dart';
 
 import '../../../commons/widgets/spend_tile_widget.dart';
 
 @RoutePage()
 class PocketPage extends ConsumerStatefulWidget {
-  const PocketPage(this.pocketName, {Key? key}) : super(key: key);
-  final String pocketName;
+  const PocketPage(this.pocketDetail, {Key? key}) : super(key: key);
+
+  final Pocket pocketDetail;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _PocketPageState();
@@ -22,7 +26,7 @@ class _PocketPageState extends ConsumerState<PocketPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PocketPageBody(pocketName: widget.pocketName),
+      body: PocketPageBody(pocketDetail: widget.pocketDetail),
       floatingActionButton: FloatingActionButton(
         child: const Icon(LineIcons.plus),
         onPressed: () {},
@@ -34,10 +38,10 @@ class _PocketPageState extends ConsumerState<PocketPage> {
 class PocketPageBody extends StatelessWidget {
   const PocketPageBody({
     Key? key,
-    required this.pocketName,
+    required this.pocketDetail,
   }) : super(key: key);
 
-  final String pocketName;
+  final Pocket pocketDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,7 @@ class PocketPageBody extends StatelessWidget {
           SliverAppBar(
             pinned: true,
             title: Text(
-              pocketName,
+              pocketDetail.pocketName,
               style: Theme.of(context)
                   .textTheme
                   .headlineMedium!
@@ -66,11 +70,11 @@ class PocketPageBody extends StatelessWidget {
               SizedBox(width: 16),
             ],
           ),
-          const SliverPadding(
-            padding: EdgeInsets.only(left: 16, top: 8, right: 16),
+          SliverPadding(
+            padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
             sliver: SliverToBoxAdapter(
               child: BalanceWidget(
-                balanceValue: "Rp 500.0000",
+                balanceValue: pocketDetail.balance.toCurrencyString(),
               ),
             ),
           ),
@@ -79,7 +83,7 @@ class PocketPageBody extends StatelessWidget {
             sliver: SliverToBoxAdapter(
               child: Row(
                 children: [
-                  Expanded(child: SearchBar()),
+                  Expanded(child: CustomSearchBar()),
                   horizontalSpaceSmall,
                   Icon(LineIcons.horizontalSliders),
                 ],

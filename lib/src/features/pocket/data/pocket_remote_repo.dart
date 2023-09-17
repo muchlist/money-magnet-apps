@@ -7,27 +7,7 @@ import 'package:money_magnet/src/commons/infrastructure/network_exceptions.dart'
 import 'package:money_magnet/src/commons/infrastructure/remote_response.dart';
 import 'package:money_magnet/src/features/pocket/data/pocket_dto.dart';
 import 'package:money_magnet/src/features/pocket/data/pocket_list_dto.dart';
-
-abstract class IPocketRemoteRepository {
-  Future<RemoteResponse<PocketDTO>> get(String pocketID);
-
-  Future<RemoteResponse<List<PocketDTO>>> find({
-    int page = 1,
-    int pageSize = 50,
-    String sort = "pocket_name",
-  });
-
-  Future<RemoteResponse<PocketDTO>> create(
-    String pocketName,
-    String currency,
-  );
-
-  Future<RemoteResponse<PocketDTO>> update(
-    String pocketID,
-    String pocketName,
-    String currency,
-  );
-}
+import 'package:money_magnet/src/features/pocket/data/pocket_remote_interface.dart';
 
 class PocketRemoteRepository implements IPocketRemoteRepository {
   final Dio _dio;
@@ -67,7 +47,7 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
         // Server error
         throw RestApiException(response.statusCode, response.statusMessage);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.isNoConnectionError) {
         return const RemoteResponse.noConnection();
       } else if (e.response != null) {
@@ -88,8 +68,11 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
     int pageSize = 50,
     String sort = "pocket_name",
   }) async {
-    final requestUri = Uri.https(RemoteConfig.baseURL, '/pockets',
-        {"page": page, "page_size": pageSize, "sort": sort});
+    final requestUri = Uri.https(
+      RemoteConfig.baseURL,
+      '/pockets',
+      {"page": "$page", "page_size": "$pageSize", "sort": sort},
+    );
 
     try {
       final response = await _dio.getUri(
@@ -116,7 +99,7 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
         // Server error
         throw RestApiException(response.statusCode, response.statusMessage);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.isNoConnectionError) {
         return const RemoteResponse.noConnection();
       } else if (e.response != null) {
@@ -160,7 +143,7 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
         // Server error
         throw RestApiException(response.statusCode, response.statusMessage);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.isNoConnectionError) {
         return const RemoteResponse.noConnection();
       } else if (e.response != null) {
@@ -211,7 +194,7 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
         // Server error
         throw RestApiException(response.statusCode, response.statusMessage);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.isNoConnectionError) {
         return const RemoteResponse.noConnection();
       } else if (e.response != null) {

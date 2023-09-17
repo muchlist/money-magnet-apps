@@ -13,7 +13,7 @@ _$_PocketListResponseDTO _$$_PocketListResponseDTOFromJson(
               ?.map((e) => PocketDTO.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      metaData: MetadataDTO.fromJson(json['meta_data'] as Map<String, dynamic>),
+      metaData: MetadataDTO.fromJson(json['metadata'] as Map<String, dynamic>),
       error: json['error'] as String?,
     );
 
@@ -21,7 +21,7 @@ Map<String, dynamic> _$$_PocketListResponseDTOToJson(
         _$_PocketListResponseDTO instance) =>
     <String, dynamic>{
       'data': instance.data,
-      'meta_data': instance.metaData,
+      'metadata': instance.metaData,
       'error': instance.error,
     };
 

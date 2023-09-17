@@ -23,7 +23,7 @@ PocketListResponseDTO _$PocketListResponseDTOFromJson(
 mixin _$PocketListResponseDTO {
   @JsonKey(name: 'data', defaultValue: [])
   List<PocketDTO>? get data => throw _privateConstructorUsedError;
-  @JsonKey(name: 'meta_data')
+  @JsonKey(name: 'metadata')
   MetadataDTO get metaData => throw _privateConstructorUsedError;
   @JsonKey(name: 'error')
   String? get error => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $PocketListResponseDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'data', defaultValue: []) List<PocketDTO>? data,
-      @JsonKey(name: 'meta_data') MetadataDTO metaData,
+      @JsonKey(name: 'metadata') MetadataDTO metaData,
       @JsonKey(name: 'error') String? error});
 
   $MetadataDTOCopyWith<$Res> get metaData;
@@ -101,7 +101,7 @@ abstract class _$$_PocketListResponseDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'data', defaultValue: []) List<PocketDTO>? data,
-      @JsonKey(name: 'meta_data') MetadataDTO metaData,
+      @JsonKey(name: 'metadata') MetadataDTO metaData,
       @JsonKey(name: 'error') String? error});
 
   @override
@@ -146,7 +146,7 @@ class _$_PocketListResponseDTO extends _PocketListResponseDTO {
   const _$_PocketListResponseDTO(
       {@JsonKey(name: 'data', defaultValue: [])
           required final List<PocketDTO>? data,
-      @JsonKey(name: 'meta_data')
+      @JsonKey(name: 'metadata')
           required this.metaData,
       @JsonKey(name: 'error')
           required this.error})
@@ -168,7 +168,7 @@ class _$_PocketListResponseDTO extends _PocketListResponseDTO {
   }
 
   @override
-  @JsonKey(name: 'meta_data')
+  @JsonKey(name: 'metadata')
   final MetadataDTO metaData;
   @override
   @JsonKey(name: 'error')
@@ -214,7 +214,7 @@ abstract class _PocketListResponseDTO extends PocketListResponseDTO {
   const factory _PocketListResponseDTO(
       {@JsonKey(name: 'data', defaultValue: [])
           required final List<PocketDTO>? data,
-      @JsonKey(name: 'meta_data')
+      @JsonKey(name: 'metadata')
           required final MetadataDTO metaData,
       @JsonKey(name: 'error')
           required final String? error}) = _$_PocketListResponseDTO;
@@ -227,7 +227,7 @@ abstract class _PocketListResponseDTO extends PocketListResponseDTO {
   @JsonKey(name: 'data', defaultValue: [])
   List<PocketDTO>? get data;
   @override
-  @JsonKey(name: 'meta_data')
+  @JsonKey(name: 'metadata')
   MetadataDTO get metaData;
   @override
   @JsonKey(name: 'error')
