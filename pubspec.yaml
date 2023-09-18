@@ -22,37 +22,48 @@ dependencies:
   flutter:
     sdk: flutter
   another_flushbar: ^1.10.29
-  auto_route: ^4.0.1
-  cached_network_image: ^3.2.1
+  auto_route: ^7.4.0
+  cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.4
   dartz: ^0.10.1
-  dio: ^4.0.6
-  dio_logger: ^4.0.8+8
-  flash: ^2.0.3+2
-  flutter_riverpod: ^1.0.4
-  flutter_secure_storage: ^5.0.2
-  flutter_svg: ^1.0.3
-  freezed_annotation: ^2.0.3
-  google_fonts: ^3.0.1
-  json_annotation: ^4.5.0
-  material_design_icons_flutter: ^5.0.6595
+  dio: ^5.2.0
+  intl: ^0.18.1
+  talker_dio_logger: ^2.3.0
+  flash: ^3.0.5+1
+  flutter_riverpod: ^2.3.6
+  riverpod_annotation: ^2.1.1
+  flutter_secure_storage: ^8.0.0
+  flutter_svg: ^2.0.6
+  freezed_annotation: ^2.2.0
+  google_fonts: ^4.0.3
+  json_annotation: ^4.8.1
+  logger: ^2.0.2
+  material_design_icons_flutter: ^6.0.7096
   material_floating_search_bar: ^0.3.7
-  package_info_plus: ^1.4.2
-  path: ^1.8.1
-  sembast: ^3.2.0
-  shimmer: ^2.0.0
+  package_info_plus: ^4.0.2
+  path: ^1.8.3
+  path_provider: ^2.0.15
+  sembast: ^3.4.5
+  shimmer: ^3.0.0
   google_nav_bar: ^5.0.6
   line_icons: ^2.0.1
   
+dependency_overrides:
+  package_info_plus: any
+  wakelock_windows: any
+  win32: any
 
 dev_dependencies:
-  auto_route_generator: ^4.0.0
-  build_runner: ^2.1.10
+  auto_route_generator: ^7.1.1
+  build_runner: 
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
-  freezed: ^2.0.3+1
+  freezed: ^2.3.4
   json_serializable: ^6.2.0
+  custom_lint:
+  riverpod_generator: ^2.2.3
+  riverpod_lint: ^1.3.2
 
 flutter:
   uses-material-design: true
