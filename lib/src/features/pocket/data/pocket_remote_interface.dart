@@ -13,6 +13,7 @@ abstract class IPocketRemoteRepository {
   Future<RemoteResponse<PocketDTO>> create(
     String pocketName,
     String currency,
+    int icon,
   );
 
   Future<RemoteResponse<PocketDTO>> update(

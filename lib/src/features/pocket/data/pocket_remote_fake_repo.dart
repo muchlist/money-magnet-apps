@@ -18,7 +18,8 @@ class FakePocketRemoteRepository implements IPocketRemoteRepository {
   }
 
   @override
-  Future<RemoteResponse<PocketDTO>> create(String pocketName, String currency) {
+  Future<RemoteResponse<PocketDTO>> create(
+      String pocketName, String currency, int icon) {
     // TODO: implement create
     throw UnimplementedError();
   }

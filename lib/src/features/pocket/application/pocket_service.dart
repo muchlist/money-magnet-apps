@@ -59,10 +59,10 @@ class PocketService {
   int getCurrentPage() => _currentPage;
 
   Future<Either<DataFailure, Pocket?>> createPocket(
-      String pocketName, String currency) async {
+      String pocketName, String currency, int icon) async {
     try {
       final pocketResponse =
-          await _remoteRepository.create(pocketName, currency);
+          await _remoteRepository.create(pocketName, currency, icon);
       return pocketResponse.maybeWhen(
         withNewData: (data, _) async {
           return right(data.toDomain());
