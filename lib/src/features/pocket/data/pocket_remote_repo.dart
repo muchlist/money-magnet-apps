@@ -116,16 +116,18 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
 
   @override
   Future<RemoteResponse<PocketDTO>> create(
-      String pocketName, String currency) async {
+      String pocketName, String currency, int icon) async {
     final requestUri = Uri.https(
       RemoteConfig.baseURL,
       '/pockets',
     );
 
     try {
-      final response = await _dio.postUri(requestUri,
-          options: customOption,
-          data: {"pocket_name": pocketName, "currency": currency});
+      final response = await _dio.postUri(
+        requestUri,
+        options: customOption,
+        data: {"pocket_name": pocketName, "currency": currency, "icon": icon},
+      );
 
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         // Success

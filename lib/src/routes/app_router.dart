@@ -28,5 +28,9 @@ class AppRouter extends $AppRouter {
           page: PocketRoute.page,
           path: '/pocket',
         ),
+        AutoRoute(
+          page: PocketAddRoute.page,
+          path: '/pocket-add',
+        ),
       ];
 }

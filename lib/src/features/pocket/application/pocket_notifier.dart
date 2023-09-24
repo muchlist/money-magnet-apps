@@ -73,20 +73,27 @@ class PocketNotifier extends StateNotifier<PocketState> {
     return balance.toCurrencyString();
   }
 
-  Future<void> createPocket(String pocketName, String currency) async {
+  Future<void> createPocket(
+      String pocketName, String currency, int icon) async {
     state = PocketState.loading(state.pockets, _getTotalBalance(state.pockets));
-    final failureOrSuccess = await _service.createPocket(pocketName, currency);
+    final failureOrSuccess =
+        await _service.createPocket(pocketName, currency, icon);
+
     state = failureOrSuccess.fold(
       (l) {
         return PocketState.failure(state.pockets, l);
       },
       (r) {
-        final pockets = state.pockets;
-        pockets.add(r!);
+        final List<Pocket> tempPockets = [];
+        tempPockets.addAll(state.pockets);
+        tempPockets.add(r!);
+        tempPockets.sort(((a, b) => a.pocketName.compareTo(b.pocketName)));
+
         final totalBalance = _getTotalBalance(
             state.pockets); // new pocket is 0, so sum pocket before
+
         return PocketState.success(
-          pockets,
+          tempPockets,
           totalBalance,
           isNextPageAvailable: _service.hasNextPage(),
         );

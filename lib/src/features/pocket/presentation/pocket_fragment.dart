@@ -108,12 +108,18 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
             sliver: SliverGrid(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 1.2 / 1,
+                  childAspectRatio: 1.4 / 1,
                 ),
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     if (index == pocketCount) {
-                      return const PocketWidgetButton();
+                      return GestureDetector(
+                          onTap: () {
+                            AutoRouter.of(context).push<String>(
+                              const PocketAddRoute(),
+                            );
+                          },
+                          child: const PocketWidgetButton());
                     }
                     return GestureDetector(
                         onTap: () {
@@ -125,6 +131,7 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
                           name: state.pockets[index].pocketName,
                           balance:
                               state.pockets[index].balance.toCurrencyString(),
+                          icon: state.pockets[index].icon,
                         ));
                   },
                   childCount: pocketCount + 1,

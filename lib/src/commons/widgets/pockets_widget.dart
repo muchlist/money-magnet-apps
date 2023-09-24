@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:money_magnet/src/commons/constant/icon.dart';
 import 'package:money_magnet/src/utils/assets_const.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
 
 class PocketWidget extends StatelessWidget {
-  const PocketWidget({Key? key, required this.name, required this.balance})
+  const PocketWidget(
+      {Key? key, required this.name, required this.balance, required this.icon})
       : super(key: key);
 
   final String name;
   final String balance;
+  final int icon;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +36,14 @@ class PocketWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Spacer(),
-              SvgPicture.asset(
-                moneyBag,
-                semanticsLabel: 'Pocket',
-                width: 37,
+              // SvgPicture.asset(
+              //   moneyBag,
+              //   semanticsLabel: 'Pocket',
+              //   width: 37,
+              // ),
+              Text(
+                getIcon(icon),
+                style: const TextStyle(fontSize: 30),
               ),
               const Spacer(),
               Text(
