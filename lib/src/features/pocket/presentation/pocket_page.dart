@@ -7,7 +7,7 @@ import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
 import 'package:money_magnet/src/features/pocket/domain/pocket.dart';
-import 'package:money_magnet/src/features/pocket/presentation/search_bar.dart';
+import 'package:money_magnet/src/features/pocket/presentation/widgets/search_bar.dart';
 import 'package:money_magnet/src/utils/strings.dart';
 
 import '../../../commons/widgets/spend_tile_widget.dart';
