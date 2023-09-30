@@ -7,26 +7,23 @@ import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
 import 'package:money_magnet/src/features/pocket/domain/pocket.dart';
-import 'package:money_magnet/src/features/pocket/presentation/search_bar.dart';
+import 'package:money_magnet/src/features/pocket/presentation/widgets/search_bar.dart';
+import 'package:money_magnet/src/features/spend/domain/spend.dart';
+import 'package:money_magnet/src/features/spend/provider/providers.dart';
 import 'package:money_magnet/src/utils/strings.dart';
 
 import '../../../commons/widgets/spend_tile_widget.dart';
 
 @RoutePage()
-class PocketPage extends ConsumerStatefulWidget {
+class PocketPage extends StatelessWidget {
   const PocketPage(this.pocketDetail, {Key? key}) : super(key: key);
 
   final Pocket pocketDetail;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _PocketPageState();
-}
-
-class _PocketPageState extends ConsumerState<PocketPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PocketPageBody(pocketDetail: widget.pocketDetail),
+      body: PocketPageBody(pocketDetail: pocketDetail),
       floatingActionButton: FloatingActionButton(
         child: const Icon(LineIcons.plus),
         onPressed: () {},
@@ -35,7 +32,7 @@ class _PocketPageState extends ConsumerState<PocketPage> {
   }
 }
 
-class PocketPageBody extends StatelessWidget {
+class PocketPageBody extends ConsumerStatefulWidget {
   const PocketPageBody({
     Key? key,
     required this.pocketDetail,
@@ -44,14 +41,32 @@ class PocketPageBody extends StatelessWidget {
   final Pocket pocketDetail;
 
   @override
+  ConsumerState<PocketPageBody> createState() => _PocketPageBodyState();
+}
+
+class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
+  @override
+  void initState() {
+    Future.delayed(Duration.zero).then((value) => ref
+        .read(spendNotifierProvider(widget.pocketDetail.id).notifier)
+        .getSpendList(widget.pocketDetail.id));
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final state = ref.watch(spendNotifierProvider(widget.pocketDetail.id));
+    final todaySpends = state.todaySpendItems();
+    final notTodaySpends = state.notTodaySpendItems();
+
     return DisableGlow(
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
             pinned: true,
             title: Text(
-              pocketDetail.pocketName,
+              widget.pocketDetail.pocketName,
               style: Theme.of(context)
                   .textTheme
                   .headlineMedium!
@@ -74,7 +89,7 @@ class PocketPageBody extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
             sliver: SliverToBoxAdapter(
               child: BalanceWidget(
-                balanceValue: pocketDetail.balance.toCurrencyString(),
+                balanceValue: widget.pocketDetail.balance.toCurrencyString(),
               ),
             ),
           ),
@@ -104,7 +119,7 @@ class PocketPageBody extends StatelessWidget {
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "- 200.000",
+                    state.todaySpendMoney(),
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
@@ -122,9 +137,12 @@ class PocketPageBody extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return const SpendTileWidget();
+                  Spend spend = todaySpends[index];
+                  return SpendTileWidget(
+                    detail: spend,
+                  );
                 },
-                childCount: 4, // 5 list items
+                childCount: todaySpends.length,
               ),
             ),
           ),
@@ -161,9 +179,12 @@ class PocketPageBody extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return const SpendTileWidget();
+                  Spend spend = notTodaySpends[index];
+                  return SpendTileWidget(
+                    detail: spend,
+                  );
                 },
-                childCount: 5, // 5 list items
+                childCount: notTodaySpends.length,
               ),
             ),
           ),

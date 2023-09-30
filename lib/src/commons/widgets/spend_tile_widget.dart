@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:money_magnet/src/features/spend/domain/spend.dart';
 import 'package:money_magnet/src/utils/assets_const.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
+import 'package:money_magnet/src/utils/strings.dart';
 
 class SpendTileWidget extends StatelessWidget {
-  const SpendTileWidget({Key? key}) : super(key: key);
+  const SpendTileWidget({Key? key, required this.detail}) : super(key: key);
+
+  final Spend detail;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +42,11 @@ class SpendTileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Makan Siang",
+                  detail.name,
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),
                 Text(
-                  "28 Agustus 2022",
+                  detail.date.toString(),
                   style: Theme.of(context).textTheme.bodySmall!,
                 ),
               ],
@@ -53,11 +57,11 @@ class SpendTileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "- 40.000",
+                  detail.price.toCurrencyString(),
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),
                 Text(
-                  "Food",
+                  detail.categoryName,
                   style: Theme.of(context).textTheme.bodySmall!,
                 ),
               ],

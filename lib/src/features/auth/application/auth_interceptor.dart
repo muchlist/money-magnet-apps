@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
 import 'package:money_magnet/src/features/auth/application/user_service.dart';
 
-class OAuth2Interceptor extends Interceptor {
+class AuthInterceptor extends Interceptor {
   final UserService _service;
   final AuthNotifier _authNotifier;
   final Dio _dio;
 
-  OAuth2Interceptor(this._service, this._authNotifier, this._dio);
+  AuthInterceptor(this._service, this._authNotifier, this._dio);
 
   @override
   void onRequest(
@@ -27,12 +27,11 @@ class OAuth2Interceptor extends Interceptor {
       DioException err, ErrorInterceptorHandler handler) async {
     final errorResponse = err.response;
     if (errorResponse != null && errorResponse.statusCode == 401) {
-      // final credentials = await _repository.getToken();
-      // credentials != null && credentials.canRefresh
-      //     ? await _authenticator.refresh(credentials)
-      //     : await _authenticator.clearCredentialsStorage();
+      // todo: sharpening this logic.
+      // if 401, refresh token to backend, then resolve with refreshed token
+      // if fail, return to login page
 
-      // trigger to login screen
+      await _service.clearToken();
       await _authNotifier.checkAndUpdateAuthStatus();
 
       final refreshCredentials = await _service.getToken();

@@ -12,5 +12,3 @@ final passwordControllerProvider = Provider.autoDispose((ref) {
   ref.onDispose(() => cc.dispose());
   return cc;
 });
-
-final loginFormKeyProvider = Provider((ref) => GlobalKey<FormState>());

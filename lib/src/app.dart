@@ -10,6 +10,8 @@ import 'package:money_magnet/src/commons/theme/theme.dart';
 import 'package:money_magnet/src/routes/app_router.dart';
 import 'package:money_magnet/src/routes/app_router.gr.dart';
 import 'package:money_magnet/src/commons/provider/providers.dart';
+import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
+import 'package:talker_dio_logger/talker_dio_logger_settings.dart';
 
 final initializationProvider = FutureProvider<Unit>((ref) async {
   // Set notification bar tot transfarent
@@ -31,8 +33,14 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
       receiveTimeout: const Duration(seconds: 10),
       sendTimeout: const Duration(seconds: 10),
     )
-    ..interceptors.add(ref.read(oauth2InterceptorProvider));
-  // ..interceptors.add(dioLoggerInterceptor);
+    ..interceptors.add(ref.read(authInterceptorProvider))
+    ..interceptors.add(
+      TalkerDioLogger(
+        settings: const TalkerDioLoggerSettings(
+          printResponseMessage: true,
+        ),
+      ),
+    );
 
   return unit;
 });

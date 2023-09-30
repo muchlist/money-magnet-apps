@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:money_magnet/src/features/pocket/data/pocket_list_dto.dart';
+import 'package:money_magnet/src/commons/data/metadata.dart';
 
 part 'remote_response.freezed.dart';
 
