@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:money_magnet/src/commons/data/auth_interceptor.dart';
 import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
-import 'package:money_magnet/src/features/auth/data/credential_storage/credential_storage.dart';
-import 'package:money_magnet/src/features/auth/data/credential_storage/secure_credential_storage.dart';
-import 'package:money_magnet/src/features/auth/data/interceptor.dart';
+import 'package:money_magnet/src/features/auth/data/secure_credential_interface.dart';
+import 'package:money_magnet/src/features/auth/data/secure_credential_storage.dart';
 import 'package:money_magnet/src/features/auth/data/user_local_repo.dart';
 import 'package:money_magnet/src/features/auth/data/user_remote_repo.dart';
 import 'package:money_magnet/src/commons/provider/providers.dart';
@@ -15,8 +15,8 @@ final flutterSecureStorageProvider =
 
 final dioForAuthProvider = Provider((ref) => Dio());
 
-final oauth2InterceptorProvider = Provider(
-  (ref) => OAuth2Interceptor(
+final authInterceptorProvider = Provider(
+  (ref) => AuthInterceptor(
     ref.watch(userServiceProvider),
     ref.watch(authNotifierProvider.notifier),
     ref.watch(dioForAuthProvider),

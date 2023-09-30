@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
+import 'package:money_magnet/src/features/auth/data/secure_credential_interface.dart';
 import 'package:money_magnet/src/features/auth/data/user_local_repo.dart';
 import 'package:money_magnet/src/features/auth/domain/auth_failure.dart';
 import 'package:money_magnet/src/features/auth/domain/user.dart';
-import 'package:money_magnet/src/features/auth/data/credential_storage/credential_storage.dart';
 import 'package:money_magnet/src/features/auth/data/user_remote_repo.dart';
 import 'package:money_magnet/src/commons/infrastructure/network_exceptions.dart';
 
@@ -22,7 +22,8 @@ class UserService {
       return userResponse.maybeWhen(
         withNewData: (data, _) async {
           try {
-            await _credentialsStorage.save(data.accessToken);
+            await _credentialsStorage.saveAccessToken(data.accessToken);
+            await _credentialsStorage.saveRefreshToken(data.refreshToken);
           } catch (e) {
             return left(const AuthFailure.server('credential storage fail'));
           }
@@ -60,6 +61,14 @@ class UserService {
       return token;
     } on PlatformException {
       return null;
+    }
+  }
+
+  Future<void> clearToken() async {
+    try {
+      await _credentialsStorage.clearAccessToken();
+    } on PlatformException {
+      return;
     }
   }
 
