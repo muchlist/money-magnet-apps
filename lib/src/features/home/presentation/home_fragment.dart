@@ -6,7 +6,6 @@ import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/widgets/pocket_monitor_widget.dart';
 import 'package:money_magnet/src/commons/widgets/pockets_widget.dart';
-import 'package:money_magnet/src/commons/widgets/spend_tile_widget.dart';
 
 class HomeFragment extends ConsumerStatefulWidget {
   const HomeFragment({Key? key}) : super(key: key);
@@ -108,7 +107,8 @@ class HomeBody extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return const SpendTileWidget();
+                  return const SizedBox();
+                  // return const SpendTileWidget(detail: null,);
                 },
                 childCount: 4, // 5 list items
               ),
@@ -147,7 +147,8 @@ class HomeBody extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return const SpendTileWidget();
+                  return const SizedBox();
+                  // return const SpendTileWidget();
                 },
                 childCount: 5, // 5 list items
               ),

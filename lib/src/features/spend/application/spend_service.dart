@@ -31,9 +31,10 @@ class SpendService {
     }
   }
 
-  Future<Either<DataFailure, List<Spend>>> findSpend(int page) async {
+  Future<Either<DataFailure, List<Spend>>> findSpend(
+      int page, String pocketID) async {
     try {
-      final resp = await _remoteRepository.find();
+      final resp = await _remoteRepository.find(pocketID: pocketID);
       return resp.maybeWhen(
         withNewData: (data, meta) async {
           _currentPage = meta?.currentPage ?? 0;
@@ -52,8 +53,9 @@ class SpendService {
     }
   }
 
-  Future<Either<DataFailure, List<Spend>>> findNextSpend() async {
-    return findSpend(_currentPage + 1);
+  Future<Either<DataFailure, List<Spend>>> findNextSpend(
+      String pocketID) async {
+    return findSpend(_currentPage + 1, pocketID);
   }
 
   bool hasNextPage() => _hasNextPage;

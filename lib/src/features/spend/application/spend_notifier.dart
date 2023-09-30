@@ -4,6 +4,8 @@ import 'package:money_magnet/src/commons/infrastructure/data_failure.dart';
 import 'package:money_magnet/src/features/spend/application/spend_service.dart';
 import 'package:money_magnet/src/features/spend/data/spend_dto.dart';
 import 'package:money_magnet/src/features/spend/domain/spend.dart';
+import 'package:money_magnet/src/utils/date.dart';
+import 'package:money_magnet/src/utils/strings.dart';
 
 part 'spend_notifier.freezed.dart';
 
@@ -22,6 +24,23 @@ class SpendState with _$SpendState {
 
   const factory SpendState.failure(List<Spend> spends, DataFailure failure) =
       _Failure;
+
+  List<Spend> todaySpendItems() {
+    return spends.where((element) => element.date.isToday()).toList();
+  }
+
+  List<Spend> notTodaySpendItems() {
+    return spends.where((element) => !element.date.isToday()).toList();
+  }
+
+  String todaySpendMoney() {
+    int total = 0;
+    for (var element in todaySpendItems()) {
+      total += element.price;
+    }
+
+    return total.toCurrencyString();
+  }
 }
 
 class SpendNotifier extends StateNotifier<SpendState> {
@@ -33,9 +52,9 @@ class SpendNotifier extends StateNotifier<SpendState> {
     state = const SpendState.initial([]);
   }
 
-  Future<void> getSpendList() async {
+  Future<void> getSpendList(String pocketID) async {
     state = SpendState.loading(state.spends);
-    final failureOrSuccess = await _service.findSpend(1);
+    final failureOrSuccess = await _service.findSpend(1, pocketID);
     state = failureOrSuccess.fold(
       (l) {
         return SpendState.failure(state.spends, l);
@@ -49,9 +68,9 @@ class SpendNotifier extends StateNotifier<SpendState> {
     );
   }
 
-  Future<void> getNextSpendList() async {
+  Future<void> getNextSpendList(String pocketID) async {
     state = SpendState.loading(state.spends);
-    final failureOrSuccess = await _service.findNextSpend();
+    final failureOrSuccess = await _service.findNextSpend(pocketID);
     state = failureOrSuccess.fold((l) {
       return SpendState.failure(state.spends, l);
     }, (r) {

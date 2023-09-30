@@ -12,7 +12,6 @@ class AppRouter extends $AppRouter {
         CustomRoute(
             page: LoginRoute.page,
             path: '/login',
-            initial: true,
             transitionsBuilder: TransitionsBuilders.slideBottom,
             durationInMilliseconds: 400),
         // AutoRoute(
@@ -23,6 +22,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: NavigationRoute.page,
           path: '/navigation',
+          initial: true,
         ),
         AutoRoute(
           page: PocketRoute.page,
