@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:money_magnet/src/commons/constant/icon.dart';
+import 'package:money_magnet/src/commons/constant/pocket_icon.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/widgets/flushbar.dart';

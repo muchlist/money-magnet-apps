@@ -23,6 +23,7 @@ mixin _$Spend {
   String get pocketName => throw _privateConstructorUsedError;
   String get categoryID => throw _privateConstructorUsedError;
   String get categoryName => throw _privateConstructorUsedError;
+  int get categoryIcon => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   int get balanceSnapshoot => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $SpendCopyWith<$Res> {
       String pocketName,
       String categoryID,
       String categoryName,
+      int categoryIcon,
       String name,
       int price,
       int balanceSnapshoot,
@@ -81,6 +83,7 @@ class _$SpendCopyWithImpl<$Res, $Val extends Spend>
     Object? pocketName = null,
     Object? categoryID = null,
     Object? categoryName = null,
+    Object? categoryIcon = null,
     Object? name = null,
     Object? price = null,
     Object? balanceSnapshoot = null,
@@ -120,6 +123,10 @@ class _$SpendCopyWithImpl<$Res, $Val extends Spend>
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
+      categoryIcon: null == categoryIcon
+          ? _value.categoryIcon
+          : categoryIcon // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -174,6 +181,7 @@ abstract class _$$_SpendCopyWith<$Res> implements $SpendCopyWith<$Res> {
       String pocketName,
       String categoryID,
       String categoryName,
+      int categoryIcon,
       String name,
       int price,
       int balanceSnapshoot,
@@ -201,6 +209,7 @@ class __$$_SpendCopyWithImpl<$Res> extends _$SpendCopyWithImpl<$Res, _$_Spend>
     Object? pocketName = null,
     Object? categoryID = null,
     Object? categoryName = null,
+    Object? categoryIcon = null,
     Object? name = null,
     Object? price = null,
     Object? balanceSnapshoot = null,
@@ -240,6 +249,10 @@ class __$$_SpendCopyWithImpl<$Res> extends _$SpendCopyWithImpl<$Res, _$_Spend>
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
+      categoryIcon: null == categoryIcon
+          ? _value.categoryIcon
+          : categoryIcon // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -291,6 +304,7 @@ class _$_Spend extends _Spend {
       required this.pocketName,
       required this.categoryID,
       required this.categoryName,
+      required this.categoryIcon,
       required this.name,
       required this.price,
       required this.balanceSnapshoot,
@@ -317,6 +331,8 @@ class _$_Spend extends _Spend {
   @override
   final String categoryName;
   @override
+  final int categoryIcon;
+  @override
   final String name;
   @override
   final int price;
@@ -337,7 +353,7 @@ class _$_Spend extends _Spend {
 
   @override
   String toString() {
-    return 'Spend(id: $id, userID: $userID, userName: $userName, pocketID: $pocketID, pocketName: $pocketName, categoryID: $categoryID, categoryName: $categoryName, name: $name, price: $price, balanceSnapshoot: $balanceSnapshoot, isIncome: $isIncome, type: $type, date: $date, createdAt: $createdAt, updatedAt: $updatedAt, version: $version)';
+    return 'Spend(id: $id, userID: $userID, userName: $userName, pocketID: $pocketID, pocketName: $pocketName, categoryID: $categoryID, categoryName: $categoryName, categoryIcon: $categoryIcon, name: $name, price: $price, balanceSnapshoot: $balanceSnapshoot, isIncome: $isIncome, type: $type, date: $date, createdAt: $createdAt, updatedAt: $updatedAt, version: $version)';
   }
 
   @override
@@ -357,6 +373,8 @@ class _$_Spend extends _Spend {
                 other.categoryID == categoryID) &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
+            (identical(other.categoryIcon, categoryIcon) ||
+                other.categoryIcon == categoryIcon) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.balanceSnapshoot, balanceSnapshoot) ||
@@ -382,6 +400,7 @@ class _$_Spend extends _Spend {
       pocketName,
       categoryID,
       categoryName,
+      categoryIcon,
       name,
       price,
       balanceSnapshoot,
@@ -408,6 +427,7 @@ abstract class _Spend extends Spend {
       required final String pocketName,
       required final String categoryID,
       required final String categoryName,
+      required final int categoryIcon,
       required final String name,
       required final int price,
       required final int balanceSnapshoot,
@@ -433,6 +453,8 @@ abstract class _Spend extends Spend {
   String get categoryID;
   @override
   String get categoryName;
+  @override
+  int get categoryIcon;
   @override
   String get name;
   @override

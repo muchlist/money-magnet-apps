@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:money_magnet/src/features/auth/application/auth_interceptor.dart';
+import 'package:money_magnet/src/features/auth/data/auth_interceptor.dart';
 import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
 import 'package:money_magnet/src/features/auth/data/secure_credential_interface.dart';
 import 'package:money_magnet/src/features/auth/data/secure_credential_storage.dart';
