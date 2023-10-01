@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:money_magnet/src/commons/constant/category_icon.dart';
 import 'package:money_magnet/src/features/spend/domain/spend.dart';
-import 'package:money_magnet/src/utils/assets_const.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
+import 'package:money_magnet/src/utils/date.dart';
 import 'package:money_magnet/src/utils/strings.dart';
 
 class SpendTileWidget extends StatelessWidget {
@@ -17,9 +17,9 @@ class SpendTileWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Container(
         padding: const EdgeInsets.all(8),
-        height: 52,
+        height: 72,
         decoration: BoxDecoration(
-          color: kGreyColor,
+          color: (detail.isIncome) ? kCreamColor : kGreyColor,
           borderRadius: BorderRadius.circular(8),
           boxShadow: const [
             BoxShadow(
@@ -31,10 +31,9 @@ class SpendTileWidget extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              moneyBag,
-              semanticsLabel: 'Pocket',
-              width: 21,
+            Text(
+              getIconCategory(detail.categoryIcon),
+              style: const TextStyle(fontSize: 24),
             ),
             horizontalSpaceSmall,
             Column(
@@ -46,7 +45,11 @@ class SpendTileWidget extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium!,
                 ),
                 Text(
-                  detail.date.toString(),
+                  detail.userName,
+                  style: Theme.of(context).textTheme.bodySmall!,
+                ),
+                Text(
+                  detail.date.toDisplay(),
                   style: Theme.of(context).textTheme.bodySmall!,
                 ),
               ],
@@ -58,7 +61,10 @@ class SpendTileWidget extends StatelessWidget {
               children: [
                 Text(
                   detail.price.toCurrencyString(),
-                  style: Theme.of(context).textTheme.bodyMedium!,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color:
+                            (detail.isIncome) ? Colors.green[400] : kBlackColor,
+                      ),
                 ),
                 Text(
                   detail.categoryName,

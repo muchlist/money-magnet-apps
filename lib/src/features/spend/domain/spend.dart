@@ -13,6 +13,7 @@ class Spend with _$Spend {
     required String pocketName,
     required String categoryID,
     required String categoryName,
+    required int categoryIcon,
     required String name,
     required int price,
     required int balanceSnapshoot,

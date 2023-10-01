@@ -7,3 +7,4 @@ const Color kBlue = Color(0xFF2565C8);
 const Color kTextColor = Color(0xFF757575);
 const Color kBlackColor = Color(0xFF292929);
 const Color kBlueGreyColor = Color(0xFFECF3FF);
+const Color kCreamColor = Color(0xFFFCE9D2);

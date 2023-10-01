@@ -154,14 +154,7 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Agustus --",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "- 7.000.000",
+                    "--",
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!

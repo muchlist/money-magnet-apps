@@ -219,6 +219,8 @@ mixin _$SpendDTO {
   String get categoryID => throw _privateConstructorUsedError;
   @JsonKey(name: 'category_name')
   String get categoryName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'category_icon')
+  int get categoryIcon => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'balance_snapshoot')
@@ -252,6 +254,7 @@ abstract class $SpendDTOCopyWith<$Res> {
       @JsonKey(name: 'pocket_name') String pocketName,
       @JsonKey(name: 'category_id') String categoryID,
       @JsonKey(name: 'category_name') String categoryName,
+      @JsonKey(name: 'category_icon') int categoryIcon,
       String name,
       int price,
       @JsonKey(name: 'balance_snapshoot') int balanceSnapshoot,
@@ -283,6 +286,7 @@ class _$SpendDTOCopyWithImpl<$Res, $Val extends SpendDTO>
     Object? pocketName = null,
     Object? categoryID = null,
     Object? categoryName = null,
+    Object? categoryIcon = null,
     Object? name = null,
     Object? price = null,
     Object? balanceSnapshoot = null,
@@ -322,6 +326,10 @@ class _$SpendDTOCopyWithImpl<$Res, $Val extends SpendDTO>
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
+      categoryIcon: null == categoryIcon
+          ? _value.categoryIcon
+          : categoryIcon // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -377,6 +385,7 @@ abstract class _$$_SpendDTOCopyWith<$Res> implements $SpendDTOCopyWith<$Res> {
       @JsonKey(name: 'pocket_name') String pocketName,
       @JsonKey(name: 'category_id') String categoryID,
       @JsonKey(name: 'category_name') String categoryName,
+      @JsonKey(name: 'category_icon') int categoryIcon,
       String name,
       int price,
       @JsonKey(name: 'balance_snapshoot') int balanceSnapshoot,
@@ -406,6 +415,7 @@ class __$$_SpendDTOCopyWithImpl<$Res>
     Object? pocketName = null,
     Object? categoryID = null,
     Object? categoryName = null,
+    Object? categoryIcon = null,
     Object? name = null,
     Object? price = null,
     Object? balanceSnapshoot = null,
@@ -445,6 +455,10 @@ class __$$_SpendDTOCopyWithImpl<$Res>
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
+      categoryIcon: null == categoryIcon
+          ? _value.categoryIcon
+          : categoryIcon // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -496,6 +510,7 @@ class _$_SpendDTO extends _SpendDTO {
       @JsonKey(name: 'pocket_name') required this.pocketName,
       @JsonKey(name: 'category_id') required this.categoryID,
       @JsonKey(name: 'category_name') required this.categoryName,
+      @JsonKey(name: 'category_icon') required this.categoryIcon,
       required this.name,
       required this.price,
       @JsonKey(name: 'balance_snapshoot') required this.balanceSnapshoot,
@@ -531,6 +546,9 @@ class _$_SpendDTO extends _SpendDTO {
   @JsonKey(name: 'category_name')
   final String categoryName;
   @override
+  @JsonKey(name: 'category_icon')
+  final int categoryIcon;
+  @override
   final String name;
   @override
   final int price;
@@ -555,7 +573,7 @@ class _$_SpendDTO extends _SpendDTO {
 
   @override
   String toString() {
-    return 'SpendDTO(id: $id, userID: $userID, userName: $userName, pocketID: $pocketID, pocketName: $pocketName, categoryID: $categoryID, categoryName: $categoryName, name: $name, price: $price, balanceSnapshoot: $balanceSnapshoot, isIncome: $isIncome, type: $type, date: $date, createdAt: $createdAt, updatedAt: $updatedAt, version: $version)';
+    return 'SpendDTO(id: $id, userID: $userID, userName: $userName, pocketID: $pocketID, pocketName: $pocketName, categoryID: $categoryID, categoryName: $categoryName, categoryIcon: $categoryIcon, name: $name, price: $price, balanceSnapshoot: $balanceSnapshoot, isIncome: $isIncome, type: $type, date: $date, createdAt: $createdAt, updatedAt: $updatedAt, version: $version)';
   }
 
   @override
@@ -575,6 +593,8 @@ class _$_SpendDTO extends _SpendDTO {
                 other.categoryID == categoryID) &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
+            (identical(other.categoryIcon, categoryIcon) ||
+                other.categoryIcon == categoryIcon) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.balanceSnapshoot, balanceSnapshoot) ||
@@ -601,6 +621,7 @@ class _$_SpendDTO extends _SpendDTO {
       pocketName,
       categoryID,
       categoryName,
+      categoryIcon,
       name,
       price,
       balanceSnapshoot,
@@ -634,6 +655,7 @@ abstract class _SpendDTO extends SpendDTO {
       @JsonKey(name: 'pocket_name') required final String pocketName,
       @JsonKey(name: 'category_id') required final String categoryID,
       @JsonKey(name: 'category_name') required final String categoryName,
+      @JsonKey(name: 'category_icon') required final int categoryIcon,
       required final String name,
       required final int price,
       @JsonKey(name: 'balance_snapshoot') required final int balanceSnapshoot,
@@ -667,6 +689,9 @@ abstract class _SpendDTO extends SpendDTO {
   @override
   @JsonKey(name: 'category_name')
   String get categoryName;
+  @override
+  @JsonKey(name: 'category_icon')
+  int get categoryIcon;
   @override
   String get name;
   @override
