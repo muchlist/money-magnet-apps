@@ -100,6 +100,7 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
                     success: (_, balanceInfo, __) => balanceInfo,
                     loading: (_, balanceInfo) => balanceInfo,
                     orElse: () => '0'),
+                editors: const [],
               ),
             ),
           ),

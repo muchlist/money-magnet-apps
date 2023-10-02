@@ -15,7 +15,18 @@ class Pocket with _$Pocket {
     required String ownerID,
     required List<String> editorID,
     required List<String> watcherID,
+    required List<PocketUser> users,
     required String createdAt,
     required String updatedAt,
   }) = _Pocket;
+}
+
+@freezed
+class PocketUser with _$PocketUser {
+  const PocketUser._();
+  const factory PocketUser({
+    required String id,
+    required String name,
+    required String role,
+  }) = _PocketUser;
 }

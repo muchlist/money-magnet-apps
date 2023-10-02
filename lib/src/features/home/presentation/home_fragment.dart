@@ -60,6 +60,7 @@ class HomeBody extends StatelessWidget {
             sliver: SliverToBoxAdapter(
               child: BalanceWidget(
                 balanceValue: "Rp 500.0000",
+                editors: [],
               ),
             ),
           ),

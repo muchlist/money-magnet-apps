@@ -11,6 +11,7 @@ const dummyPockets = [
     ownerID: 'owner_id_01',
     editorID: ['owner_id_01'],
     watcherID: ['owner_id_01'],
+    users: [],
     createdAt: 'owner_id_01',
     updatedAt: 'owner_id_01',
   ),
@@ -24,6 +25,7 @@ const dummyPockets = [
     ownerID: 'owner_id_01',
     editorID: ['owner_id_01'],
     watcherID: ['owner_id_01'],
+    users: [],
     createdAt: 'owner_id_01',
     updatedAt: 'owner_id_01',
   )

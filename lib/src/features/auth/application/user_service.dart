@@ -22,12 +22,14 @@ class UserService {
       return userResponse.maybeWhen(
         withNewData: (data, _) async {
           try {
-            await _credentialsStorage.saveAccessToken(data.accessToken);
-            await _credentialsStorage.saveRefreshToken(data.refreshToken);
-            await _credentialsStorage
-                .saveAccessTokenExpired(data.accessTokenExpired);
-            await _credentialsStorage
-                .saveRefreshTokenExpired(data.refreshTokenExpired);
+            Future.wait([
+              _credentialsStorage.saveAccessToken(data.accessToken),
+              _credentialsStorage.saveRefreshToken(data.refreshToken),
+              _credentialsStorage
+                  .saveAccessTokenExpired(data.accessTokenExpired),
+              _credentialsStorage
+                  .saveRefreshTokenExpired(data.refreshTokenExpired)
+            ]);
           } catch (e) {
             return left(const AuthFailure.server('credential storage fail'));
           }

@@ -37,6 +37,10 @@ _$_PocketDTO _$$_PocketDTOFromJson(Map<String, dynamic> json) => _$_PocketDTO(
               ?.map((e) => e as String)
               .toList() ??
           [],
+      users: (json['users'] as List<dynamic>?)
+              ?.map((e) => PocketUserDTO.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
       createdAt: json['created_at'] as String,
       updatedAt: json['updated_at'] as String,
     );
@@ -52,6 +56,21 @@ Map<String, dynamic> _$$_PocketDTOToJson(_$_PocketDTO instance) =>
       'owner_id': instance.ownerID,
       'editor_id': instance.editorID,
       'watcher_id': instance.watcherID,
+      'users': instance.users,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+    };
+
+_$_PocketUserDTO _$$_PocketUserDTOFromJson(Map<String, dynamic> json) =>
+    _$_PocketUserDTO(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      role: json['role'] as String,
+    );
+
+Map<String, dynamic> _$$_PocketUserDTOToJson(_$_PocketUserDTO instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'role': instance.role,
     };

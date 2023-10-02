@@ -220,6 +220,8 @@ mixin _$PocketDTO {
   List<String> get editorID => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: [], name: "watcher_id")
   List<String> get watcherID => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: [])
+  List<PocketUserDTO> get users => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -246,6 +248,7 @@ abstract class $PocketDTOCopyWith<$Res> {
       @JsonKey(name: 'owner_id') String ownerID,
       @JsonKey(defaultValue: [], name: "editor_id") List<String> editorID,
       @JsonKey(defaultValue: [], name: "watcher_id") List<String> watcherID,
+      @JsonKey(defaultValue: []) List<PocketUserDTO> users,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt});
 }
@@ -272,6 +275,7 @@ class _$PocketDTOCopyWithImpl<$Res, $Val extends PocketDTO>
     Object? ownerID = null,
     Object? editorID = null,
     Object? watcherID = null,
+    Object? users = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -312,6 +316,10 @@ class _$PocketDTOCopyWithImpl<$Res, $Val extends PocketDTO>
           ? _value.watcherID
           : watcherID // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      users: null == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<PocketUserDTO>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -341,6 +349,7 @@ abstract class _$$_PocketDTOCopyWith<$Res> implements $PocketDTOCopyWith<$Res> {
       @JsonKey(name: 'owner_id') String ownerID,
       @JsonKey(defaultValue: [], name: "editor_id") List<String> editorID,
       @JsonKey(defaultValue: [], name: "watcher_id") List<String> watcherID,
+      @JsonKey(defaultValue: []) List<PocketUserDTO> users,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt});
 }
@@ -365,6 +374,7 @@ class __$$_PocketDTOCopyWithImpl<$Res>
     Object? ownerID = null,
     Object? editorID = null,
     Object? watcherID = null,
+    Object? users = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -405,6 +415,10 @@ class __$$_PocketDTOCopyWithImpl<$Res>
           ? _value._watcherID
           : watcherID // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      users: null == users
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<PocketUserDTO>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -434,12 +448,15 @@ class _$_PocketDTO extends _PocketDTO {
           required final List<String> editorID,
       @JsonKey(defaultValue: [], name: "watcher_id")
           required final List<String> watcherID,
+      @JsonKey(defaultValue: [])
+          required final List<PocketUserDTO> users,
       @JsonKey(name: 'created_at')
           required this.createdAt,
       @JsonKey(name: 'updated_at')
           required this.updatedAt})
       : _editorID = editorID,
         _watcherID = watcherID,
+        _users = users,
         super._();
 
   factory _$_PocketDTO.fromJson(Map<String, dynamic> json) =>
@@ -479,6 +496,15 @@ class _$_PocketDTO extends _PocketDTO {
     return EqualUnmodifiableListView(_watcherID);
   }
 
+  final List<PocketUserDTO> _users;
+  @override
+  @JsonKey(defaultValue: [])
+  List<PocketUserDTO> get users {
+    if (_users is EqualUnmodifiableListView) return _users;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_users);
+  }
+
   @override
   @JsonKey(name: 'created_at')
   final String createdAt;
@@ -488,7 +514,7 @@ class _$_PocketDTO extends _PocketDTO {
 
   @override
   String toString() {
-    return 'PocketDTO(id: $id, pocketName: $pocketName, balance: $balance, currency: $currency, icon: $icon, level: $level, ownerID: $ownerID, editorID: $editorID, watcherID: $watcherID, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'PocketDTO(id: $id, pocketName: $pocketName, balance: $balance, currency: $currency, icon: $icon, level: $level, ownerID: $ownerID, editorID: $editorID, watcherID: $watcherID, users: $users, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -508,6 +534,7 @@ class _$_PocketDTO extends _PocketDTO {
             const DeepCollectionEquality().equals(other._editorID, _editorID) &&
             const DeepCollectionEquality()
                 .equals(other._watcherID, _watcherID) &&
+            const DeepCollectionEquality().equals(other._users, _users) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -527,6 +554,7 @@ class _$_PocketDTO extends _PocketDTO {
       ownerID,
       const DeepCollectionEquality().hash(_editorID),
       const DeepCollectionEquality().hash(_watcherID),
+      const DeepCollectionEquality().hash(_users),
       createdAt,
       updatedAt);
 
@@ -559,6 +587,8 @@ abstract class _PocketDTO extends PocketDTO {
           required final List<String> editorID,
       @JsonKey(defaultValue: [], name: "watcher_id")
           required final List<String> watcherID,
+      @JsonKey(defaultValue: [])
+          required final List<PocketUserDTO> users,
       @JsonKey(name: 'created_at')
           required final String createdAt,
       @JsonKey(name: 'updated_at')
@@ -591,6 +621,9 @@ abstract class _PocketDTO extends PocketDTO {
   @JsonKey(defaultValue: [], name: "watcher_id")
   List<String> get watcherID;
   @override
+  @JsonKey(defaultValue: [])
+  List<PocketUserDTO> get users;
+  @override
   @JsonKey(name: 'created_at')
   String get createdAt;
   @override
@@ -599,5 +632,179 @@ abstract class _PocketDTO extends PocketDTO {
   @override
   @JsonKey(ignore: true)
   _$$_PocketDTOCopyWith<_$_PocketDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PocketUserDTO _$PocketUserDTOFromJson(Map<String, dynamic> json) {
+  return _PocketUserDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PocketUserDTO {
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PocketUserDTOCopyWith<PocketUserDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PocketUserDTOCopyWith<$Res> {
+  factory $PocketUserDTOCopyWith(
+          PocketUserDTO value, $Res Function(PocketUserDTO) then) =
+      _$PocketUserDTOCopyWithImpl<$Res, PocketUserDTO>;
+  @useResult
+  $Res call({String id, String name, String role});
+}
+
+/// @nodoc
+class _$PocketUserDTOCopyWithImpl<$Res, $Val extends PocketUserDTO>
+    implements $PocketUserDTOCopyWith<$Res> {
+  _$PocketUserDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? role = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PocketUserDTOCopyWith<$Res>
+    implements $PocketUserDTOCopyWith<$Res> {
+  factory _$$_PocketUserDTOCopyWith(
+          _$_PocketUserDTO value, $Res Function(_$_PocketUserDTO) then) =
+      __$$_PocketUserDTOCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id, String name, String role});
+}
+
+/// @nodoc
+class __$$_PocketUserDTOCopyWithImpl<$Res>
+    extends _$PocketUserDTOCopyWithImpl<$Res, _$_PocketUserDTO>
+    implements _$$_PocketUserDTOCopyWith<$Res> {
+  __$$_PocketUserDTOCopyWithImpl(
+      _$_PocketUserDTO _value, $Res Function(_$_PocketUserDTO) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? role = null,
+  }) {
+    return _then(_$_PocketUserDTO(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PocketUserDTO extends _PocketUserDTO {
+  const _$_PocketUserDTO(
+      {required this.id, required this.name, required this.role})
+      : super._();
+
+  factory _$_PocketUserDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_PocketUserDTOFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String name;
+  @override
+  final String role;
+
+  @override
+  String toString() {
+    return 'PocketUserDTO(id: $id, name: $name, role: $role)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PocketUserDTO &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.role, role) || other.role == role));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, role);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PocketUserDTOCopyWith<_$_PocketUserDTO> get copyWith =>
+      __$$_PocketUserDTOCopyWithImpl<_$_PocketUserDTO>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PocketUserDTOToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PocketUserDTO extends PocketUserDTO {
+  const factory _PocketUserDTO(
+      {required final String id,
+      required final String name,
+      required final String role}) = _$_PocketUserDTO;
+  const _PocketUserDTO._() : super._();
+
+  factory _PocketUserDTO.fromJson(Map<String, dynamic> json) =
+      _$_PocketUserDTO.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get name;
+  @override
+  String get role;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PocketUserDTOCopyWith<_$_PocketUserDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

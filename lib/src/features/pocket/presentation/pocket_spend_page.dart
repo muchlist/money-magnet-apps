@@ -90,6 +90,7 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
             sliver: SliverToBoxAdapter(
               child: BalanceWidget(
                 balanceValue: widget.pocketDetail.balance.toCurrencyString(),
+                editors: widget.pocketDetail.users.map((e) => e.name).toList(),
               ),
             ),
           ),
