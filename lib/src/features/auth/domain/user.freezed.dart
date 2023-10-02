@@ -27,6 +27,10 @@ mixin _$User {
   String get accessToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'refresh_token')
   String get refreshToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'access_token_expired')
+  int get accessTokenExpired => throw _privateConstructorUsedError;
+  @JsonKey(name: 'refresh_token_expired')
+  int get refreshTokenExpired => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: [])
   List<String> get roles => throw _privateConstructorUsedError;
 
@@ -46,6 +50,8 @@ abstract class $UserCopyWith<$Res> {
       String name,
       @JsonKey(name: 'access_token') String accessToken,
       @JsonKey(name: 'refresh_token') String refreshToken,
+      @JsonKey(name: 'access_token_expired') int accessTokenExpired,
+      @JsonKey(name: 'refresh_token_expired') int refreshTokenExpired,
       @JsonKey(defaultValue: []) List<String> roles});
 }
 
@@ -67,6 +73,8 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? name = null,
     Object? accessToken = null,
     Object? refreshToken = null,
+    Object? accessTokenExpired = null,
+    Object? refreshTokenExpired = null,
     Object? roles = null,
   }) {
     return _then(_value.copyWith(
@@ -90,6 +98,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
+      accessTokenExpired: null == accessTokenExpired
+          ? _value.accessTokenExpired
+          : accessTokenExpired // ignore: cast_nullable_to_non_nullable
+              as int,
+      refreshTokenExpired: null == refreshTokenExpired
+          ? _value.refreshTokenExpired
+          : refreshTokenExpired // ignore: cast_nullable_to_non_nullable
+              as int,
       roles: null == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
@@ -110,6 +126,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String name,
       @JsonKey(name: 'access_token') String accessToken,
       @JsonKey(name: 'refresh_token') String refreshToken,
+      @JsonKey(name: 'access_token_expired') int accessTokenExpired,
+      @JsonKey(name: 'refresh_token_expired') int refreshTokenExpired,
       @JsonKey(defaultValue: []) List<String> roles});
 }
 
@@ -127,6 +145,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? name = null,
     Object? accessToken = null,
     Object? refreshToken = null,
+    Object? accessTokenExpired = null,
+    Object? refreshTokenExpired = null,
     Object? roles = null,
   }) {
     return _then(_$_User(
@@ -150,6 +170,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
+      accessTokenExpired: null == accessTokenExpired
+          ? _value.accessTokenExpired
+          : accessTokenExpired // ignore: cast_nullable_to_non_nullable
+              as int,
+      refreshTokenExpired: null == refreshTokenExpired
+          ? _value.refreshTokenExpired
+          : refreshTokenExpired // ignore: cast_nullable_to_non_nullable
+              as int,
       roles: null == roles
           ? _value._roles
           : roles // ignore: cast_nullable_to_non_nullable
@@ -167,6 +195,8 @@ class _$_User extends _User {
       required this.name,
       @JsonKey(name: 'access_token') required this.accessToken,
       @JsonKey(name: 'refresh_token') required this.refreshToken,
+      @JsonKey(name: 'access_token_expired') required this.accessTokenExpired,
+      @JsonKey(name: 'refresh_token_expired') required this.refreshTokenExpired,
       @JsonKey(defaultValue: []) required final List<String> roles})
       : _roles = roles,
         super._();
@@ -185,6 +215,12 @@ class _$_User extends _User {
   @override
   @JsonKey(name: 'refresh_token')
   final String refreshToken;
+  @override
+  @JsonKey(name: 'access_token_expired')
+  final int accessTokenExpired;
+  @override
+  @JsonKey(name: 'refresh_token_expired')
+  final int refreshTokenExpired;
   final List<String> _roles;
   @override
   @JsonKey(defaultValue: [])
@@ -196,7 +232,7 @@ class _$_User extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, name: $name, accessToken: $accessToken, refreshToken: $refreshToken, roles: $roles)';
+    return 'User(id: $id, email: $email, name: $name, accessToken: $accessToken, refreshToken: $refreshToken, accessTokenExpired: $accessTokenExpired, refreshTokenExpired: $refreshTokenExpired, roles: $roles)';
   }
 
   @override
@@ -211,13 +247,25 @@ class _$_User extends _User {
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
+            (identical(other.accessTokenExpired, accessTokenExpired) ||
+                other.accessTokenExpired == accessTokenExpired) &&
+            (identical(other.refreshTokenExpired, refreshTokenExpired) ||
+                other.refreshTokenExpired == refreshTokenExpired) &&
             const DeepCollectionEquality().equals(other._roles, _roles));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, name, accessToken,
-      refreshToken, const DeepCollectionEquality().hash(_roles));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      email,
+      name,
+      accessToken,
+      refreshToken,
+      accessTokenExpired,
+      refreshTokenExpired,
+      const DeepCollectionEquality().hash(_roles));
 
   @JsonKey(ignore: true)
   @override
@@ -238,9 +286,16 @@ abstract class _User extends User {
       {required final String id,
       required final String email,
       required final String name,
-      @JsonKey(name: 'access_token') required final String accessToken,
-      @JsonKey(name: 'refresh_token') required final String refreshToken,
-      @JsonKey(defaultValue: []) required final List<String> roles}) = _$_User;
+      @JsonKey(name: 'access_token')
+          required final String accessToken,
+      @JsonKey(name: 'refresh_token')
+          required final String refreshToken,
+      @JsonKey(name: 'access_token_expired')
+          required final int accessTokenExpired,
+      @JsonKey(name: 'refresh_token_expired')
+          required final int refreshTokenExpired,
+      @JsonKey(defaultValue: [])
+          required final List<String> roles}) = _$_User;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -257,6 +312,12 @@ abstract class _User extends User {
   @override
   @JsonKey(name: 'refresh_token')
   String get refreshToken;
+  @override
+  @JsonKey(name: 'access_token_expired')
+  int get accessTokenExpired;
+  @override
+  @JsonKey(name: 'refresh_token_expired')
+  int get refreshTokenExpired;
   @override
   @JsonKey(defaultValue: [])
   List<String> get roles;

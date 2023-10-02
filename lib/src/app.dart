@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:dio_logger/dio_logger.dart';
 import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
 import 'package:money_magnet/src/features/auth/provider/providers.dart';
 import 'package:money_magnet/src/commons/theme/theme.dart';
@@ -67,13 +66,7 @@ class AppWidget extends ConsumerWidget {
           },
           authenticated: (_) {},
           failure: (_) {},
-          orElse: () {
-            // TODO : solve this
-            // appRouter.pushAndPopUntil(
-            //   const LoginRoute(),
-            //   predicate: (route) => false,
-            // );
-          },
+          orElse: () {},
         );
       },
     );

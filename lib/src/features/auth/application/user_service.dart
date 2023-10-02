@@ -24,6 +24,10 @@ class UserService {
           try {
             await _credentialsStorage.saveAccessToken(data.accessToken);
             await _credentialsStorage.saveRefreshToken(data.refreshToken);
+            await _credentialsStorage
+                .saveAccessTokenExpired(data.accessTokenExpired);
+            await _credentialsStorage
+                .saveRefreshTokenExpired(data.refreshTokenExpired);
           } catch (e) {
             return left(const AuthFailure.server('credential storage fail'));
           }
@@ -35,6 +39,38 @@ class UserService {
           }
 
           return right(data.toDomain());
+        },
+        orElse: () async {
+          return left(const AuthFailure.server('gagal terkoneksi ke server'));
+        },
+      );
+    } on RestApiException catch (e) {
+      return left(AuthFailure.server(e.message));
+    } catch (e) {
+      return left(AuthFailure.server(e.toString()));
+    }
+  }
+
+  Future<Either<AuthFailure, String>> renewToken(String refreshToken) async {
+    try {
+      final userResponse = await _remoteRepository.refresh(refreshToken);
+
+      return userResponse.maybeWhen(
+        withNewData: (data, _) async {
+          try {
+            Future.wait([
+              _credentialsStorage.saveAccessToken(data.accessToken),
+              _credentialsStorage
+                  .saveAccessTokenExpired(data.accessTokenExpired)
+            ]);
+            // await _credentialsStorage.saveAccessToken(data.accessToken);
+            // await _credentialsStorage
+            //     .saveAccessTokenExpired(data.accessTokenExpired);
+          } catch (e) {
+            return left(const AuthFailure.server('credential storage fail'));
+          }
+
+          return right(data.accessToken);
         },
         orElse: () async {
           return left(const AuthFailure.server('gagal terkoneksi ke server'));
@@ -64,6 +100,15 @@ class UserService {
     }
   }
 
+  Future<String?> getRefreshToken() async {
+    try {
+      final token = await _credentialsStorage.readRefresh();
+      return token;
+    } on PlatformException {
+      return null;
+    }
+  }
+
   Future<void> clearToken() async {
     try {
       await _credentialsStorage.clearAccessToken();
@@ -72,5 +117,37 @@ class UserService {
     }
   }
 
-  Future<bool> isSignedIn() => getToken().then((token) => token != null);
+  Future<bool> isSignedIn() async {
+    try {
+      final token = await _credentialsStorage.read();
+      if (token == null) {
+        return false;
+      }
+      final expiredAt = await _credentialsStorage.readExpired();
+      final nowEpoch = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      if (expiredAt != null && expiredAt >= nowEpoch) {
+        return true;
+      }
+    } on PlatformException {
+      return false;
+    }
+    return false;
+  }
+
+  Future<bool> isCanRefresh() async {
+    try {
+      final expiredAt = await _credentialsStorage.readRefreshExpired();
+      if (expiredAt == null) {
+        return false;
+      }
+
+      final nowEpoch = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      if (expiredAt < nowEpoch) {
+        return true;
+      }
+    } on PlatformException {
+      return false;
+    }
+    return false;
+  }
 }

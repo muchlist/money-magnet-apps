@@ -13,6 +13,8 @@ class User with _$User {
     required String name,
     @JsonKey(name: 'access_token') required String accessToken,
     @JsonKey(name: 'refresh_token') required String refreshToken,
+    @JsonKey(name: 'access_token_expired') required int accessTokenExpired,
+    @JsonKey(name: 'refresh_token_expired') required int refreshTokenExpired,
     @JsonKey(defaultValue: []) required List<String> roles,
   }) = _User;
 
@@ -22,6 +24,7 @@ class User with _$User {
   Map<String, dynamic> toSembast() {
     final json = toJson();
     json['access_token'] = '';
+    json['refresh_token'] = '';
     return json;
   }
 
