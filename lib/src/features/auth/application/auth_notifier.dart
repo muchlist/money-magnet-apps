@@ -32,6 +32,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
         : const AuthState.unauthenticated();
   }
 
+  void forceToUnauthenticated() {
+    state = const AuthState.unauthenticated();
+  }
+
   Future<void> signIn(String email, String password) async {
     state = const AuthState.loading();
     final failureOrSuccess = await _service.signIn(email, password);

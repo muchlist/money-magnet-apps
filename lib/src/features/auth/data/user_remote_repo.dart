@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:money_magnet/src/features/auth/data/user_dto.dart';
 import 'package:money_magnet/src/config/remote_service.dart';
 import 'package:money_magnet/src/commons/infrastructure/dio_extentions.dart';
-import 'package:money_magnet/src/commons/infrastructure/dio_options.dart';
 import 'package:money_magnet/src/commons/infrastructure/network_exceptions.dart';
 import 'package:money_magnet/src/commons/infrastructure/remote_response.dart';
 
@@ -24,7 +23,6 @@ class UserRemoteRepository {
           'email': email,
           'password': password,
         },
-        options: customOption,
       );
 
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
@@ -68,7 +66,6 @@ class UserRemoteRepository {
       final response = await _dio.postUri(
         requestUri,
         data: {'refresh_token': refreshToken},
-        options: customOption,
       );
 
       if (response.statusCode! >= 200 && response.statusCode! < 300) {

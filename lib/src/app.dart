@@ -27,12 +27,15 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
   ref.read(dioProvider)
     ..options = BaseOptions(
       validateStatus: (status) =>
-          status != null && status >= 200 && status < 400,
+          (status != null && status >= 200 && status <= 400) ||
+          status == 404 ||
+          status == 422,
+      responseType: ResponseType.json,
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
       sendTimeout: const Duration(seconds: 10),
     )
-    ..interceptors.add(ref.read(authInterceptorProvider))
+    ..interceptors.add(ref.watch(authInterceptorProvider))
     ..interceptors.add(
       TalkerDioLogger(
         settings: const TalkerDioLoggerSettings(

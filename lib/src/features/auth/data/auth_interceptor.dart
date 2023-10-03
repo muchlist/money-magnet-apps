@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
 import 'package:money_magnet/src/features/auth/application/user_service.dart';
 
@@ -6,6 +7,8 @@ class AuthInterceptor extends Interceptor {
   final UserService _service;
   final AuthNotifier _authNotifier;
   final Dio _dio;
+
+  var logger = Logger();
 
   AuthInterceptor(this._service, this._authNotifier, this._dio);
 
@@ -38,7 +41,10 @@ class AuthInterceptor extends Interceptor {
         final failureOrSuccess = await _service.renewToken(refreshToken);
         var newAccessToken = '';
         failureOrSuccess.fold(
-          (l) {/* do nothing */},
+          (l) {
+            // send to login screen
+            _authNotifier.forceToUnauthenticated();
+          },
           (r) {
             newAccessToken = r;
           },
