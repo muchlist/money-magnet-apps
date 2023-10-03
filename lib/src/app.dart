@@ -35,7 +35,7 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
       receiveTimeout: const Duration(seconds: 10),
       sendTimeout: const Duration(seconds: 10),
     )
-    ..interceptors.add(ref.watch(authInterceptorProvider))
+    ..interceptors.add(ref.read(authInterceptorProvider))
     ..interceptors.add(
       TalkerDioLogger(
         settings: const TalkerDioLoggerSettings(

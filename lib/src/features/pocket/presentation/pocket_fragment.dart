@@ -5,7 +5,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/src/commons/widgets/balance_widget.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
-import 'package:money_magnet/src/commons/widgets/flushbar.dart';
+import 'package:money_magnet/src/commons/widgets/snackbar.dart';
 import 'package:money_magnet/src/commons/widgets/pockets_widget.dart';
 import 'package:money_magnet/src/features/pocket/application/pocket_notifier.dart';
 import 'package:money_magnet/src/features/pocket/provider/providers.dart';
