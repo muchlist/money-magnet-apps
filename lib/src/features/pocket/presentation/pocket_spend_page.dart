@@ -13,6 +13,7 @@ import 'package:money_magnet/src/features/spend/provider/providers.dart';
 import 'package:money_magnet/src/utils/strings.dart';
 
 import '../../../commons/widgets/spend_tile_widget.dart';
+import '../../../routes/app_router.gr.dart';
 
 @RoutePage()
 class PocketPage extends StatelessWidget {
@@ -26,7 +27,11 @@ class PocketPage extends StatelessWidget {
       body: PocketPageBody(pocketDetail: pocketDetail),
       floatingActionButton: FloatingActionButton(
         child: const Icon(LineIcons.plus),
-        onPressed: () {},
+        onPressed: () {
+          AutoRouter.of(context).push<String>(
+            SpendAddRoute(pocketID: pocketDetail.id),
+          );
+        },
       ),
     );
   }

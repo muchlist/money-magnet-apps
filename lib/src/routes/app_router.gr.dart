@@ -8,54 +8,66 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:flutter/material.dart' as _i8;
 import 'package:money_magnet/src/features/auth/presentation/login_page.dart'
     as _i3;
 import 'package:money_magnet/src/features/home/presentation/navigation_page.dart'
     as _i1;
-import 'package:money_magnet/src/features/pocket/domain/pocket.dart' as _i7;
+import 'package:money_magnet/src/features/pocket/domain/pocket.dart' as _i9;
 import 'package:money_magnet/src/features/pocket/presentation/pocket_add_page.dart'
-    as _i4;
-import 'package:money_magnet/src/features/pocket/presentation/pocket_spend_page.dart'
     as _i5;
+import 'package:money_magnet/src/features/pocket/presentation/pocket_spend_page.dart'
+    as _i6;
+import 'package:money_magnet/src/features/spend/presentation/add_spend_page.dart'
+    as _i4;
 import 'package:money_magnet/src/features/splash/presentation/splash_page.dart'
     as _i2;
 
-abstract class $AppRouter extends _i6.RootStackRouter {
+abstract class $AppRouter extends _i7.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i6.PageFactory> pagesMap = {
+  final Map<String, _i7.PageFactory> pagesMap = {
     NavigationRoute.name: (routeData) {
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.NavigationPage(),
       );
     },
     SplashRoute.name: (routeData) {
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.SplashPage(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.LoginPage(),
       );
     },
-    PocketAddRoute.name: (routeData) {
-      return _i6.AutoRoutePage<dynamic>(
+    SpendAddRoute.name: (routeData) {
+      final args = routeData.argsAs<SpendAddRouteArgs>();
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.PocketAddPage(),
+        child: _i4.SpendAddPage(
+          key: args.key,
+          pocketID: args.pocketID,
+        ),
+      );
+    },
+    PocketAddRoute.name: (routeData) {
+      return _i7.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i5.PocketAddPage(),
       );
     },
     PocketRoute.name: (routeData) {
       final args = routeData.argsAs<PocketRouteArgs>();
-      return _i6.AutoRoutePage<dynamic>(
+      return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.PocketPage(
+        child: _i6.PocketPage(
           args.pocketDetail,
           key: args.key,
         ),
@@ -66,8 +78,8 @@ abstract class $AppRouter extends _i6.RootStackRouter {
 
 /// generated route for
 /// [_i1.NavigationPage]
-class NavigationRoute extends _i6.PageRouteInfo<void> {
-  const NavigationRoute({List<_i6.PageRouteInfo>? children})
+class NavigationRoute extends _i7.PageRouteInfo<void> {
+  const NavigationRoute({List<_i7.PageRouteInfo>? children})
       : super(
           NavigationRoute.name,
           initialChildren: children,
@@ -75,13 +87,13 @@ class NavigationRoute extends _i6.PageRouteInfo<void> {
 
   static const String name = 'NavigationRoute';
 
-  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.SplashPage]
-class SplashRoute extends _i6.PageRouteInfo<void> {
-  const SplashRoute({List<_i6.PageRouteInfo>? children})
+class SplashRoute extends _i7.PageRouteInfo<void> {
+  const SplashRoute({List<_i7.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -89,13 +101,13 @@ class SplashRoute extends _i6.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.LoginPage]
-class LoginRoute extends _i6.PageRouteInfo<void> {
-  const LoginRoute({List<_i6.PageRouteInfo>? children})
+class LoginRoute extends _i7.PageRouteInfo<void> {
+  const LoginRoute({List<_i7.PageRouteInfo>? children})
       : super(
           LoginRoute.name,
           initialChildren: children,
@@ -103,13 +115,51 @@ class LoginRoute extends _i6.PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i4.PocketAddPage]
-class PocketAddRoute extends _i6.PageRouteInfo<void> {
-  const PocketAddRoute({List<_i6.PageRouteInfo>? children})
+/// [_i4.SpendAddPage]
+class SpendAddRoute extends _i7.PageRouteInfo<SpendAddRouteArgs> {
+  SpendAddRoute({
+    _i8.Key? key,
+    required String pocketID,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
+          SpendAddRoute.name,
+          args: SpendAddRouteArgs(
+            key: key,
+            pocketID: pocketID,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SpendAddRoute';
+
+  static const _i7.PageInfo<SpendAddRouteArgs> page =
+      _i7.PageInfo<SpendAddRouteArgs>(name);
+}
+
+class SpendAddRouteArgs {
+  const SpendAddRouteArgs({
+    this.key,
+    required this.pocketID,
+  });
+
+  final _i8.Key? key;
+
+  final String pocketID;
+
+  @override
+  String toString() {
+    return 'SpendAddRouteArgs{key: $key, pocketID: $pocketID}';
+  }
+}
+
+/// generated route for
+/// [_i5.PocketAddPage]
+class PocketAddRoute extends _i7.PageRouteInfo<void> {
+  const PocketAddRoute({List<_i7.PageRouteInfo>? children})
       : super(
           PocketAddRoute.name,
           initialChildren: children,
@@ -117,16 +167,16 @@ class PocketAddRoute extends _i6.PageRouteInfo<void> {
 
   static const String name = 'PocketAddRoute';
 
-  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i5.PocketPage]
-class PocketRoute extends _i6.PageRouteInfo<PocketRouteArgs> {
+/// [_i6.PocketPage]
+class PocketRoute extends _i7.PageRouteInfo<PocketRouteArgs> {
   PocketRoute({
-    required _i7.Pocket pocketDetail,
+    required _i9.Pocket pocketDetail,
     _i8.Key? key,
-    List<_i6.PageRouteInfo>? children,
+    List<_i7.PageRouteInfo>? children,
   }) : super(
           PocketRoute.name,
           args: PocketRouteArgs(
@@ -138,8 +188,8 @@ class PocketRoute extends _i6.PageRouteInfo<PocketRouteArgs> {
 
   static const String name = 'PocketRoute';
 
-  static const _i6.PageInfo<PocketRouteArgs> page =
-      _i6.PageInfo<PocketRouteArgs>(name);
+  static const _i7.PageInfo<PocketRouteArgs> page =
+      _i7.PageInfo<PocketRouteArgs>(name);
 }
 
 class PocketRouteArgs {
@@ -148,7 +198,7 @@ class PocketRouteArgs {
     this.key,
   });
 
-  final _i7.Pocket pocketDetail;
+  final _i9.Pocket pocketDetail;
 
   final _i8.Key? key;
 
