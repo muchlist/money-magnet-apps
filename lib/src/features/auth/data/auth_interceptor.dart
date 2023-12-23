@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
 import 'package:money_magnet/src/features/auth/application/user_service.dart';
 
@@ -6,6 +7,8 @@ class AuthInterceptor extends Interceptor {
   final UserService _service;
   final AuthNotifier _authNotifier;
   final Dio _dio;
+
+  var logger = Logger();
 
   AuthInterceptor(this._service, this._authNotifier, this._dio);
 
@@ -27,21 +30,32 @@ class AuthInterceptor extends Interceptor {
       DioException err, ErrorInterceptorHandler handler) async {
     final errorResponse = err.response;
     if (errorResponse != null && errorResponse.statusCode == 401) {
-      // todo: sharpening this logic.
-      // if 401, refresh token to backend, then resolve with refreshed token
-      // if fail, return to login page
-
-      await _service.clearToken();
+      // check if refresh token not expired
+      // if expired send event unauthentication so user popped to login screen
       await _authNotifier.checkAndUpdateAuthStatus();
 
-      final refreshCredentials = await _service.getToken();
-      if (refreshCredentials != null) {
-        handler.resolve(
-          await _dio.fetch(
-            errorResponse.requestOptions
-              ..headers['Authorization'] = 'Bearer $refreshCredentials',
-          ),
+      // get refresh token
+      final refreshToken = await _service.getRefreshToken();
+
+      if (refreshToken != null) {
+        final failureOrSuccess = await _service.renewToken(refreshToken);
+        var newAccessToken = '';
+        failureOrSuccess.fold(
+          (l) {
+            // send to login screen
+            _authNotifier.forceToUnauthenticated();
+          },
+          (r) {
+            newAccessToken = r;
+          },
         );
+
+        errorResponse.requestOptions.headers['Authorization'] =
+            'Bearer $newAccessToken';
+
+        final result = await _dio.fetch(errorResponse.requestOptions);
+
+        handler.resolve(result);
       }
     } else {
       handler.next(err);

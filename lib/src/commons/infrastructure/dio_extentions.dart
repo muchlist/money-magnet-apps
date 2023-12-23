@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-extension DioErrorX on DioError {
+extension DioErrorX on DioException {
   bool get isNoConnectionError {
     // return type == DioErrorType.other && error is SocketException;
-    return type == DioErrorType.connectionError;
+    return type == DioExceptionType.connectionError;
   }
 }

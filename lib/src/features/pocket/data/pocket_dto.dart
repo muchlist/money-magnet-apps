@@ -31,6 +31,7 @@ class PocketDTO with _$PocketDTO {
     required List<String> editorID,
     @JsonKey(defaultValue: [], name: "watcher_id")
     required List<String> watcherID,
+    @JsonKey(defaultValue: []) required List<PocketUserDTO> users,
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'updated_at') required String updatedAt,
   }) = _PocketDTO;
@@ -39,17 +40,38 @@ class PocketDTO with _$PocketDTO {
       _$PocketDTOFromJson(json);
 
   Pocket toDomain() {
+    List<PocketUser> pocketUsers = users.map((e) => e.toDomain()).toList();
+
     return Pocket(
-        id: id,
-        pocketName: pocketName,
-        balance: balance,
-        currency: currency,
-        icon: icon,
-        level: level,
-        ownerID: ownerID,
-        editorID: editorID,
-        watcherID: watcherID,
-        createdAt: createdAt,
-        updatedAt: updatedAt);
+      id: id,
+      pocketName: pocketName,
+      balance: balance,
+      currency: currency,
+      icon: icon,
+      level: level,
+      ownerID: ownerID,
+      editorID: editorID,
+      watcherID: watcherID,
+      users: pocketUsers,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+    );
+  }
+}
+
+@freezed
+class PocketUserDTO with _$PocketUserDTO {
+  const PocketUserDTO._();
+  const factory PocketUserDTO({
+    required String id,
+    required String name,
+    required String role,
+  }) = _PocketUserDTO;
+
+  factory PocketUserDTO.fromJson(Map<String, dynamic> json) =>
+      _$PocketUserDTOFromJson(json);
+
+  PocketUser toDomain() {
+    return PocketUser(id: id, name: name, role: role);
   }
 }

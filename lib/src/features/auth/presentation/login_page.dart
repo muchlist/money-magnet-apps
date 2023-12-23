@@ -5,7 +5,7 @@ import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
 import 'package:money_magnet/src/features/auth/provider/text_controller_providers.dart';
 import 'package:money_magnet/src/features/auth/provider/providers.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
-import 'package:money_magnet/src/commons/widgets/flushbar.dart';
+import 'package:money_magnet/src/commons/widgets/snackbar.dart';
 import 'package:money_magnet/src/commons/widgets/input_decorator.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
 import 'package:money_magnet/src/commons/widgets/white_button.dart';

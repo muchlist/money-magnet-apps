@@ -8,9 +8,13 @@ class SecureCredentialStorage implements ICredentialStorage {
 
   static const _key = 'access_token';
   static const _refreshKey = 'refresh_token';
+  static const _expiredKey = 'access_token_expired';
+  static const _refreshExpiredKey = 'refresh_token_expired';
 
   String? _tokenCache;
   String? _refreshTokenCache;
+  int? _tokenExpiredCache;
+  int? _refreshTokenExpiredCache;
 
   @override
   Future<String?> read() async {
@@ -33,6 +37,26 @@ class SecureCredentialStorage implements ICredentialStorage {
   }
 
   @override
+  Future<int?> readExpired() async {
+    if (_tokenExpiredCache != null) {
+      return _tokenExpiredCache;
+    }
+    String? tokenExpired = await _storage.read(key: _expiredKey);
+    _tokenExpiredCache = int.parse(tokenExpired ?? '0');
+    return _tokenExpiredCache;
+  }
+
+  @override
+  Future<int?> readRefreshExpired() async {
+    if (_refreshTokenExpiredCache != null) {
+      return _refreshTokenExpiredCache;
+    }
+    String? refreshTokenExpired = await _storage.read(key: _refreshExpiredKey);
+    _refreshTokenExpiredCache = int.parse(refreshTokenExpired ?? '0');
+    return _refreshTokenExpiredCache;
+  }
+
+  @override
   Future<void> saveAccessToken(String token) {
     _tokenCache = token;
     return _storage.write(key: _key, value: token);
@@ -42,6 +66,18 @@ class SecureCredentialStorage implements ICredentialStorage {
   Future<void> saveRefreshToken(String refreshToken) {
     _refreshTokenCache = refreshToken;
     return _storage.write(key: _refreshKey, value: refreshToken);
+  }
+
+  @override
+  Future<void> saveAccessTokenExpired(int expired) {
+    _tokenExpiredCache = expired;
+    return _storage.write(key: _expiredKey, value: expired.toString());
+  }
+
+  @override
+  Future<void> saveRefreshTokenExpired(int expired) {
+    _refreshTokenExpiredCache = expired;
+    return _storage.write(key: _refreshExpiredKey, value: expired.toString());
   }
 
   @override

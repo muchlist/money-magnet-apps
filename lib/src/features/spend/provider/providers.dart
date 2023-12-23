@@ -34,3 +34,12 @@ final spendNotifierProvider =
     );
   },
 );
+
+final sharedSpendNotifierProvider =
+    StateNotifierProvider<SpendNotifier, SpendState>(
+  (ref) {
+    return SpendNotifier(
+      ref.watch(spendServiceProvider),
+    );
+  },
+);

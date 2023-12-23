@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:money_magnet/src/commons/infrastructure/dio_extentions.dart';
-import 'package:money_magnet/src/commons/infrastructure/dio_options.dart';
 
 import 'package:money_magnet/src/config/remote_service.dart';
 import 'package:money_magnet/src/commons/infrastructure/network_exceptions.dart';
@@ -28,7 +27,6 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
     try {
       final response = await _dio.getUri(
         requestUri,
-        options: customOption,
       );
 
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
@@ -77,7 +75,6 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
     try {
       final response = await _dio.getUri(
         requestUri,
-        options: customOption,
       );
 
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
@@ -125,7 +122,6 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
     try {
       final response = await _dio.postUri(
         requestUri,
-        options: customOption,
         data: {"pocket_name": pocketName, "currency": currency, "icon": icon},
       );
 
@@ -177,7 +173,6 @@ class PocketRemoteRepository implements IPocketRemoteRepository {
 
     try {
       final response = await _dio.postUri(requestUri,
-          options: customOption,
           data: {"pocket_name": pocketName, "currency": currency});
 
       if (response.statusCode! >= 200 && response.statusCode! < 300) {

@@ -8,7 +8,7 @@ class PocketMonitorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 123,
+      height: 140,
       width: screenWidthPercentage(context, percent: 55 / 100),
       decoration: BoxDecoration(
         color: kPrimaryColor,

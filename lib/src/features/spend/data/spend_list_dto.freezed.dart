@@ -144,11 +144,9 @@ class __$$_SpendListResponseDTOCopyWithImpl<$Res>
 class _$_SpendListResponseDTO extends _SpendListResponseDTO {
   const _$_SpendListResponseDTO(
       {@JsonKey(name: 'data', defaultValue: [])
-          required final List<SpendDTO>? data,
-      @JsonKey(name: 'metadata')
-          required this.metaData,
-      @JsonKey(name: 'error')
-          required this.error})
+      required final List<SpendDTO>? data,
+      @JsonKey(name: 'metadata') required this.metaData,
+      @JsonKey(name: 'error') required this.error})
       : _data = data,
         super._();
 
@@ -211,12 +209,11 @@ class _$_SpendListResponseDTO extends _SpendListResponseDTO {
 
 abstract class _SpendListResponseDTO extends SpendListResponseDTO {
   const factory _SpendListResponseDTO(
-      {@JsonKey(name: 'data', defaultValue: [])
+          {@JsonKey(name: 'data', defaultValue: [])
           required final List<SpendDTO>? data,
-      @JsonKey(name: 'metadata')
-          required final MetadataDTO metaData,
-      @JsonKey(name: 'error')
-          required final String? error}) = _$_SpendListResponseDTO;
+          @JsonKey(name: 'metadata') required final MetadataDTO metaData,
+          @JsonKey(name: 'error') required final String? error}) =
+      _$_SpendListResponseDTO;
   const _SpendListResponseDTO._() : super._();
 
   factory _SpendListResponseDTO.fromJson(Map<String, dynamic> json) =

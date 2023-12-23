@@ -10,10 +10,11 @@ class AppRouter extends $AppRouter {
           path: '/splash',
         ),
         CustomRoute(
-            page: LoginRoute.page,
-            path: '/login',
-            transitionsBuilder: TransitionsBuilders.slideBottom,
-            durationInMilliseconds: 400),
+          page: LoginRoute.page,
+          path: '/login',
+          transitionsBuilder: TransitionsBuilders.slideBottom,
+          durationInMilliseconds: 400,
+        ),
         // AutoRoute(
         //   page: LoginRoute.page,
         //   path: '/login',
@@ -31,6 +32,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: PocketAddRoute.page,
           path: '/pocket-add',
+        ),
+        AutoRoute(
+          page: SpendAddRoute.page,
+          path: '/spend-add',
         ),
       ];
 }

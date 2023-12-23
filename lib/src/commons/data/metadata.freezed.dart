@@ -158,15 +158,12 @@ class __$$_MetadataDTOCopyWithImpl<$Res>
 class _$_MetadataDTO extends _MetadataDTO {
   const _$_MetadataDTO(
       {@JsonKey(name: 'current_page', defaultValue: 0)
-          required this.currentPage,
-      @JsonKey(name: 'first_page', defaultValue: 0)
-          required this.firstPage,
-      @JsonKey(name: 'last_page', defaultValue: 0)
-          required this.lastPage,
-      @JsonKey(name: 'page_size', defaultValue: 0)
-          required this.pageSize,
+      required this.currentPage,
+      @JsonKey(name: 'first_page', defaultValue: 0) required this.firstPage,
+      @JsonKey(name: 'last_page', defaultValue: 0) required this.lastPage,
+      @JsonKey(name: 'page_size', defaultValue: 0) required this.pageSize,
       @JsonKey(name: 'total_records', defaultValue: 0)
-          required this.totalRecords})
+      required this.totalRecords})
       : super._();
 
   factory _$_MetadataDTO.fromJson(Map<String, dynamic> json) =>
@@ -232,15 +229,13 @@ class _$_MetadataDTO extends _MetadataDTO {
 abstract class _MetadataDTO extends MetadataDTO {
   const factory _MetadataDTO(
       {@JsonKey(name: 'current_page', defaultValue: 0)
-          required final int currentPage,
+      required final int currentPage,
       @JsonKey(name: 'first_page', defaultValue: 0)
-          required final int firstPage,
-      @JsonKey(name: 'last_page', defaultValue: 0)
-          required final int lastPage,
-      @JsonKey(name: 'page_size', defaultValue: 0)
-          required final int pageSize,
+      required final int firstPage,
+      @JsonKey(name: 'last_page', defaultValue: 0) required final int lastPage,
+      @JsonKey(name: 'page_size', defaultValue: 0) required final int pageSize,
       @JsonKey(name: 'total_records', defaultValue: 0)
-          required final int totalRecords}) = _$_MetadataDTO;
+      required final int totalRecords}) = _$_MetadataDTO;
   const _MetadataDTO._() : super._();
 
   factory _MetadataDTO.fromJson(Map<String, dynamic> json) =

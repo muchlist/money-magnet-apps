@@ -5,7 +5,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/src/commons/widgets/balance_widget.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
-import 'package:money_magnet/src/commons/widgets/flushbar.dart';
+import 'package:money_magnet/src/commons/widgets/snackbar.dart';
 import 'package:money_magnet/src/commons/widgets/pockets_widget.dart';
 import 'package:money_magnet/src/features/pocket/application/pocket_notifier.dart';
 import 'package:money_magnet/src/features/pocket/provider/providers.dart';
@@ -100,6 +100,7 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
                     success: (_, balanceInfo, __) => balanceInfo,
                     loading: (_, balanceInfo) => balanceInfo,
                     orElse: () => '0'),
+                editors: const [],
               ),
             ),
           ),
@@ -108,7 +109,7 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
             sliver: SliverGrid(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 1.4 / 1,
+                  childAspectRatio: 1.3 / 1,
                 ),
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
