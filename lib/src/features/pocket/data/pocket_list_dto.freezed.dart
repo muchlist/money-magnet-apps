@@ -145,11 +145,9 @@ class __$$_PocketListResponseDTOCopyWithImpl<$Res>
 class _$_PocketListResponseDTO extends _PocketListResponseDTO {
   const _$_PocketListResponseDTO(
       {@JsonKey(name: 'data', defaultValue: [])
-          required final List<PocketDTO>? data,
-      @JsonKey(name: 'metadata')
-          required this.metaData,
-      @JsonKey(name: 'error')
-          required this.error})
+      required final List<PocketDTO>? data,
+      @JsonKey(name: 'metadata') required this.metaData,
+      @JsonKey(name: 'error') required this.error})
       : _data = data,
         super._();
 
@@ -212,12 +210,11 @@ class _$_PocketListResponseDTO extends _PocketListResponseDTO {
 
 abstract class _PocketListResponseDTO extends PocketListResponseDTO {
   const factory _PocketListResponseDTO(
-      {@JsonKey(name: 'data', defaultValue: [])
+          {@JsonKey(name: 'data', defaultValue: [])
           required final List<PocketDTO>? data,
-      @JsonKey(name: 'metadata')
-          required final MetadataDTO metaData,
-      @JsonKey(name: 'error')
-          required final String? error}) = _$_PocketListResponseDTO;
+          @JsonKey(name: 'metadata') required final MetadataDTO metaData,
+          @JsonKey(name: 'error') required final String? error}) =
+      _$_PocketListResponseDTO;
   const _PocketListResponseDTO._() : super._();
 
   factory _PocketListResponseDTO.fromJson(Map<String, dynamic> json) =

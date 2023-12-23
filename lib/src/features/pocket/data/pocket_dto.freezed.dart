@@ -436,24 +436,19 @@ class __$$_PocketDTOCopyWithImpl<$Res>
 class _$_PocketDTO extends _PocketDTO {
   const _$_PocketDTO(
       {required this.id,
-      @JsonKey(name: 'pocket_name')
-          required this.pocketName,
+      @JsonKey(name: 'pocket_name') required this.pocketName,
       required this.balance,
       required this.currency,
       required this.icon,
       required this.level,
-      @JsonKey(name: 'owner_id')
-          required this.ownerID,
+      @JsonKey(name: 'owner_id') required this.ownerID,
       @JsonKey(defaultValue: [], name: "editor_id")
-          required final List<String> editorID,
+      required final List<String> editorID,
       @JsonKey(defaultValue: [], name: "watcher_id")
-          required final List<String> watcherID,
-      @JsonKey(defaultValue: [])
-          required final List<PocketUserDTO> users,
-      @JsonKey(name: 'created_at')
-          required this.createdAt,
-      @JsonKey(name: 'updated_at')
-          required this.updatedAt})
+      required final List<String> watcherID,
+      @JsonKey(defaultValue: []) required final List<PocketUserDTO> users,
+      @JsonKey(name: 'created_at') required this.createdAt,
+      @JsonKey(name: 'updated_at') required this.updatedAt})
       : _editorID = editorID,
         _watcherID = watcherID,
         _users = users,
@@ -574,25 +569,21 @@ class _$_PocketDTO extends _PocketDTO {
 
 abstract class _PocketDTO extends PocketDTO {
   const factory _PocketDTO(
-      {required final String id,
-      @JsonKey(name: 'pocket_name')
-          required final String pocketName,
-      required final int balance,
-      required final String currency,
-      required final int icon,
-      required final int level,
-      @JsonKey(name: 'owner_id')
-          required final String ownerID,
-      @JsonKey(defaultValue: [], name: "editor_id")
+          {required final String id,
+          @JsonKey(name: 'pocket_name') required final String pocketName,
+          required final int balance,
+          required final String currency,
+          required final int icon,
+          required final int level,
+          @JsonKey(name: 'owner_id') required final String ownerID,
+          @JsonKey(defaultValue: [], name: "editor_id")
           required final List<String> editorID,
-      @JsonKey(defaultValue: [], name: "watcher_id")
+          @JsonKey(defaultValue: [], name: "watcher_id")
           required final List<String> watcherID,
-      @JsonKey(defaultValue: [])
-          required final List<PocketUserDTO> users,
-      @JsonKey(name: 'created_at')
-          required final String createdAt,
-      @JsonKey(name: 'updated_at')
-          required final String updatedAt}) = _$_PocketDTO;
+          @JsonKey(defaultValue: []) required final List<PocketUserDTO> users,
+          @JsonKey(name: 'created_at') required final String createdAt,
+          @JsonKey(name: 'updated_at') required final String updatedAt}) =
+      _$_PocketDTO;
   const _PocketDTO._() : super._();
 
   factory _PocketDTO.fromJson(Map<String, dynamic> json) =

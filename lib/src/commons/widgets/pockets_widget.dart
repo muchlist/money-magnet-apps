@@ -76,7 +76,7 @@ class PocketHomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 123,
+      height: 140,
       width: screenWidthPercentage(context, percent: 35 / 100),
       decoration: BoxDecoration(
         color: kGreyColor,

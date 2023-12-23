@@ -109,7 +109,7 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
             sliver: SliverGrid(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 1.4 / 1,
+                  childAspectRatio: 1.3 / 1,
                 ),
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {

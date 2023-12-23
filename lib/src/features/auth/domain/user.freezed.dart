@@ -286,16 +286,13 @@ abstract class _User extends User {
       {required final String id,
       required final String email,
       required final String name,
-      @JsonKey(name: 'access_token')
-          required final String accessToken,
-      @JsonKey(name: 'refresh_token')
-          required final String refreshToken,
+      @JsonKey(name: 'access_token') required final String accessToken,
+      @JsonKey(name: 'refresh_token') required final String refreshToken,
       @JsonKey(name: 'access_token_expired')
-          required final int accessTokenExpired,
+      required final int accessTokenExpired,
       @JsonKey(name: 'refresh_token_expired')
-          required final int refreshTokenExpired,
-      @JsonKey(defaultValue: [])
-          required final List<String> roles}) = _$_User;
+      required final int refreshTokenExpired,
+      @JsonKey(defaultValue: []) required final List<String> roles}) = _$_User;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;

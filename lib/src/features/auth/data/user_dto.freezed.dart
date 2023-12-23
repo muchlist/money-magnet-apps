@@ -383,16 +383,12 @@ class _$_LoginDTO extends _LoginDTO {
       {required this.id,
       required this.email,
       required this.name,
-      @JsonKey(defaultValue: [])
-          required final List<String> roles,
-      @JsonKey(name: 'access_token')
-          required this.accessToken,
-      @JsonKey(name: 'refresh_token')
-          required this.refreshToken,
-      @JsonKey(name: 'access_token_expired')
-          required this.accessTokenExpired,
+      @JsonKey(defaultValue: []) required final List<String> roles,
+      @JsonKey(name: 'access_token') required this.accessToken,
+      @JsonKey(name: 'refresh_token') required this.refreshToken,
+      @JsonKey(name: 'access_token_expired') required this.accessTokenExpired,
       @JsonKey(name: 'refresh_token_expired')
-          required this.refreshTokenExpired})
+      required this.refreshTokenExpired})
       : _roles = roles,
         super._();
 
@@ -483,16 +479,13 @@ abstract class _LoginDTO extends LoginDTO {
       {required final String id,
       required final String email,
       required final String name,
-      @JsonKey(defaultValue: [])
-          required final List<String> roles,
-      @JsonKey(name: 'access_token')
-          required final String accessToken,
-      @JsonKey(name: 'refresh_token')
-          required final String refreshToken,
+      @JsonKey(defaultValue: []) required final List<String> roles,
+      @JsonKey(name: 'access_token') required final String accessToken,
+      @JsonKey(name: 'refresh_token') required final String refreshToken,
       @JsonKey(name: 'access_token_expired')
-          required final int accessTokenExpired,
+      required final int accessTokenExpired,
       @JsonKey(name: 'refresh_token_expired')
-          required final int refreshTokenExpired}) = _$_LoginDTO;
+      required final int refreshTokenExpired}) = _$_LoginDTO;
   const _LoginDTO._() : super._();
 
   factory _LoginDTO.fromJson(Map<String, dynamic> json) = _$_LoginDTO.fromJson;
@@ -862,10 +855,9 @@ class _$_RefreshDTO extends _RefreshDTO {
 
 abstract class _RefreshDTO extends RefreshDTO {
   const factory _RefreshDTO(
-      {@JsonKey(name: 'access_token')
-          required final String accessToken,
+      {@JsonKey(name: 'access_token') required final String accessToken,
       @JsonKey(name: 'access_token_expired')
-          required final int accessTokenExpired}) = _$_RefreshDTO;
+      required final int accessTokenExpired}) = _$_RefreshDTO;
   const _RefreshDTO._() : super._();
 
   factory _RefreshDTO.fromJson(Map<String, dynamic> json) =
