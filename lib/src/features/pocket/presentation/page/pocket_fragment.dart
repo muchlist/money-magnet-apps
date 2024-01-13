@@ -2,13 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:money_magnet/src/commons/widgets/balance_widget.dart';
+import 'package:money_magnet/src/features/pocket/presentation/widget/balance_widget.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/widgets/snackbar.dart';
 import 'package:money_magnet/src/commons/widgets/pockets_widget.dart';
 import 'package:money_magnet/src/features/pocket/application/pocket_notifier.dart';
-import 'package:money_magnet/src/features/pocket/provider/providers.dart';
+import 'package:money_magnet/src/features/pocket/presentation/provider/providers.dart';
 import 'package:money_magnet/src/routes/app_router.gr.dart';
 import 'package:money_magnet/src/utils/strings.dart';
 
@@ -106,6 +106,7 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
           ),
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+            // GRID ITEM
             sliver: SliverGrid(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

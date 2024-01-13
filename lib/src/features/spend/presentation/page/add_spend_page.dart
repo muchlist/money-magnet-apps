@@ -7,11 +7,11 @@ import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/widgets/snackbar.dart';
 import 'package:money_magnet/src/commons/widgets/input_decorator.dart';
 import 'package:money_magnet/src/commons/widgets/white_button.dart';
-import 'package:money_magnet/src/features/pocket/provider/text_controller_providers.dart';
+import 'package:money_magnet/src/features/pocket/presentation/provider/text_controller_providers.dart';
 
-import '../../../commons/theme/colors.dart';
-import '../application/spend_notifier.dart';
-import '../data/spend_dto.dart';
+import '../../../../commons/theme/colors.dart';
+import '../../application/spend_notifier.dart';
+import '../../data/spend_dto.dart';
 import '../provider/providers.dart';
 
 @RoutePage()

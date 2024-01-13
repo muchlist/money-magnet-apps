@@ -2,18 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:money_magnet/src/commons/widgets/balance_widget.dart';
+import 'package:money_magnet/src/features/pocket/presentation/widget/balance_widget.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
+import 'package:money_magnet/src/commons/widgets/spend_tile_widget.dart';
 import 'package:money_magnet/src/features/pocket/domain/pocket.dart';
-import 'package:money_magnet/src/features/pocket/presentation/widgets/search_bar.dart';
+import 'package:money_magnet/src/features/pocket/presentation/widget/search_bar.dart';
 import 'package:money_magnet/src/features/spend/domain/spend.dart';
-import 'package:money_magnet/src/features/spend/provider/providers.dart';
+import 'package:money_magnet/src/features/spend/presentation/provider/providers.dart';
+import 'package:money_magnet/src/routes/app_router.gr.dart';
 import 'package:money_magnet/src/utils/strings.dart';
-
-import '../../../commons/widgets/spend_tile_widget.dart';
-import '../../../routes/app_router.gr.dart';
 
 @RoutePage()
 class PocketPage extends StatelessWidget {
@@ -91,7 +90,8 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
             ],
           ),
           SliverPadding(
-            padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
+            padding:
+                const EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 20),
             sliver: SliverToBoxAdapter(
               child: BalanceWidget(
                 balanceValue: widget.pocketDetail.balance.toCurrencyString(),
@@ -99,18 +99,18 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
               ),
             ),
           ),
-          const SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            sliver: SliverToBoxAdapter(
-              child: Row(
-                children: [
-                  Expanded(child: CustomSearchBar()),
-                  horizontalSpaceSmall,
-                  Icon(LineIcons.horizontalSliders),
-                ],
-              ),
-            ),
-          ),
+          // const SliverPadding( -- Search Bar ,
+          //   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          //   sliver: SliverToBoxAdapter(
+          //     child: Row(
+          //       children: [
+          //         Expanded(child: CustomSearchBar()),
+          //         horizontalSpaceSmall,
+          //         Icon(LineIcons.horizontalSliders),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
             sliver: SliverToBoxAdapter(

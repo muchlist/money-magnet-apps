@@ -8,7 +8,7 @@ import 'package:money_magnet/src/features/auth/data/secure_credential_storage.da
 import 'package:money_magnet/src/features/auth/data/user_local_repo.dart';
 import 'package:money_magnet/src/features/auth/data/user_remote_repo.dart';
 import 'package:money_magnet/src/commons/provider/providers.dart';
-import 'package:money_magnet/src/features/auth/application/user_service.dart';
+import 'package:money_magnet/src/features/auth/application/user_usecase.dart';
 
 final flutterSecureStorageProvider =
     Provider((ref) => const FlutterSecureStorage());
@@ -41,7 +41,7 @@ final userRemoteRepositoryProvider = Provider(
 );
 
 final userServiceProvider = Provider(
-  (ref) => UserService(
+  (ref) => UserUsecase(
       ref.watch(userRemoteRepositoryProvider),
       ref.watch(userLocalRepositoryProvider),
       ref.watch(credentialStorageProvider)),

@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/src/features/home/presentation/home_fragment.dart';
-import 'package:money_magnet/src/features/pocket/presentation/pocket_fragment.dart';
+import 'package:money_magnet/src/features/pocket/presentation/page/pocket_fragment.dart';
 
-import '../../auth/provider/providers.dart';
+import '../../auth/presentation/provider/providers.dart';
 
 @RoutePage()
 class NavigationPage extends ConsumerStatefulWidget {
