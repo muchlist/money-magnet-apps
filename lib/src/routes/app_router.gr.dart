@@ -10,16 +10,16 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:flutter/material.dart' as _i9;
-import 'package:money_magnet/src/features/auth/presentation/login_page.dart'
+import 'package:money_magnet/src/features/auth/presentation/page/login_page.dart'
     as _i1;
 import 'package:money_magnet/src/features/home/presentation/navigation_page.dart'
     as _i2;
 import 'package:money_magnet/src/features/pocket/domain/pocket.dart' as _i8;
-import 'package:money_magnet/src/features/pocket/presentation/pocket_add_page.dart'
+import 'package:money_magnet/src/features/pocket/presentation/page/pocket_add_page.dart'
     as _i3;
-import 'package:money_magnet/src/features/pocket/presentation/pocket_spend_page.dart'
+import 'package:money_magnet/src/features/pocket/presentation/page/pocket_detail_page.dart'
     as _i4;
-import 'package:money_magnet/src/features/spend/presentation/add_spend_page.dart'
+import 'package:money_magnet/src/features/spend/presentation/page/add_spend_page.dart'
     as _i5;
 import 'package:money_magnet/src/features/splash/presentation/splash_page.dart'
     as _i6;

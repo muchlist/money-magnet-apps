@@ -1,23 +1,23 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
-import 'package:money_magnet/src/features/auth/application/user_service.dart';
+import 'package:money_magnet/src/features/auth/application/user_usecase.dart';
 
 class AuthInterceptor extends Interceptor {
-  final UserService _service;
+  final UserUsecase _usecase;
   final AuthNotifier _authNotifier;
   final Dio _dio;
 
   var logger = Logger();
 
-  AuthInterceptor(this._service, this._authNotifier, this._dio);
+  AuthInterceptor(this._usecase, this._authNotifier, this._dio);
 
   @override
   void onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final token = await _service.getToken();
+    final token = await _usecase.getToken();
     final modifiedOptions = options
       ..headers.addAll(
         token == null ? {} : {'Authorization': 'Bearer $token'},
@@ -35,10 +35,10 @@ class AuthInterceptor extends Interceptor {
       await _authNotifier.checkAndUpdateAuthStatus();
 
       // get refresh token
-      final refreshToken = await _service.getRefreshToken();
+      final refreshToken = await _usecase.getRefreshToken();
 
       if (refreshToken != null) {
-        final failureOrSuccess = await _service.renewToken(refreshToken);
+        final failureOrSuccess = await _usecase.renewToken(refreshToken);
         var newAccessToken = '';
         failureOrSuccess.fold(
           (l) {

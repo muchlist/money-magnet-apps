@@ -2,16 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money_magnet/src/commons/constant/pocket_icon.dart';
+import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/widgets/snackbar.dart';
 import 'package:money_magnet/src/commons/widgets/input_decorator.dart';
 import 'package:money_magnet/src/commons/widgets/white_button.dart';
 import 'package:money_magnet/src/features/pocket/application/pocket_notifier.dart';
-import 'package:money_magnet/src/features/pocket/provider/providers.dart';
-import 'package:money_magnet/src/features/pocket/provider/text_controller_providers.dart';
-
-import '../../../commons/theme/colors.dart';
+import 'package:money_magnet/src/features/pocket/presentation/provider/providers.dart';
+import 'package:money_magnet/src/features/pocket/presentation/provider/text_controller_providers.dart';
 
 @RoutePage()
 class PocketAddPage extends StatelessWidget {

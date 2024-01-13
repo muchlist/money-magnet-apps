@@ -7,11 +7,11 @@ import 'package:money_magnet/src/features/auth/domain/user.dart';
 import 'package:money_magnet/src/features/auth/data/user_remote_repo.dart';
 import 'package:money_magnet/src/commons/infrastructure/network_exceptions.dart';
 
-class UserService {
+class UserUsecase {
   final UserRemoteRepository _remoteRepository;
   final UserLocalRepository _localRepository;
   final ICredentialStorage _credentialsStorage;
-  UserService(
+  UserUsecase(
       this._remoteRepository, this._localRepository, this._credentialsStorage);
 
   Future<Either<AuthFailure, User?>> signIn(
@@ -65,9 +65,6 @@ class UserService {
               _credentialsStorage
                   .saveAccessTokenExpired(data.accessTokenExpired)
             ]);
-            // await _credentialsStorage.saveAccessToken(data.accessToken);
-            // await _credentialsStorage
-            //     .saveAccessTokenExpired(data.accessTokenExpired);
           } catch (e) {
             return left(const AuthFailure.server('credential storage fail'));
           }
@@ -79,6 +76,15 @@ class UserService {
         },
       );
     } on RestApiException catch (e) {
+      // ERROR when renewal token will clear all credential
+      try {
+        Future.wait([
+          _credentialsStorage.clearAccessToken(),
+          _credentialsStorage.clearRefreshToken(),
+        ]);
+      } catch (e) {
+        return left(const AuthFailure.server('credential storage fail'));
+      }
       return left(AuthFailure.server(e.message));
     } catch (e) {
       return left(AuthFailure.server(e.toString()));
