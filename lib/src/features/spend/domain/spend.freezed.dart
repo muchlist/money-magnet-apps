@@ -168,9 +168,10 @@ class _$SpendCopyWithImpl<$Res, $Val extends Spend>
 }
 
 /// @nodoc
-abstract class _$$_SpendCopyWith<$Res> implements $SpendCopyWith<$Res> {
-  factory _$$_SpendCopyWith(_$_Spend value, $Res Function(_$_Spend) then) =
-      __$$_SpendCopyWithImpl<$Res>;
+abstract class _$$SpendImplCopyWith<$Res> implements $SpendCopyWith<$Res> {
+  factory _$$SpendImplCopyWith(
+          _$SpendImpl value, $Res Function(_$SpendImpl) then) =
+      __$$SpendImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -194,9 +195,11 @@ abstract class _$$_SpendCopyWith<$Res> implements $SpendCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SpendCopyWithImpl<$Res> extends _$SpendCopyWithImpl<$Res, _$_Spend>
-    implements _$$_SpendCopyWith<$Res> {
-  __$$_SpendCopyWithImpl(_$_Spend _value, $Res Function(_$_Spend) _then)
+class __$$SpendImplCopyWithImpl<$Res>
+    extends _$SpendCopyWithImpl<$Res, _$SpendImpl>
+    implements _$$SpendImplCopyWith<$Res> {
+  __$$SpendImplCopyWithImpl(
+      _$SpendImpl _value, $Res Function(_$SpendImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -220,7 +223,7 @@ class __$$_SpendCopyWithImpl<$Res> extends _$SpendCopyWithImpl<$Res, _$_Spend>
     Object? updatedAt = null,
     Object? version = null,
   }) {
-    return _then(_$_Spend(
+    return _then(_$SpendImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -295,8 +298,8 @@ class __$$_SpendCopyWithImpl<$Res> extends _$SpendCopyWithImpl<$Res, _$_Spend>
 
 /// @nodoc
 
-class _$_Spend extends _Spend {
-  const _$_Spend(
+class _$SpendImpl extends _Spend {
+  const _$SpendImpl(
       {required this.id,
       required this.userID,
       required this.userName,
@@ -357,10 +360,10 @@ class _$_Spend extends _Spend {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Spend &&
+            other is _$SpendImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.userName, userName) ||
@@ -414,8 +417,8 @@ class _$_Spend extends _Spend {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SpendCopyWith<_$_Spend> get copyWith =>
-      __$$_SpendCopyWithImpl<_$_Spend>(this, _$identity);
+  _$$SpendImplCopyWith<_$SpendImpl> get copyWith =>
+      __$$SpendImplCopyWithImpl<_$SpendImpl>(this, _$identity);
 }
 
 abstract class _Spend extends Spend {
@@ -436,7 +439,7 @@ abstract class _Spend extends Spend {
       required final DateTime date,
       required final DateTime createdAt,
       required final DateTime updatedAt,
-      required final int version}) = _$_Spend;
+      required final int version}) = _$SpendImpl;
   const _Spend._() : super._();
 
   @override
@@ -475,6 +478,6 @@ abstract class _Spend extends Spend {
   int get version;
   @override
   @JsonKey(ignore: true)
-  _$$_SpendCopyWith<_$_Spend> get copyWith =>
+  _$$SpendImplCopyWith<_$SpendImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

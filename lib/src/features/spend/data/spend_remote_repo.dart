@@ -209,7 +209,6 @@ class SpendRemoteRepository implements ISpendRemoteRepository {
 
   @override
   Future<RemoteResponse<String>> delete(String spendID) {
-    // TODO: implement delete
     throw UnimplementedError();
   }
 }

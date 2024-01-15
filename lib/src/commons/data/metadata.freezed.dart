@@ -96,11 +96,11 @@ class _$MetadataDTOCopyWithImpl<$Res, $Val extends MetadataDTO>
 }
 
 /// @nodoc
-abstract class _$$_MetadataDTOCopyWith<$Res>
+abstract class _$$MetadataDTOImplCopyWith<$Res>
     implements $MetadataDTOCopyWith<$Res> {
-  factory _$$_MetadataDTOCopyWith(
-          _$_MetadataDTO value, $Res Function(_$_MetadataDTO) then) =
-      __$$_MetadataDTOCopyWithImpl<$Res>;
+  factory _$$MetadataDTOImplCopyWith(
+          _$MetadataDTOImpl value, $Res Function(_$MetadataDTOImpl) then) =
+      __$$MetadataDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -112,11 +112,11 @@ abstract class _$$_MetadataDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MetadataDTOCopyWithImpl<$Res>
-    extends _$MetadataDTOCopyWithImpl<$Res, _$_MetadataDTO>
-    implements _$$_MetadataDTOCopyWith<$Res> {
-  __$$_MetadataDTOCopyWithImpl(
-      _$_MetadataDTO _value, $Res Function(_$_MetadataDTO) _then)
+class __$$MetadataDTOImplCopyWithImpl<$Res>
+    extends _$MetadataDTOCopyWithImpl<$Res, _$MetadataDTOImpl>
+    implements _$$MetadataDTOImplCopyWith<$Res> {
+  __$$MetadataDTOImplCopyWithImpl(
+      _$MetadataDTOImpl _value, $Res Function(_$MetadataDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +128,7 @@ class __$$_MetadataDTOCopyWithImpl<$Res>
     Object? pageSize = null,
     Object? totalRecords = null,
   }) {
-    return _then(_$_MetadataDTO(
+    return _then(_$MetadataDTOImpl(
       currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
@@ -155,8 +155,8 @@ class __$$_MetadataDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MetadataDTO extends _MetadataDTO {
-  const _$_MetadataDTO(
+class _$MetadataDTOImpl extends _MetadataDTO {
+  const _$MetadataDTOImpl(
       {@JsonKey(name: 'current_page', defaultValue: 0)
       required this.currentPage,
       @JsonKey(name: 'first_page', defaultValue: 0) required this.firstPage,
@@ -166,8 +166,8 @@ class _$_MetadataDTO extends _MetadataDTO {
       required this.totalRecords})
       : super._();
 
-  factory _$_MetadataDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_MetadataDTOFromJson(json);
+  factory _$MetadataDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MetadataDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'current_page', defaultValue: 0)
@@ -191,10 +191,10 @@ class _$_MetadataDTO extends _MetadataDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MetadataDTO &&
+            other is _$MetadataDTOImpl &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
             (identical(other.firstPage, firstPage) ||
@@ -215,12 +215,12 @@ class _$_MetadataDTO extends _MetadataDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MetadataDTOCopyWith<_$_MetadataDTO> get copyWith =>
-      __$$_MetadataDTOCopyWithImpl<_$_MetadataDTO>(this, _$identity);
+  _$$MetadataDTOImplCopyWith<_$MetadataDTOImpl> get copyWith =>
+      __$$MetadataDTOImplCopyWithImpl<_$MetadataDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MetadataDTOToJson(
+    return _$$MetadataDTOImplToJson(
       this,
     );
   }
@@ -235,11 +235,11 @@ abstract class _MetadataDTO extends MetadataDTO {
       @JsonKey(name: 'last_page', defaultValue: 0) required final int lastPage,
       @JsonKey(name: 'page_size', defaultValue: 0) required final int pageSize,
       @JsonKey(name: 'total_records', defaultValue: 0)
-      required final int totalRecords}) = _$_MetadataDTO;
+      required final int totalRecords}) = _$MetadataDTOImpl;
   const _MetadataDTO._() : super._();
 
   factory _MetadataDTO.fromJson(Map<String, dynamic> json) =
-      _$_MetadataDTO.fromJson;
+      _$MetadataDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'current_page', defaultValue: 0)
@@ -258,6 +258,6 @@ abstract class _MetadataDTO extends MetadataDTO {
   int get totalRecords;
   @override
   @JsonKey(ignore: true)
-  _$$_MetadataDTOCopyWith<_$_MetadataDTO> get copyWith =>
+  _$$MetadataDTOImplCopyWith<_$MetadataDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

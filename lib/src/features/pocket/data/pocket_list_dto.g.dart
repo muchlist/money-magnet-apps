@@ -6,9 +6,9 @@ part of 'pocket_list_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PocketListResponseDTO _$$_PocketListResponseDTOFromJson(
+_$PocketListResponseDTOImpl _$$PocketListResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PocketListResponseDTO(
+    _$PocketListResponseDTOImpl(
       data: (json['data'] as List<dynamic>?)
               ?.map((e) => PocketDTO.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -17,8 +17,8 @@ _$_PocketListResponseDTO _$$_PocketListResponseDTOFromJson(
       error: json['error'] as String?,
     );
 
-Map<String, dynamic> _$$_PocketListResponseDTOToJson(
-        _$_PocketListResponseDTO instance) =>
+Map<String, dynamic> _$$PocketListResponseDTOImplToJson(
+        _$PocketListResponseDTOImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
       'metadata': instance.metaData,

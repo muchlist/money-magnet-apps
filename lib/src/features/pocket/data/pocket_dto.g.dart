@@ -6,22 +6,24 @@ part of 'pocket_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PocketResponseDTO _$$_PocketResponseDTOFromJson(Map<String, dynamic> json) =>
-    _$_PocketResponseDTO(
+_$PocketResponseDTOImpl _$$PocketResponseDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PocketResponseDTOImpl(
       data: json['data'] == null
           ? null
           : PocketDTO.fromJson(json['data'] as Map<String, dynamic>),
       error: json['error'] as String?,
     );
 
-Map<String, dynamic> _$$_PocketResponseDTOToJson(
-        _$_PocketResponseDTO instance) =>
+Map<String, dynamic> _$$PocketResponseDTOImplToJson(
+        _$PocketResponseDTOImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
       'error': instance.error,
     };
 
-_$_PocketDTO _$$_PocketDTOFromJson(Map<String, dynamic> json) => _$_PocketDTO(
+_$PocketDTOImpl _$$PocketDTOImplFromJson(Map<String, dynamic> json) =>
+    _$PocketDTOImpl(
       id: json['id'] as String,
       pocketName: json['pocket_name'] as String,
       balance: json['balance'] as int,
@@ -45,7 +47,7 @@ _$_PocketDTO _$$_PocketDTOFromJson(Map<String, dynamic> json) => _$_PocketDTO(
       updatedAt: json['updated_at'] as String,
     );
 
-Map<String, dynamic> _$$_PocketDTOToJson(_$_PocketDTO instance) =>
+Map<String, dynamic> _$$PocketDTOImplToJson(_$PocketDTOImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'pocket_name': instance.pocketName,
@@ -61,14 +63,14 @@ Map<String, dynamic> _$$_PocketDTOToJson(_$_PocketDTO instance) =>
       'updated_at': instance.updatedAt,
     };
 
-_$_PocketUserDTO _$$_PocketUserDTOFromJson(Map<String, dynamic> json) =>
-    _$_PocketUserDTO(
+_$PocketUserDTOImpl _$$PocketUserDTOImplFromJson(Map<String, dynamic> json) =>
+    _$PocketUserDTOImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       role: json['role'] as String,
     );
 
-Map<String, dynamic> _$$_PocketUserDTOToJson(_$_PocketUserDTO instance) =>
+Map<String, dynamic> _$$PocketUserDTOImplToJson(_$PocketUserDTOImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

@@ -89,8 +89,8 @@ class SpendNotifier extends StateNotifier<SpendState> {
       (r) {
         final List<Spend> tempSpends = [];
         tempSpends.addAll(state.spends);
-        tempSpends.add(r!);
-        tempSpends.sort(((a, b) => a.createdAt.compareTo(b.createdAt)));
+        tempSpends.add(r!.copyWith(userName: 'self'));
+        tempSpends.sort(((a, b) => a.date.compareTo(b.date)));
 
         return SpendState.success(
           tempSpends,

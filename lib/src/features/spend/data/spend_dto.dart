@@ -75,7 +75,6 @@ class SpendReqDTO with _$SpendReqDTO {
     @JsonKey(name: 'is_income') required bool isIncome,
     required int type,
     required String date,
-    required int version,
   }) = _SpendReqDTO;
 
   factory SpendReqDTO.fromJson(Map<String, dynamic> json) =>

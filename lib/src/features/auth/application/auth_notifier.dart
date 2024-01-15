@@ -27,7 +27,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     List<dynamic> results =
         await Future.wait([_usecase.isSignedIn(), _usecase.isCanRefresh()]);
 
-    state = results[0] || results[1]
+    state = (results[0] || results[1])
         ? const AuthState.authenticated()
         : const AuthState.unauthenticated();
   }

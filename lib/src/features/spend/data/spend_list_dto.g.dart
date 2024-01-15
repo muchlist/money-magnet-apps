@@ -6,9 +6,9 @@ part of 'spend_list_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SpendListResponseDTO _$$_SpendListResponseDTOFromJson(
+_$SpendListResponseDTOImpl _$$SpendListResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SpendListResponseDTO(
+    _$SpendListResponseDTOImpl(
       data: (json['data'] as List<dynamic>?)
               ?.map((e) => SpendDTO.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -17,8 +17,8 @@ _$_SpendListResponseDTO _$$_SpendListResponseDTOFromJson(
       error: json['error'] as String?,
     );
 
-Map<String, dynamic> _$$_SpendListResponseDTOToJson(
-        _$_SpendListResponseDTO instance) =>
+Map<String, dynamic> _$$SpendListResponseDTOImplToJson(
+        _$SpendListResponseDTOImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
       'metadata': instance.metaData,

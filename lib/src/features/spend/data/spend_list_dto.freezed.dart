@@ -91,11 +91,11 @@ class _$SpendListResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SpendListResponseDTOCopyWith<$Res>
+abstract class _$$SpendListResponseDTOImplCopyWith<$Res>
     implements $SpendListResponseDTOCopyWith<$Res> {
-  factory _$$_SpendListResponseDTOCopyWith(_$_SpendListResponseDTO value,
-          $Res Function(_$_SpendListResponseDTO) then) =
-      __$$_SpendListResponseDTOCopyWithImpl<$Res>;
+  factory _$$SpendListResponseDTOImplCopyWith(_$SpendListResponseDTOImpl value,
+          $Res Function(_$SpendListResponseDTOImpl) then) =
+      __$$SpendListResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -108,11 +108,11 @@ abstract class _$$_SpendListResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SpendListResponseDTOCopyWithImpl<$Res>
-    extends _$SpendListResponseDTOCopyWithImpl<$Res, _$_SpendListResponseDTO>
-    implements _$$_SpendListResponseDTOCopyWith<$Res> {
-  __$$_SpendListResponseDTOCopyWithImpl(_$_SpendListResponseDTO _value,
-      $Res Function(_$_SpendListResponseDTO) _then)
+class __$$SpendListResponseDTOImplCopyWithImpl<$Res>
+    extends _$SpendListResponseDTOCopyWithImpl<$Res, _$SpendListResponseDTOImpl>
+    implements _$$SpendListResponseDTOImplCopyWith<$Res> {
+  __$$SpendListResponseDTOImplCopyWithImpl(_$SpendListResponseDTOImpl _value,
+      $Res Function(_$SpendListResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +122,7 @@ class __$$_SpendListResponseDTOCopyWithImpl<$Res>
     Object? metaData = null,
     Object? error = freezed,
   }) {
-    return _then(_$_SpendListResponseDTO(
+    return _then(_$SpendListResponseDTOImpl(
       data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$$_SpendListResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SpendListResponseDTO extends _SpendListResponseDTO {
-  const _$_SpendListResponseDTO(
+class _$SpendListResponseDTOImpl extends _SpendListResponseDTO {
+  const _$SpendListResponseDTOImpl(
       {@JsonKey(name: 'data', defaultValue: [])
       required final List<SpendDTO>? data,
       @JsonKey(name: 'metadata') required this.metaData,
@@ -150,8 +150,8 @@ class _$_SpendListResponseDTO extends _SpendListResponseDTO {
       : _data = data,
         super._();
 
-  factory _$_SpendListResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_SpendListResponseDTOFromJson(json);
+  factory _$SpendListResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SpendListResponseDTOImplFromJson(json);
 
   final List<SpendDTO>? _data;
   @override
@@ -177,10 +177,10 @@ class _$_SpendListResponseDTO extends _SpendListResponseDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SpendListResponseDTO &&
+            other is _$SpendListResponseDTOImpl &&
             const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.metaData, metaData) ||
                 other.metaData == metaData) &&
@@ -195,13 +195,14 @@ class _$_SpendListResponseDTO extends _SpendListResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SpendListResponseDTOCopyWith<_$_SpendListResponseDTO> get copyWith =>
-      __$$_SpendListResponseDTOCopyWithImpl<_$_SpendListResponseDTO>(
-          this, _$identity);
+  _$$SpendListResponseDTOImplCopyWith<_$SpendListResponseDTOImpl>
+      get copyWith =>
+          __$$SpendListResponseDTOImplCopyWithImpl<_$SpendListResponseDTOImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SpendListResponseDTOToJson(
+    return _$$SpendListResponseDTOImplToJson(
       this,
     );
   }
@@ -213,11 +214,11 @@ abstract class _SpendListResponseDTO extends SpendListResponseDTO {
           required final List<SpendDTO>? data,
           @JsonKey(name: 'metadata') required final MetadataDTO metaData,
           @JsonKey(name: 'error') required final String? error}) =
-      _$_SpendListResponseDTO;
+      _$SpendListResponseDTOImpl;
   const _SpendListResponseDTO._() : super._();
 
   factory _SpendListResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_SpendListResponseDTO.fromJson;
+      _$SpendListResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'data', defaultValue: [])
@@ -230,6 +231,6 @@ abstract class _SpendListResponseDTO extends SpendListResponseDTO {
   String? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_SpendListResponseDTOCopyWith<_$_SpendListResponseDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SpendListResponseDTOImplCopyWith<_$SpendListResponseDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
