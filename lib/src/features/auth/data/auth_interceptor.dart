@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:logger/logger.dart';
 import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
 import 'package:money_magnet/src/features/auth/application/user_usecase.dart';
 
@@ -7,8 +6,6 @@ class AuthInterceptor extends Interceptor {
   final UserUsecase _usecase;
   final AuthNotifier _authNotifier;
   final Dio _dio;
-
-  var logger = Logger();
 
   AuthInterceptor(this._usecase, this._authNotifier, this._dio);
 
@@ -37,26 +34,28 @@ class AuthInterceptor extends Interceptor {
       // get refresh token
       final refreshToken = await _usecase.getRefreshToken();
 
-      if (refreshToken != null) {
-        final failureOrSuccess = await _usecase.renewToken(refreshToken);
-        var newAccessToken = '';
-        failureOrSuccess.fold(
-          (l) {
-            // send to login screen
-            _authNotifier.forceToUnauthenticated();
-          },
-          (r) {
-            newAccessToken = r;
-          },
-        );
-
-        errorResponse.requestOptions.headers['Authorization'] =
-            'Bearer $newAccessToken';
-
-        final result = await _dio.fetch(errorResponse.requestOptions);
-
-        handler.resolve(result);
+      if (refreshToken == null) {
+        _authNotifier.forceToUnauthenticated();
+        return;
       }
+
+      final failureOrSuccess = await _usecase.renewToken(refreshToken);
+      var newAccessToken = '';
+      failureOrSuccess.fold(
+        (l) {
+          // send to login screen
+          _authNotifier.forceToUnauthenticated();
+        },
+        (r) {
+          newAccessToken = r;
+        },
+      );
+
+      errorResponse.requestOptions.headers['Authorization'] =
+          'Bearer $newAccessToken';
+
+      final result = await _dio.fetch(errorResponse.requestOptions);
+      handler.resolve(result);
     } else {
       handler.next(err);
     }

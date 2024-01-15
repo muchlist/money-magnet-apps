@@ -6,8 +6,8 @@ part of 'metadata.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MetadataDTO _$$_MetadataDTOFromJson(Map<String, dynamic> json) =>
-    _$_MetadataDTO(
+_$MetadataDTOImpl _$$MetadataDTOImplFromJson(Map<String, dynamic> json) =>
+    _$MetadataDTOImpl(
       currentPage: json['current_page'] as int? ?? 0,
       firstPage: json['first_page'] as int? ?? 0,
       lastPage: json['last_page'] as int? ?? 0,
@@ -15,7 +15,7 @@ _$_MetadataDTO _$$_MetadataDTOFromJson(Map<String, dynamic> json) =>
       totalRecords: json['total_records'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_MetadataDTOToJson(_$_MetadataDTO instance) =>
+Map<String, dynamic> _$$MetadataDTOImplToJson(_$MetadataDTOImpl instance) =>
     <String, dynamic>{
       'current_page': instance.currentPage,
       'first_page': instance.firstPage,

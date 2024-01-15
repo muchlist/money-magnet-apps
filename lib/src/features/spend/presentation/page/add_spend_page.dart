@@ -2,12 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money_magnet/src/commons/constant/pocket_icon.dart';
+import 'package:money_magnet/src/commons/data/page_state.dart';
+import 'package:money_magnet/src/commons/provider/providers.dart';
 import 'package:money_magnet/src/commons/theme/ui_helper.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/widgets/snackbar.dart';
 import 'package:money_magnet/src/commons/widgets/input_decorator.dart';
 import 'package:money_magnet/src/commons/widgets/white_button.dart';
-import 'package:money_magnet/src/features/pocket/presentation/provider/text_controller_providers.dart';
+import 'package:money_magnet/src/features/spend/presentation/provider/text_controller_providers.dart';
 
 import '../../../../commons/theme/colors.dart';
 import '../../application/spend_notifier.dart';
@@ -52,36 +54,41 @@ class SpendAddPageBody extends ConsumerStatefulWidget {
 class _SpendAddPageBodyState extends ConsumerState<SpendAddPageBody> {
   final GlobalKey<FormState> _formAddSpendkey = GlobalKey<FormState>();
   int _selectedIconIndex = 0;
+  final int _selectedType = 0;
+  final String _spendDate = "2023-09-28T19:24:31.777716Z";
 
   void _addSpend() async {
     if (_formAddSpendkey.currentState?.validate() ?? false) {
-      String pocketName = ref.read(pocketNameControllerProvider).text;
+      String spendName = ref.read(spendNameControllerProvider).text;
+      String spendPrice = ref.read(spendPriceControllerProvider).text;
 
-      // TODO
       SpendReqDTO payload = SpendReqDTO(
         pocketID: widget.pocketID,
-        categoryID: "categoryID",
-        name: "name",
-        price: 0,
-        isIncome: false,
-        type: 0,
-        date: "date",
-        version: 0,
+        categoryID:
+            "26bd6a51-a75c-48ea-8f26-fd18e6d5fbdf", // TODO category getter
+        name: spendName,
+        price: int.parse(spendPrice),
+        isIncome: true, // TODO category getter
+        type: _selectedType,
+        date: _spendDate,
       );
 
-      // Success
-      await ref.read(sharedSpendNotifierProvider.notifier).createSpend(payload);
+      await ref
+          .read(spendNotifierProvider(widget.pocketID).notifier)
+          .createSpend(payload);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(sharedSpendNotifierProvider);
-    ref.listen<SpendState>(sharedSpendNotifierProvider, (_, next) {
+    // final state = ref.watch(spendNotifierProvider(widget.pocketID));
+    ref.listen<SpendState>(spendNotifierProvider(widget.pocketID), (_, next) {
       next.maybeWhen(
           orElse: () {},
           success: (_, __) {
-            // TODO
+            ref
+                .read(pageStateNotifierProvider.notifier)
+                .setIsDetailPageNeedUpdate(true);
             AutoRouter.of(context).pop();
           },
           failure: (_, failure) {
@@ -103,24 +110,48 @@ class _SpendAddPageBodyState extends ConsumerState<SpendAddPageBody> {
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text("Kamu namakan apa dompet ini?",
-              style: Theme.of(context).textTheme.headlineSmall!),
+          verticalSpaceMedium,
+          Row(
+            children: [
+              Text("Pengeluaran",
+                  style: Theme.of(context).textTheme.headlineSmall!),
+              Text(" | ", style: Theme.of(context).textTheme.headlineSmall!),
+              Text("Pemasukan",
+                  style: Theme.of(context).textTheme.headlineSmall!),
+            ],
+          ),
           verticalSpaceMedium,
           Form(
-            key: _formAddSpendkey,
-            child: TextFormField(
-              style: Theme.of(context).textTheme.titleSmall!,
-              textInputAction: TextInputAction.next,
-              decoration: mainInputDecoration("Nama dompet", null),
-              validator: (String? text) {
-                if (text == null || text.isEmpty) {
-                  return 'nama tidak boleh kosong';
-                }
-                return null;
-              },
-              controller: ref.watch(pocketNameControllerProvider),
-            ),
-          ),
+              key: _formAddSpendkey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    style: Theme.of(context).textTheme.titleSmall!,
+                    textInputAction: TextInputAction.next,
+                    decoration: mainInputDecoration("Nama transaksi", null),
+                    validator: (String? text) {
+                      if (text == null || text.isEmpty) {
+                        return 'nama pengeluaran tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                    controller: ref.watch(spendNameControllerProvider),
+                  ),
+                  verticalSpaceSmall,
+                  TextFormField(
+                    style: Theme.of(context).textTheme.titleSmall!,
+                    textInputAction: TextInputAction.next,
+                    decoration: mainInputDecoration("Nominal", null),
+                    validator: (String? text) {
+                      if (text == null || text.isEmpty) {
+                        return 'nominal tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                    controller: ref.watch(spendPriceControllerProvider),
+                  ),
+                ],
+              )),
           verticalSpaceSmall,
           SizedBox(
             height: 60,
@@ -152,13 +183,16 @@ class _SpendAddPageBodyState extends ConsumerState<SpendAddPageBody> {
                 }),
           ),
           verticalSpaceSmall,
-          state.maybeWhen(
-            // TODO loading: (_, __) => const ButtonWLoading(title: "Sedang memuat..."),
-            orElse: () => ButtonW(
-              title: "Tambahkan",
-              onPressed: _addSpend,
-            ),
-          ),
+          Consumer(builder: ((context, ref, child) {
+            final state = ref.watch(spendNotifierProvider(widget.pocketID));
+            return state.maybeWhen(
+              loading: (_) => const ButtonWLoading(title: "Sedang memuat..."),
+              orElse: () => ButtonW(
+                title: "Tambahkan",
+                onPressed: _addSpend,
+              ),
+            );
+          })),
           verticalSpaceSmall,
         ],
       )),

@@ -47,7 +47,7 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
     ref.listen<PocketState>(pocketNotifierProvider, (_, next) {
       next.maybeWhen(
           orElse: () {},
-          failure: (_, failure) {
+          failure: (_, __, failure) {
             failure.when(server: (msg) {
               showToastError(
                   context: context,
@@ -97,8 +97,8 @@ class _PocketBodyState extends ConsumerState<PocketBody> {
             sliver: SliverToBoxAdapter(
               child: BalanceWidget(
                 balanceValue: state.maybeWhen(
-                    success: (_, balanceInfo, __) => balanceInfo,
-                    loading: (_, balanceInfo) => balanceInfo,
+                    success: (_, __, balanceInfo, ___) => balanceInfo,
+                    loading: (_, __, balanceInfo) => balanceInfo,
                     orElse: () => '0'),
                 editors: const [],
               ),

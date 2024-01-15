@@ -86,11 +86,11 @@ class _$LoginResponseDTOCopyWithImpl<$Res, $Val extends LoginResponseDTO>
 }
 
 /// @nodoc
-abstract class _$$_LoginResponseDTOCopyWith<$Res>
+abstract class _$$LoginResponseDTOImplCopyWith<$Res>
     implements $LoginResponseDTOCopyWith<$Res> {
-  factory _$$_LoginResponseDTOCopyWith(
-          _$_LoginResponseDTO value, $Res Function(_$_LoginResponseDTO) then) =
-      __$$_LoginResponseDTOCopyWithImpl<$Res>;
+  factory _$$LoginResponseDTOImplCopyWith(_$LoginResponseDTOImpl value,
+          $Res Function(_$LoginResponseDTOImpl) then) =
+      __$$LoginResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_LoginResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LoginResponseDTOCopyWithImpl<$Res>
-    extends _$LoginResponseDTOCopyWithImpl<$Res, _$_LoginResponseDTO>
-    implements _$$_LoginResponseDTOCopyWith<$Res> {
-  __$$_LoginResponseDTOCopyWithImpl(
-      _$_LoginResponseDTO _value, $Res Function(_$_LoginResponseDTO) _then)
+class __$$LoginResponseDTOImplCopyWithImpl<$Res>
+    extends _$LoginResponseDTOCopyWithImpl<$Res, _$LoginResponseDTOImpl>
+    implements _$$LoginResponseDTOImplCopyWith<$Res> {
+  __$$LoginResponseDTOImplCopyWithImpl(_$LoginResponseDTOImpl _value,
+      $Res Function(_$LoginResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_LoginResponseDTOCopyWithImpl<$Res>
     Object? data = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$_LoginResponseDTO(
+    return _then(_$LoginResponseDTOImpl(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -130,14 +130,14 @@ class __$$_LoginResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LoginResponseDTO extends _LoginResponseDTO {
-  const _$_LoginResponseDTO(
+class _$LoginResponseDTOImpl extends _LoginResponseDTO {
+  const _$LoginResponseDTOImpl(
       {@JsonKey(name: 'data') required this.data,
       @JsonKey(name: 'error') required this.error})
       : super._();
 
-  factory _$_LoginResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_LoginResponseDTOFromJson(json);
+  factory _$LoginResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LoginResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'data')
@@ -152,10 +152,10 @@ class _$_LoginResponseDTO extends _LoginResponseDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoginResponseDTO &&
+            other is _$LoginResponseDTOImpl &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.error, error) || other.error == error));
   }
@@ -167,12 +167,13 @@ class _$_LoginResponseDTO extends _LoginResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginResponseDTOCopyWith<_$_LoginResponseDTO> get copyWith =>
-      __$$_LoginResponseDTOCopyWithImpl<_$_LoginResponseDTO>(this, _$identity);
+  _$$LoginResponseDTOImplCopyWith<_$LoginResponseDTOImpl> get copyWith =>
+      __$$LoginResponseDTOImplCopyWithImpl<_$LoginResponseDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LoginResponseDTOToJson(
+    return _$$LoginResponseDTOImplToJson(
       this,
     );
   }
@@ -182,11 +183,11 @@ abstract class _LoginResponseDTO extends LoginResponseDTO {
   const factory _LoginResponseDTO(
           {@JsonKey(name: 'data') required final LoginDTO? data,
           @JsonKey(name: 'error') required final String? error}) =
-      _$_LoginResponseDTO;
+      _$LoginResponseDTOImpl;
   const _LoginResponseDTO._() : super._();
 
   factory _LoginResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_LoginResponseDTO.fromJson;
+      _$LoginResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'data')
@@ -196,7 +197,7 @@ abstract class _LoginResponseDTO extends LoginResponseDTO {
   String? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginResponseDTOCopyWith<_$_LoginResponseDTO> get copyWith =>
+  _$$LoginResponseDTOImplCopyWith<_$LoginResponseDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -302,10 +303,11 @@ class _$LoginDTOCopyWithImpl<$Res, $Val extends LoginDTO>
 }
 
 /// @nodoc
-abstract class _$$_LoginDTOCopyWith<$Res> implements $LoginDTOCopyWith<$Res> {
-  factory _$$_LoginDTOCopyWith(
-          _$_LoginDTO value, $Res Function(_$_LoginDTO) then) =
-      __$$_LoginDTOCopyWithImpl<$Res>;
+abstract class _$$LoginDTOImplCopyWith<$Res>
+    implements $LoginDTOCopyWith<$Res> {
+  factory _$$LoginDTOImplCopyWith(
+          _$LoginDTOImpl value, $Res Function(_$LoginDTOImpl) then) =
+      __$$LoginDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -320,11 +322,11 @@ abstract class _$$_LoginDTOCopyWith<$Res> implements $LoginDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoginDTOCopyWithImpl<$Res>
-    extends _$LoginDTOCopyWithImpl<$Res, _$_LoginDTO>
-    implements _$$_LoginDTOCopyWith<$Res> {
-  __$$_LoginDTOCopyWithImpl(
-      _$_LoginDTO _value, $Res Function(_$_LoginDTO) _then)
+class __$$LoginDTOImplCopyWithImpl<$Res>
+    extends _$LoginDTOCopyWithImpl<$Res, _$LoginDTOImpl>
+    implements _$$LoginDTOImplCopyWith<$Res> {
+  __$$LoginDTOImplCopyWithImpl(
+      _$LoginDTOImpl _value, $Res Function(_$LoginDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -339,7 +341,7 @@ class __$$_LoginDTOCopyWithImpl<$Res>
     Object? accessTokenExpired = null,
     Object? refreshTokenExpired = null,
   }) {
-    return _then(_$_LoginDTO(
+    return _then(_$LoginDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -378,8 +380,8 @@ class __$$_LoginDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LoginDTO extends _LoginDTO {
-  const _$_LoginDTO(
+class _$LoginDTOImpl extends _LoginDTO {
+  const _$LoginDTOImpl(
       {required this.id,
       required this.email,
       required this.name,
@@ -392,8 +394,8 @@ class _$_LoginDTO extends _LoginDTO {
       : _roles = roles,
         super._();
 
-  factory _$_LoginDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_LoginDTOFromJson(json);
+  factory _$LoginDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LoginDTOImplFromJson(json);
 
   @override
   final String id;
@@ -429,10 +431,10 @@ class _$_LoginDTO extends _LoginDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoginDTO &&
+            other is _$LoginDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
@@ -463,12 +465,12 @@ class _$_LoginDTO extends _LoginDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginDTOCopyWith<_$_LoginDTO> get copyWith =>
-      __$$_LoginDTOCopyWithImpl<_$_LoginDTO>(this, _$identity);
+  _$$LoginDTOImplCopyWith<_$LoginDTOImpl> get copyWith =>
+      __$$LoginDTOImplCopyWithImpl<_$LoginDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LoginDTOToJson(
+    return _$$LoginDTOImplToJson(
       this,
     );
   }
@@ -485,10 +487,11 @@ abstract class _LoginDTO extends LoginDTO {
       @JsonKey(name: 'access_token_expired')
       required final int accessTokenExpired,
       @JsonKey(name: 'refresh_token_expired')
-      required final int refreshTokenExpired}) = _$_LoginDTO;
+      required final int refreshTokenExpired}) = _$LoginDTOImpl;
   const _LoginDTO._() : super._();
 
-  factory _LoginDTO.fromJson(Map<String, dynamic> json) = _$_LoginDTO.fromJson;
+  factory _LoginDTO.fromJson(Map<String, dynamic> json) =
+      _$LoginDTOImpl.fromJson;
 
   @override
   String get id;
@@ -513,7 +516,7 @@ abstract class _LoginDTO extends LoginDTO {
   int get refreshTokenExpired;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginDTOCopyWith<_$_LoginDTO> get copyWith =>
+  _$$LoginDTOImplCopyWith<_$LoginDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -589,11 +592,11 @@ class _$RefreshResponseDTOCopyWithImpl<$Res, $Val extends RefreshResponseDTO>
 }
 
 /// @nodoc
-abstract class _$$_RefreshResponseDTOCopyWith<$Res>
+abstract class _$$RefreshResponseDTOImplCopyWith<$Res>
     implements $RefreshResponseDTOCopyWith<$Res> {
-  factory _$$_RefreshResponseDTOCopyWith(_$_RefreshResponseDTO value,
-          $Res Function(_$_RefreshResponseDTO) then) =
-      __$$_RefreshResponseDTOCopyWithImpl<$Res>;
+  factory _$$RefreshResponseDTOImplCopyWith(_$RefreshResponseDTOImpl value,
+          $Res Function(_$RefreshResponseDTOImpl) then) =
+      __$$RefreshResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -605,11 +608,11 @@ abstract class _$$_RefreshResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RefreshResponseDTOCopyWithImpl<$Res>
-    extends _$RefreshResponseDTOCopyWithImpl<$Res, _$_RefreshResponseDTO>
-    implements _$$_RefreshResponseDTOCopyWith<$Res> {
-  __$$_RefreshResponseDTOCopyWithImpl(
-      _$_RefreshResponseDTO _value, $Res Function(_$_RefreshResponseDTO) _then)
+class __$$RefreshResponseDTOImplCopyWithImpl<$Res>
+    extends _$RefreshResponseDTOCopyWithImpl<$Res, _$RefreshResponseDTOImpl>
+    implements _$$RefreshResponseDTOImplCopyWith<$Res> {
+  __$$RefreshResponseDTOImplCopyWithImpl(_$RefreshResponseDTOImpl _value,
+      $Res Function(_$RefreshResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -618,7 +621,7 @@ class __$$_RefreshResponseDTOCopyWithImpl<$Res>
     Object? data = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$_RefreshResponseDTO(
+    return _then(_$RefreshResponseDTOImpl(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -633,14 +636,14 @@ class __$$_RefreshResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RefreshResponseDTO extends _RefreshResponseDTO {
-  const _$_RefreshResponseDTO(
+class _$RefreshResponseDTOImpl extends _RefreshResponseDTO {
+  const _$RefreshResponseDTOImpl(
       {@JsonKey(name: 'data') required this.data,
       @JsonKey(name: 'error') required this.error})
       : super._();
 
-  factory _$_RefreshResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_RefreshResponseDTOFromJson(json);
+  factory _$RefreshResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RefreshResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'data')
@@ -655,10 +658,10 @@ class _$_RefreshResponseDTO extends _RefreshResponseDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RefreshResponseDTO &&
+            other is _$RefreshResponseDTOImpl &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.error, error) || other.error == error));
   }
@@ -670,13 +673,13 @@ class _$_RefreshResponseDTO extends _RefreshResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RefreshResponseDTOCopyWith<_$_RefreshResponseDTO> get copyWith =>
-      __$$_RefreshResponseDTOCopyWithImpl<_$_RefreshResponseDTO>(
+  _$$RefreshResponseDTOImplCopyWith<_$RefreshResponseDTOImpl> get copyWith =>
+      __$$RefreshResponseDTOImplCopyWithImpl<_$RefreshResponseDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RefreshResponseDTOToJson(
+    return _$$RefreshResponseDTOImplToJson(
       this,
     );
   }
@@ -686,11 +689,11 @@ abstract class _RefreshResponseDTO extends RefreshResponseDTO {
   const factory _RefreshResponseDTO(
           {@JsonKey(name: 'data') required final RefreshDTO? data,
           @JsonKey(name: 'error') required final String? error}) =
-      _$_RefreshResponseDTO;
+      _$RefreshResponseDTOImpl;
   const _RefreshResponseDTO._() : super._();
 
   factory _RefreshResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_RefreshResponseDTO.fromJson;
+      _$RefreshResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'data')
@@ -700,7 +703,7 @@ abstract class _RefreshResponseDTO extends RefreshResponseDTO {
   String? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_RefreshResponseDTOCopyWith<_$_RefreshResponseDTO> get copyWith =>
+  _$$RefreshResponseDTOImplCopyWith<_$RefreshResponseDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -762,11 +765,11 @@ class _$RefreshDTOCopyWithImpl<$Res, $Val extends RefreshDTO>
 }
 
 /// @nodoc
-abstract class _$$_RefreshDTOCopyWith<$Res>
+abstract class _$$RefreshDTOImplCopyWith<$Res>
     implements $RefreshDTOCopyWith<$Res> {
-  factory _$$_RefreshDTOCopyWith(
-          _$_RefreshDTO value, $Res Function(_$_RefreshDTO) then) =
-      __$$_RefreshDTOCopyWithImpl<$Res>;
+  factory _$$RefreshDTOImplCopyWith(
+          _$RefreshDTOImpl value, $Res Function(_$RefreshDTOImpl) then) =
+      __$$RefreshDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -775,11 +778,11 @@ abstract class _$$_RefreshDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RefreshDTOCopyWithImpl<$Res>
-    extends _$RefreshDTOCopyWithImpl<$Res, _$_RefreshDTO>
-    implements _$$_RefreshDTOCopyWith<$Res> {
-  __$$_RefreshDTOCopyWithImpl(
-      _$_RefreshDTO _value, $Res Function(_$_RefreshDTO) _then)
+class __$$RefreshDTOImplCopyWithImpl<$Res>
+    extends _$RefreshDTOCopyWithImpl<$Res, _$RefreshDTOImpl>
+    implements _$$RefreshDTOImplCopyWith<$Res> {
+  __$$RefreshDTOImplCopyWithImpl(
+      _$RefreshDTOImpl _value, $Res Function(_$RefreshDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -788,7 +791,7 @@ class __$$_RefreshDTOCopyWithImpl<$Res>
     Object? accessToken = null,
     Object? accessTokenExpired = null,
   }) {
-    return _then(_$_RefreshDTO(
+    return _then(_$RefreshDTOImpl(
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -803,14 +806,14 @@ class __$$_RefreshDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RefreshDTO extends _RefreshDTO {
-  const _$_RefreshDTO(
+class _$RefreshDTOImpl extends _RefreshDTO {
+  const _$RefreshDTOImpl(
       {@JsonKey(name: 'access_token') required this.accessToken,
       @JsonKey(name: 'access_token_expired') required this.accessTokenExpired})
       : super._();
 
-  factory _$_RefreshDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_RefreshDTOFromJson(json);
+  factory _$RefreshDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RefreshDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'access_token')
@@ -825,10 +828,10 @@ class _$_RefreshDTO extends _RefreshDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RefreshDTO &&
+            other is _$RefreshDTOImpl &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.accessTokenExpired, accessTokenExpired) ||
@@ -842,12 +845,12 @@ class _$_RefreshDTO extends _RefreshDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RefreshDTOCopyWith<_$_RefreshDTO> get copyWith =>
-      __$$_RefreshDTOCopyWithImpl<_$_RefreshDTO>(this, _$identity);
+  _$$RefreshDTOImplCopyWith<_$RefreshDTOImpl> get copyWith =>
+      __$$RefreshDTOImplCopyWithImpl<_$RefreshDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RefreshDTOToJson(
+    return _$$RefreshDTOImplToJson(
       this,
     );
   }
@@ -857,11 +860,11 @@ abstract class _RefreshDTO extends RefreshDTO {
   const factory _RefreshDTO(
       {@JsonKey(name: 'access_token') required final String accessToken,
       @JsonKey(name: 'access_token_expired')
-      required final int accessTokenExpired}) = _$_RefreshDTO;
+      required final int accessTokenExpired}) = _$RefreshDTOImpl;
   const _RefreshDTO._() : super._();
 
   factory _RefreshDTO.fromJson(Map<String, dynamic> json) =
-      _$_RefreshDTO.fromJson;
+      _$RefreshDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'access_token')
@@ -871,6 +874,6 @@ abstract class _RefreshDTO extends RefreshDTO {
   int get accessTokenExpired;
   @override
   @JsonKey(ignore: true)
-  _$$_RefreshDTOCopyWith<_$_RefreshDTO> get copyWith =>
+  _$$RefreshDTOImplCopyWith<_$RefreshDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

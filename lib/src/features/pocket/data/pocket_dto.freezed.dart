@@ -86,11 +86,11 @@ class _$PocketResponseDTOCopyWithImpl<$Res, $Val extends PocketResponseDTO>
 }
 
 /// @nodoc
-abstract class _$$_PocketResponseDTOCopyWith<$Res>
+abstract class _$$PocketResponseDTOImplCopyWith<$Res>
     implements $PocketResponseDTOCopyWith<$Res> {
-  factory _$$_PocketResponseDTOCopyWith(_$_PocketResponseDTO value,
-          $Res Function(_$_PocketResponseDTO) then) =
-      __$$_PocketResponseDTOCopyWithImpl<$Res>;
+  factory _$$PocketResponseDTOImplCopyWith(_$PocketResponseDTOImpl value,
+          $Res Function(_$PocketResponseDTOImpl) then) =
+      __$$PocketResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_PocketResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PocketResponseDTOCopyWithImpl<$Res>
-    extends _$PocketResponseDTOCopyWithImpl<$Res, _$_PocketResponseDTO>
-    implements _$$_PocketResponseDTOCopyWith<$Res> {
-  __$$_PocketResponseDTOCopyWithImpl(
-      _$_PocketResponseDTO _value, $Res Function(_$_PocketResponseDTO) _then)
+class __$$PocketResponseDTOImplCopyWithImpl<$Res>
+    extends _$PocketResponseDTOCopyWithImpl<$Res, _$PocketResponseDTOImpl>
+    implements _$$PocketResponseDTOImplCopyWith<$Res> {
+  __$$PocketResponseDTOImplCopyWithImpl(_$PocketResponseDTOImpl _value,
+      $Res Function(_$PocketResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_PocketResponseDTOCopyWithImpl<$Res>
     Object? data = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$_PocketResponseDTO(
+    return _then(_$PocketResponseDTOImpl(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -130,14 +130,14 @@ class __$$_PocketResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PocketResponseDTO extends _PocketResponseDTO {
-  const _$_PocketResponseDTO(
+class _$PocketResponseDTOImpl extends _PocketResponseDTO {
+  const _$PocketResponseDTOImpl(
       {@JsonKey(name: 'data') required this.data,
       @JsonKey(name: 'error') required this.error})
       : super._();
 
-  factory _$_PocketResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PocketResponseDTOFromJson(json);
+  factory _$PocketResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PocketResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'data')
@@ -152,10 +152,10 @@ class _$_PocketResponseDTO extends _PocketResponseDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PocketResponseDTO &&
+            other is _$PocketResponseDTOImpl &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.error, error) || other.error == error));
   }
@@ -167,13 +167,13 @@ class _$_PocketResponseDTO extends _PocketResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PocketResponseDTOCopyWith<_$_PocketResponseDTO> get copyWith =>
-      __$$_PocketResponseDTOCopyWithImpl<_$_PocketResponseDTO>(
+  _$$PocketResponseDTOImplCopyWith<_$PocketResponseDTOImpl> get copyWith =>
+      __$$PocketResponseDTOImplCopyWithImpl<_$PocketResponseDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PocketResponseDTOToJson(
+    return _$$PocketResponseDTOImplToJson(
       this,
     );
   }
@@ -183,11 +183,11 @@ abstract class _PocketResponseDTO extends PocketResponseDTO {
   const factory _PocketResponseDTO(
           {@JsonKey(name: 'data') required final PocketDTO? data,
           @JsonKey(name: 'error') required final String? error}) =
-      _$_PocketResponseDTO;
+      _$PocketResponseDTOImpl;
   const _PocketResponseDTO._() : super._();
 
   factory _PocketResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_PocketResponseDTO.fromJson;
+      _$PocketResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'data')
@@ -197,7 +197,7 @@ abstract class _PocketResponseDTO extends PocketResponseDTO {
   String? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_PocketResponseDTOCopyWith<_$_PocketResponseDTO> get copyWith =>
+  _$$PocketResponseDTOImplCopyWith<_$PocketResponseDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -333,10 +333,11 @@ class _$PocketDTOCopyWithImpl<$Res, $Val extends PocketDTO>
 }
 
 /// @nodoc
-abstract class _$$_PocketDTOCopyWith<$Res> implements $PocketDTOCopyWith<$Res> {
-  factory _$$_PocketDTOCopyWith(
-          _$_PocketDTO value, $Res Function(_$_PocketDTO) then) =
-      __$$_PocketDTOCopyWithImpl<$Res>;
+abstract class _$$PocketDTOImplCopyWith<$Res>
+    implements $PocketDTOCopyWith<$Res> {
+  factory _$$PocketDTOImplCopyWith(
+          _$PocketDTOImpl value, $Res Function(_$PocketDTOImpl) then) =
+      __$$PocketDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -355,11 +356,11 @@ abstract class _$$_PocketDTOCopyWith<$Res> implements $PocketDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PocketDTOCopyWithImpl<$Res>
-    extends _$PocketDTOCopyWithImpl<$Res, _$_PocketDTO>
-    implements _$$_PocketDTOCopyWith<$Res> {
-  __$$_PocketDTOCopyWithImpl(
-      _$_PocketDTO _value, $Res Function(_$_PocketDTO) _then)
+class __$$PocketDTOImplCopyWithImpl<$Res>
+    extends _$PocketDTOCopyWithImpl<$Res, _$PocketDTOImpl>
+    implements _$$PocketDTOImplCopyWith<$Res> {
+  __$$PocketDTOImplCopyWithImpl(
+      _$PocketDTOImpl _value, $Res Function(_$PocketDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -378,7 +379,7 @@ class __$$_PocketDTOCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$_PocketDTO(
+    return _then(_$PocketDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -433,8 +434,8 @@ class __$$_PocketDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PocketDTO extends _PocketDTO {
-  const _$_PocketDTO(
+class _$PocketDTOImpl extends _PocketDTO {
+  const _$PocketDTOImpl(
       {required this.id,
       @JsonKey(name: 'pocket_name') required this.pocketName,
       required this.balance,
@@ -454,8 +455,8 @@ class _$_PocketDTO extends _PocketDTO {
         _users = users,
         super._();
 
-  factory _$_PocketDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PocketDTOFromJson(json);
+  factory _$PocketDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PocketDTOImplFromJson(json);
 
   @override
   final String id;
@@ -513,10 +514,10 @@ class _$_PocketDTO extends _PocketDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PocketDTO &&
+            other is _$PocketDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.pocketName, pocketName) ||
                 other.pocketName == pocketName) &&
@@ -556,12 +557,12 @@ class _$_PocketDTO extends _PocketDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PocketDTOCopyWith<_$_PocketDTO> get copyWith =>
-      __$$_PocketDTOCopyWithImpl<_$_PocketDTO>(this, _$identity);
+  _$$PocketDTOImplCopyWith<_$PocketDTOImpl> get copyWith =>
+      __$$PocketDTOImplCopyWithImpl<_$PocketDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PocketDTOToJson(
+    return _$$PocketDTOImplToJson(
       this,
     );
   }
@@ -583,11 +584,11 @@ abstract class _PocketDTO extends PocketDTO {
           @JsonKey(defaultValue: []) required final List<PocketUserDTO> users,
           @JsonKey(name: 'created_at') required final String createdAt,
           @JsonKey(name: 'updated_at') required final String updatedAt}) =
-      _$_PocketDTO;
+      _$PocketDTOImpl;
   const _PocketDTO._() : super._();
 
   factory _PocketDTO.fromJson(Map<String, dynamic> json) =
-      _$_PocketDTO.fromJson;
+      _$PocketDTOImpl.fromJson;
 
   @override
   String get id;
@@ -622,7 +623,7 @@ abstract class _PocketDTO extends PocketDTO {
   String get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_PocketDTOCopyWith<_$_PocketDTO> get copyWith =>
+  _$$PocketDTOImplCopyWith<_$PocketDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -686,22 +687,22 @@ class _$PocketUserDTOCopyWithImpl<$Res, $Val extends PocketUserDTO>
 }
 
 /// @nodoc
-abstract class _$$_PocketUserDTOCopyWith<$Res>
+abstract class _$$PocketUserDTOImplCopyWith<$Res>
     implements $PocketUserDTOCopyWith<$Res> {
-  factory _$$_PocketUserDTOCopyWith(
-          _$_PocketUserDTO value, $Res Function(_$_PocketUserDTO) then) =
-      __$$_PocketUserDTOCopyWithImpl<$Res>;
+  factory _$$PocketUserDTOImplCopyWith(
+          _$PocketUserDTOImpl value, $Res Function(_$PocketUserDTOImpl) then) =
+      __$$PocketUserDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name, String role});
 }
 
 /// @nodoc
-class __$$_PocketUserDTOCopyWithImpl<$Res>
-    extends _$PocketUserDTOCopyWithImpl<$Res, _$_PocketUserDTO>
-    implements _$$_PocketUserDTOCopyWith<$Res> {
-  __$$_PocketUserDTOCopyWithImpl(
-      _$_PocketUserDTO _value, $Res Function(_$_PocketUserDTO) _then)
+class __$$PocketUserDTOImplCopyWithImpl<$Res>
+    extends _$PocketUserDTOCopyWithImpl<$Res, _$PocketUserDTOImpl>
+    implements _$$PocketUserDTOImplCopyWith<$Res> {
+  __$$PocketUserDTOImplCopyWithImpl(
+      _$PocketUserDTOImpl _value, $Res Function(_$PocketUserDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -711,7 +712,7 @@ class __$$_PocketUserDTOCopyWithImpl<$Res>
     Object? name = null,
     Object? role = null,
   }) {
-    return _then(_$_PocketUserDTO(
+    return _then(_$PocketUserDTOImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -730,13 +731,13 @@ class __$$_PocketUserDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PocketUserDTO extends _PocketUserDTO {
-  const _$_PocketUserDTO(
+class _$PocketUserDTOImpl extends _PocketUserDTO {
+  const _$PocketUserDTOImpl(
       {required this.id, required this.name, required this.role})
       : super._();
 
-  factory _$_PocketUserDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PocketUserDTOFromJson(json);
+  factory _$PocketUserDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PocketUserDTOImplFromJson(json);
 
   @override
   final String id;
@@ -751,10 +752,10 @@ class _$_PocketUserDTO extends _PocketUserDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PocketUserDTO &&
+            other is _$PocketUserDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.role, role) || other.role == role));
@@ -767,12 +768,12 @@ class _$_PocketUserDTO extends _PocketUserDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PocketUserDTOCopyWith<_$_PocketUserDTO> get copyWith =>
-      __$$_PocketUserDTOCopyWithImpl<_$_PocketUserDTO>(this, _$identity);
+  _$$PocketUserDTOImplCopyWith<_$PocketUserDTOImpl> get copyWith =>
+      __$$PocketUserDTOImplCopyWithImpl<_$PocketUserDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PocketUserDTOToJson(
+    return _$$PocketUserDTOImplToJson(
       this,
     );
   }
@@ -782,11 +783,11 @@ abstract class _PocketUserDTO extends PocketUserDTO {
   const factory _PocketUserDTO(
       {required final String id,
       required final String name,
-      required final String role}) = _$_PocketUserDTO;
+      required final String role}) = _$PocketUserDTOImpl;
   const _PocketUserDTO._() : super._();
 
   factory _PocketUserDTO.fromJson(Map<String, dynamic> json) =
-      _$_PocketUserDTO.fromJson;
+      _$PocketUserDTOImpl.fromJson;
 
   @override
   String get id;
@@ -796,6 +797,6 @@ abstract class _PocketUserDTO extends PocketUserDTO {
   String get role;
   @override
   @JsonKey(ignore: true)
-  _$$_PocketUserDTOCopyWith<_$_PocketUserDTO> get copyWith =>
+  _$$PocketUserDTOImplCopyWith<_$PocketUserDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

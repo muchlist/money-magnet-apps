@@ -17,35 +17,43 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PocketState {
   List<Pocket> get pockets => throw _privateConstructorUsedError;
+  Pocket get detail => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Pocket> pockets) initial,
-    required TResult Function(List<Pocket> pockets, String balanceInfo) loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail) initial,
     required TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)
+            List<Pocket> pockets, Pocket detail, String balanceInfo)
+        loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail,
+            String balanceInfo, bool isNextPageAvailable)
         success,
-    required TResult Function(List<Pocket> pockets, DataFailure failure)
+    required TResult Function(
+            List<Pocket> pockets, Pocket detail, DataFailure failure)
         failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Pocket> pockets)? initial,
-    TResult? Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult? Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult? Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult? Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult? Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Pocket> pockets)? initial,
-    TResult Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,7 +94,9 @@ abstract class $PocketStateCopyWith<$Res> {
           PocketState value, $Res Function(PocketState) then) =
       _$PocketStateCopyWithImpl<$Res, PocketState>;
   @useResult
-  $Res call({List<Pocket> pockets});
+  $Res call({List<Pocket> pockets, Pocket detail});
+
+  $PocketCopyWith<$Res> get detail;
 }
 
 /// @nodoc
@@ -103,51 +113,74 @@ class _$PocketStateCopyWithImpl<$Res, $Val extends PocketState>
   @override
   $Res call({
     Object? pockets = null,
+    Object? detail = null,
   }) {
     return _then(_value.copyWith(
       pockets: null == pockets
           ? _value.pockets
           : pockets // ignore: cast_nullable_to_non_nullable
               as List<Pocket>,
+      detail: null == detail
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as Pocket,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PocketCopyWith<$Res> get detail {
+    return $PocketCopyWith<$Res>(_value.detail, (value) {
+      return _then(_value.copyWith(detail: value) as $Val);
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> implements $PocketStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $PocketStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Pocket> pockets});
+  $Res call({List<Pocket> pockets, Pocket detail});
+
+  @override
+  $PocketCopyWith<$Res> get detail;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$PocketStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$PocketStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pockets = null,
+    Object? detail = null,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       null == pockets
           ? _value._pockets
           : pockets // ignore: cast_nullable_to_non_nullable
               as List<Pocket>,
+      null == detail
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as Pocket,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Initial extends _Initial {
-  const _$_Initial(final List<Pocket> pockets)
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl(final List<Pocket> pockets, this.detail)
       : _pockets = pockets,
         super._();
 
@@ -160,68 +193,79 @@ class _$_Initial extends _Initial {
   }
 
   @override
+  final Pocket detail;
+
+  @override
   String toString() {
-    return 'PocketState.initial(pockets: $pockets)';
+    return 'PocketState.initial(pockets: $pockets, detail: $detail)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
-            const DeepCollectionEquality().equals(other._pockets, _pockets));
+            other is _$InitialImpl &&
+            const DeepCollectionEquality().equals(other._pockets, _pockets) &&
+            (identical(other.detail, detail) || other.detail == detail));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_pockets));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pockets), detail);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Pocket> pockets) initial,
-    required TResult Function(List<Pocket> pockets, String balanceInfo) loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail) initial,
     required TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)
+            List<Pocket> pockets, Pocket detail, String balanceInfo)
+        loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail,
+            String balanceInfo, bool isNextPageAvailable)
         success,
-    required TResult Function(List<Pocket> pockets, DataFailure failure)
+    required TResult Function(
+            List<Pocket> pockets, Pocket detail, DataFailure failure)
         failure,
   }) {
-    return initial(pockets);
+    return initial(pockets, detail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Pocket> pockets)? initial,
-    TResult? Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult? Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult? Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult? Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult? Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
   }) {
-    return initial?.call(pockets);
+    return initial?.call(pockets, detail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Pocket> pockets)? initial,
-    TResult Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(pockets);
+      return initial(pockets, detail);
     }
     return orElse();
   }
@@ -265,45 +309,58 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends PocketState {
-  const factory _Initial(final List<Pocket> pockets) = _$_Initial;
+  const factory _Initial(final List<Pocket> pockets, final Pocket detail) =
+      _$InitialImpl;
   const _Initial._() : super._();
 
   @override
   List<Pocket> get pockets;
   @override
+  Pocket get detail;
+  @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> implements $PocketStateCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res>
+    implements $PocketStateCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Pocket> pockets, String balanceInfo});
+  $Res call({List<Pocket> pockets, Pocket detail, String balanceInfo});
+
+  @override
+  $PocketCopyWith<$Res> get detail;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$PocketStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$PocketStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pockets = null,
+    Object? detail = null,
     Object? balanceInfo = null,
   }) {
-    return _then(_$_Loading(
+    return _then(_$LoadingImpl(
       null == pockets
           ? _value._pockets
           : pockets // ignore: cast_nullable_to_non_nullable
               as List<Pocket>,
+      null == detail
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as Pocket,
       null == balanceInfo
           ? _value.balanceInfo
           : balanceInfo // ignore: cast_nullable_to_non_nullable
@@ -314,8 +371,8 @@ class __$$_LoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loading extends _Loading {
-  const _$_Loading(final List<Pocket> pockets, this.balanceInfo)
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl(final List<Pocket> pockets, this.detail, this.balanceInfo)
       : _pockets = pockets,
         super._();
 
@@ -328,73 +385,83 @@ class _$_Loading extends _Loading {
   }
 
   @override
+  final Pocket detail;
+  @override
   final String balanceInfo;
 
   @override
   String toString() {
-    return 'PocketState.loading(pockets: $pockets, balanceInfo: $balanceInfo)';
+    return 'PocketState.loading(pockets: $pockets, detail: $detail, balanceInfo: $balanceInfo)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loading &&
+            other is _$LoadingImpl &&
             const DeepCollectionEquality().equals(other._pockets, _pockets) &&
+            (identical(other.detail, detail) || other.detail == detail) &&
             (identical(other.balanceInfo, balanceInfo) ||
                 other.balanceInfo == balanceInfo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_pockets), balanceInfo);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_pockets), detail, balanceInfo);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
-      __$$_LoadingCopyWithImpl<_$_Loading>(this, _$identity);
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Pocket> pockets) initial,
-    required TResult Function(List<Pocket> pockets, String balanceInfo) loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail) initial,
     required TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)
+            List<Pocket> pockets, Pocket detail, String balanceInfo)
+        loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail,
+            String balanceInfo, bool isNextPageAvailable)
         success,
-    required TResult Function(List<Pocket> pockets, DataFailure failure)
+    required TResult Function(
+            List<Pocket> pockets, Pocket detail, DataFailure failure)
         failure,
   }) {
-    return loading(pockets, balanceInfo);
+    return loading(pockets, detail, balanceInfo);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Pocket> pockets)? initial,
-    TResult? Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult? Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult? Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult? Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult? Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
   }) {
-    return loading?.call(pockets, balanceInfo);
+    return loading?.call(pockets, detail, balanceInfo);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Pocket> pockets)? initial,
-    TResult Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(pockets, balanceInfo);
+      return loading(pockets, detail, balanceInfo);
     }
     return orElse();
   }
@@ -438,49 +505,64 @@ class _$_Loading extends _Loading {
 }
 
 abstract class _Loading extends PocketState {
-  const factory _Loading(final List<Pocket> pockets, final String balanceInfo) =
-      _$_Loading;
+  const factory _Loading(final List<Pocket> pockets, final Pocket detail,
+      final String balanceInfo) = _$LoadingImpl;
   const _Loading._() : super._();
 
   @override
   List<Pocket> get pockets;
+  @override
+  Pocket get detail;
   String get balanceInfo;
   @override
   @JsonKey(ignore: true)
-  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SuccessCopyWith<$Res> implements $PocketStateCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
-      __$$_SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res>
+    implements $PocketStateCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable});
+      {List<Pocket> pockets,
+      Pocket detail,
+      String balanceInfo,
+      bool isNextPageAvailable});
+
+  @override
+  $PocketCopyWith<$Res> get detail;
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$PocketStateCopyWithImpl<$Res, _$_Success>
-    implements _$$_SuccessCopyWith<$Res> {
-  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$PocketStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pockets = null,
+    Object? detail = null,
     Object? balanceInfo = null,
     Object? isNextPageAvailable = null,
   }) {
-    return _then(_$_Success(
+    return _then(_$SuccessImpl(
       null == pockets
           ? _value._pockets
           : pockets // ignore: cast_nullable_to_non_nullable
               as List<Pocket>,
+      null == detail
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as Pocket,
       null == balanceInfo
           ? _value.balanceInfo
           : balanceInfo // ignore: cast_nullable_to_non_nullable
@@ -495,8 +577,8 @@ class __$$_SuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Success extends _Success {
-  const _$_Success(final List<Pocket> pockets, this.balanceInfo,
+class _$SuccessImpl extends _Success {
+  const _$SuccessImpl(final List<Pocket> pockets, this.detail, this.balanceInfo,
       {required this.isNextPageAvailable})
       : _pockets = pockets,
         super._();
@@ -510,21 +592,24 @@ class _$_Success extends _Success {
   }
 
   @override
+  final Pocket detail;
+  @override
   final String balanceInfo;
   @override
   final bool isNextPageAvailable;
 
   @override
   String toString() {
-    return 'PocketState.success(pockets: $pockets, balanceInfo: $balanceInfo, isNextPageAvailable: $isNextPageAvailable)';
+    return 'PocketState.success(pockets: $pockets, detail: $detail, balanceInfo: $balanceInfo, isNextPageAvailable: $isNextPageAvailable)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Success &&
+            other is _$SuccessImpl &&
             const DeepCollectionEquality().equals(other._pockets, _pockets) &&
+            (identical(other.detail, detail) || other.detail == detail) &&
             (identical(other.balanceInfo, balanceInfo) ||
                 other.balanceInfo == balanceInfo) &&
             (identical(other.isNextPageAvailable, isNextPageAvailable) ||
@@ -535,55 +620,63 @@ class _$_Success extends _Success {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_pockets),
+      detail,
       balanceInfo,
       isNextPageAvailable);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Pocket> pockets) initial,
-    required TResult Function(List<Pocket> pockets, String balanceInfo) loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail) initial,
     required TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)
+            List<Pocket> pockets, Pocket detail, String balanceInfo)
+        loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail,
+            String balanceInfo, bool isNextPageAvailable)
         success,
-    required TResult Function(List<Pocket> pockets, DataFailure failure)
+    required TResult Function(
+            List<Pocket> pockets, Pocket detail, DataFailure failure)
         failure,
   }) {
-    return success(pockets, balanceInfo, isNextPageAvailable);
+    return success(pockets, detail, balanceInfo, isNextPageAvailable);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Pocket> pockets)? initial,
-    TResult? Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult? Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult? Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult? Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult? Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
   }) {
-    return success?.call(pockets, balanceInfo, isNextPageAvailable);
+    return success?.call(pockets, detail, balanceInfo, isNextPageAvailable);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Pocket> pockets)? initial,
-    TResult Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(pockets, balanceInfo, isNextPageAvailable);
+      return success(pockets, detail, balanceInfo, isNextPageAvailable);
     }
     return orElse();
   }
@@ -627,50 +720,62 @@ class _$_Success extends _Success {
 }
 
 abstract class _Success extends PocketState {
-  const factory _Success(final List<Pocket> pockets, final String balanceInfo,
-      {required final bool isNextPageAvailable}) = _$_Success;
+  const factory _Success(
+      final List<Pocket> pockets, final Pocket detail, final String balanceInfo,
+      {required final bool isNextPageAvailable}) = _$SuccessImpl;
   const _Success._() : super._();
 
   @override
   List<Pocket> get pockets;
+  @override
+  Pocket get detail;
   String get balanceInfo;
   bool get isNextPageAvailable;
   @override
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailureCopyWith<$Res> implements $PocketStateCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
-      __$$_FailureCopyWithImpl<$Res>;
+abstract class _$$FailureImplCopyWith<$Res>
+    implements $PocketStateCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Pocket> pockets, DataFailure failure});
+  $Res call({List<Pocket> pockets, Pocket detail, DataFailure failure});
 
+  @override
+  $PocketCopyWith<$Res> get detail;
   $DataFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$PocketStateCopyWithImpl<$Res, _$_Failure>
-    implements _$$_FailureCopyWith<$Res> {
-  __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$PocketStateCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pockets = null,
+    Object? detail = null,
     Object? failure = null,
   }) {
-    return _then(_$_Failure(
+    return _then(_$FailureImpl(
       null == pockets
           ? _value._pockets
           : pockets // ignore: cast_nullable_to_non_nullable
               as List<Pocket>,
+      null == detail
+          ? _value.detail
+          : detail // ignore: cast_nullable_to_non_nullable
+              as Pocket,
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -689,8 +794,8 @@ class __$$_FailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Failure extends _Failure {
-  const _$_Failure(final List<Pocket> pockets, this.failure)
+class _$FailureImpl extends _Failure {
+  const _$FailureImpl(final List<Pocket> pockets, this.detail, this.failure)
       : _pockets = pockets,
         super._();
 
@@ -703,72 +808,82 @@ class _$_Failure extends _Failure {
   }
 
   @override
+  final Pocket detail;
+  @override
   final DataFailure failure;
 
   @override
   String toString() {
-    return 'PocketState.failure(pockets: $pockets, failure: $failure)';
+    return 'PocketState.failure(pockets: $pockets, detail: $detail, failure: $failure)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Failure &&
+            other is _$FailureImpl &&
             const DeepCollectionEquality().equals(other._pockets, _pockets) &&
+            (identical(other.detail, detail) || other.detail == detail) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_pockets), failure);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_pockets), detail, failure);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
-      __$$_FailureCopyWithImpl<_$_Failure>(this, _$identity);
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Pocket> pockets) initial,
-    required TResult Function(List<Pocket> pockets, String balanceInfo) loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail) initial,
     required TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)
+            List<Pocket> pockets, Pocket detail, String balanceInfo)
+        loading,
+    required TResult Function(List<Pocket> pockets, Pocket detail,
+            String balanceInfo, bool isNextPageAvailable)
         success,
-    required TResult Function(List<Pocket> pockets, DataFailure failure)
+    required TResult Function(
+            List<Pocket> pockets, Pocket detail, DataFailure failure)
         failure,
   }) {
-    return failure(pockets, this.failure);
+    return failure(pockets, detail, this.failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Pocket> pockets)? initial,
-    TResult? Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult? Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult? Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult? Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult? Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult? Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
   }) {
-    return failure?.call(pockets, this.failure);
+    return failure?.call(pockets, detail, this.failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Pocket> pockets)? initial,
-    TResult Function(List<Pocket> pockets, String balanceInfo)? loading,
-    TResult Function(
-            List<Pocket> pockets, String balanceInfo, bool isNextPageAvailable)?
+    TResult Function(List<Pocket> pockets, Pocket detail)? initial,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo)?
+        loading,
+    TResult Function(List<Pocket> pockets, Pocket detail, String balanceInfo,
+            bool isNextPageAvailable)?
         success,
-    TResult Function(List<Pocket> pockets, DataFailure failure)? failure,
+    TResult Function(List<Pocket> pockets, Pocket detail, DataFailure failure)?
+        failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(pockets, this.failure);
+      return failure(pockets, detail, this.failure);
     }
     return orElse();
   }
@@ -812,15 +927,17 @@ class _$_Failure extends _Failure {
 }
 
 abstract class _Failure extends PocketState {
-  const factory _Failure(
-      final List<Pocket> pockets, final DataFailure failure) = _$_Failure;
+  const factory _Failure(final List<Pocket> pockets, final Pocket detail,
+      final DataFailure failure) = _$FailureImpl;
   const _Failure._() : super._();
 
   @override
   List<Pocket> get pockets;
+  @override
+  Pocket get detail;
   DataFailure get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

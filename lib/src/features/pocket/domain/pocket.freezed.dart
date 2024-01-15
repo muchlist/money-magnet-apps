@@ -133,9 +133,10 @@ class _$PocketCopyWithImpl<$Res, $Val extends Pocket>
 }
 
 /// @nodoc
-abstract class _$$_PocketCopyWith<$Res> implements $PocketCopyWith<$Res> {
-  factory _$$_PocketCopyWith(_$_Pocket value, $Res Function(_$_Pocket) then) =
-      __$$_PocketCopyWithImpl<$Res>;
+abstract class _$$PocketImplCopyWith<$Res> implements $PocketCopyWith<$Res> {
+  factory _$$PocketImplCopyWith(
+          _$PocketImpl value, $Res Function(_$PocketImpl) then) =
+      __$$PocketImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -154,10 +155,11 @@ abstract class _$$_PocketCopyWith<$Res> implements $PocketCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PocketCopyWithImpl<$Res>
-    extends _$PocketCopyWithImpl<$Res, _$_Pocket>
-    implements _$$_PocketCopyWith<$Res> {
-  __$$_PocketCopyWithImpl(_$_Pocket _value, $Res Function(_$_Pocket) _then)
+class __$$PocketImplCopyWithImpl<$Res>
+    extends _$PocketCopyWithImpl<$Res, _$PocketImpl>
+    implements _$$PocketImplCopyWith<$Res> {
+  __$$PocketImplCopyWithImpl(
+      _$PocketImpl _value, $Res Function(_$PocketImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -176,7 +178,7 @@ class __$$_PocketCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$_Pocket(
+    return _then(_$PocketImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -231,8 +233,8 @@ class __$$_PocketCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Pocket extends _Pocket {
-  const _$_Pocket(
+class _$PocketImpl extends _Pocket {
+  const _$PocketImpl(
       {required this.id,
       required this.pocketName,
       required this.balance,
@@ -299,10 +301,10 @@ class _$_Pocket extends _Pocket {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Pocket &&
+            other is _$PocketImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.pocketName, pocketName) ||
                 other.pocketName == pocketName) &&
@@ -341,8 +343,8 @@ class _$_Pocket extends _Pocket {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PocketCopyWith<_$_Pocket> get copyWith =>
-      __$$_PocketCopyWithImpl<_$_Pocket>(this, _$identity);
+  _$$PocketImplCopyWith<_$PocketImpl> get copyWith =>
+      __$$PocketImplCopyWithImpl<_$PocketImpl>(this, _$identity);
 }
 
 abstract class _Pocket extends Pocket {
@@ -358,7 +360,7 @@ abstract class _Pocket extends Pocket {
       required final List<String> watcherID,
       required final List<PocketUser> users,
       required final String createdAt,
-      required final String updatedAt}) = _$_Pocket;
+      required final String updatedAt}) = _$PocketImpl;
   const _Pocket._() : super._();
 
   @override
@@ -387,7 +389,7 @@ abstract class _Pocket extends Pocket {
   String get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_PocketCopyWith<_$_Pocket> get copyWith =>
+  _$$PocketImplCopyWith<_$PocketImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -446,22 +448,22 @@ class _$PocketUserCopyWithImpl<$Res, $Val extends PocketUser>
 }
 
 /// @nodoc
-abstract class _$$_PocketUserCopyWith<$Res>
+abstract class _$$PocketUserImplCopyWith<$Res>
     implements $PocketUserCopyWith<$Res> {
-  factory _$$_PocketUserCopyWith(
-          _$_PocketUser value, $Res Function(_$_PocketUser) then) =
-      __$$_PocketUserCopyWithImpl<$Res>;
+  factory _$$PocketUserImplCopyWith(
+          _$PocketUserImpl value, $Res Function(_$PocketUserImpl) then) =
+      __$$PocketUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name, String role});
 }
 
 /// @nodoc
-class __$$_PocketUserCopyWithImpl<$Res>
-    extends _$PocketUserCopyWithImpl<$Res, _$_PocketUser>
-    implements _$$_PocketUserCopyWith<$Res> {
-  __$$_PocketUserCopyWithImpl(
-      _$_PocketUser _value, $Res Function(_$_PocketUser) _then)
+class __$$PocketUserImplCopyWithImpl<$Res>
+    extends _$PocketUserCopyWithImpl<$Res, _$PocketUserImpl>
+    implements _$$PocketUserImplCopyWith<$Res> {
+  __$$PocketUserImplCopyWithImpl(
+      _$PocketUserImpl _value, $Res Function(_$PocketUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -471,7 +473,7 @@ class __$$_PocketUserCopyWithImpl<$Res>
     Object? name = null,
     Object? role = null,
   }) {
-    return _then(_$_PocketUser(
+    return _then(_$PocketUserImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -490,8 +492,8 @@ class __$$_PocketUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PocketUser extends _PocketUser {
-  const _$_PocketUser(
+class _$PocketUserImpl extends _PocketUser {
+  const _$PocketUserImpl(
       {required this.id, required this.name, required this.role})
       : super._();
 
@@ -508,10 +510,10 @@ class _$_PocketUser extends _PocketUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PocketUser &&
+            other is _$PocketUserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.role, role) || other.role == role));
@@ -523,15 +525,15 @@ class _$_PocketUser extends _PocketUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PocketUserCopyWith<_$_PocketUser> get copyWith =>
-      __$$_PocketUserCopyWithImpl<_$_PocketUser>(this, _$identity);
+  _$$PocketUserImplCopyWith<_$PocketUserImpl> get copyWith =>
+      __$$PocketUserImplCopyWithImpl<_$PocketUserImpl>(this, _$identity);
 }
 
 abstract class _PocketUser extends PocketUser {
   const factory _PocketUser(
       {required final String id,
       required final String name,
-      required final String role}) = _$_PocketUser;
+      required final String role}) = _$PocketUserImpl;
   const _PocketUser._() : super._();
 
   @override
@@ -542,6 +544,6 @@ abstract class _PocketUser extends PocketUser {
   String get role;
   @override
   @JsonKey(ignore: true)
-  _$$_PocketUserCopyWith<_$_PocketUser> get copyWith =>
+  _$$PocketUserImplCopyWith<_$PocketUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

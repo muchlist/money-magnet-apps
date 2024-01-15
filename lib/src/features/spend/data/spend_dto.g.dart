@@ -6,21 +6,24 @@ part of 'spend_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SpendResponseDTO _$$_SpendResponseDTOFromJson(Map<String, dynamic> json) =>
-    _$_SpendResponseDTO(
+_$SpendResponseDTOImpl _$$SpendResponseDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SpendResponseDTOImpl(
       data: json['data'] == null
           ? null
           : SpendDTO.fromJson(json['data'] as Map<String, dynamic>),
       error: json['error'] as String?,
     );
 
-Map<String, dynamic> _$$_SpendResponseDTOToJson(_$_SpendResponseDTO instance) =>
+Map<String, dynamic> _$$SpendResponseDTOImplToJson(
+        _$SpendResponseDTOImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
       'error': instance.error,
     };
 
-_$_SpendDTO _$$_SpendDTOFromJson(Map<String, dynamic> json) => _$_SpendDTO(
+_$SpendDTOImpl _$$SpendDTOImplFromJson(Map<String, dynamic> json) =>
+    _$SpendDTOImpl(
       id: json['id'] as String,
       userID: json['user_id'] as String,
       userName: json['user_name'] as String,
@@ -40,7 +43,7 @@ _$_SpendDTO _$$_SpendDTOFromJson(Map<String, dynamic> json) => _$_SpendDTO(
       version: json['version'] as int,
     );
 
-Map<String, dynamic> _$$_SpendDTOToJson(_$_SpendDTO instance) =>
+Map<String, dynamic> _$$SpendDTOImplToJson(_$SpendDTOImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'user_id': instance.userID,
@@ -61,8 +64,8 @@ Map<String, dynamic> _$$_SpendDTOToJson(_$_SpendDTO instance) =>
       'version': instance.version,
     };
 
-_$_SpendReqDTO _$$_SpendReqDTOFromJson(Map<String, dynamic> json) =>
-    _$_SpendReqDTO(
+_$SpendReqDTOImpl _$$SpendReqDTOImplFromJson(Map<String, dynamic> json) =>
+    _$SpendReqDTOImpl(
       pocketID: json['pocket_id'] as String,
       categoryID: json['category_id'] as String,
       name: json['name'] as String,
@@ -70,10 +73,9 @@ _$_SpendReqDTO _$$_SpendReqDTOFromJson(Map<String, dynamic> json) =>
       isIncome: json['is_income'] as bool,
       type: json['type'] as int,
       date: json['date'] as String,
-      version: json['version'] as int,
     );
 
-Map<String, dynamic> _$$_SpendReqDTOToJson(_$_SpendReqDTO instance) =>
+Map<String, dynamic> _$$SpendReqDTOImplToJson(_$SpendReqDTOImpl instance) =>
     <String, dynamic>{
       'pocket_id': instance.pocketID,
       'category_id': instance.categoryID,
@@ -82,5 +84,4 @@ Map<String, dynamic> _$$_SpendReqDTOToJson(_$_SpendReqDTO instance) =>
       'is_income': instance.isIncome,
       'type': instance.type,
       'date': instance.date,
-      'version': instance.version,
     };
