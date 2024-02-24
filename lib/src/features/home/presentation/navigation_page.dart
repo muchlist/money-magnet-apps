@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:money_magnet/src/features/auth/application/auth_notifier.dart';
 import 'package:money_magnet/src/features/home/presentation/home_fragment.dart';
 import 'package:money_magnet/src/features/pocket/presentation/page/pocket_fragment.dart';
+import 'package:money_magnet/src/routes/app_router.dart';
+import 'package:money_magnet/src/routes/app_router.gr.dart';
 
 import '../../auth/presentation/provider/providers.dart';
 
