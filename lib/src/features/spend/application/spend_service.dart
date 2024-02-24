@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:money_magnet/src/commons/dev/logger.dart';
 import 'package:money_magnet/src/commons/infrastructure/data_failure.dart';
 import 'package:money_magnet/src/commons/infrastructure/network_exceptions.dart';
 import 'package:money_magnet/src/features/spend/data/spend_dto.dart';

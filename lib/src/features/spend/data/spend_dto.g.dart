@@ -34,7 +34,7 @@ _$SpendDTOImpl _$$SpendDTOImplFromJson(Map<String, dynamic> json) =>
       categoryIcon: json['category_icon'] as int,
       name: json['name'] as String,
       price: json['price'] as int,
-      balanceSnapshoot: json['balance_snapshoot'] as int,
+      balanceSnapshoot: json['balance_snapshoot'] as int? ?? 0,
       isIncome: json['is_income'] as bool,
       type: json['type'] as int,
       date: json['date'] as String,

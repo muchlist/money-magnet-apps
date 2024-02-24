@@ -224,7 +224,7 @@ mixin _$SpendDTO {
   int get categoryIcon => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
-  @JsonKey(name: 'balance_snapshoot')
+  @JsonKey(name: 'balance_snapshoot', defaultValue: 0)
   int get balanceSnapshoot => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_income')
   bool get isIncome => throw _privateConstructorUsedError;
@@ -258,7 +258,7 @@ abstract class $SpendDTOCopyWith<$Res> {
       @JsonKey(name: 'category_icon') int categoryIcon,
       String name,
       int price,
-      @JsonKey(name: 'balance_snapshoot') int balanceSnapshoot,
+      @JsonKey(name: 'balance_snapshoot', defaultValue: 0) int balanceSnapshoot,
       @JsonKey(name: 'is_income') bool isIncome,
       int type,
       String date,
@@ -390,7 +390,7 @@ abstract class _$$SpendDTOImplCopyWith<$Res>
       @JsonKey(name: 'category_icon') int categoryIcon,
       String name,
       int price,
-      @JsonKey(name: 'balance_snapshoot') int balanceSnapshoot,
+      @JsonKey(name: 'balance_snapshoot', defaultValue: 0) int balanceSnapshoot,
       @JsonKey(name: 'is_income') bool isIncome,
       int type,
       String date,
@@ -515,7 +515,8 @@ class _$SpendDTOImpl extends _SpendDTO {
       @JsonKey(name: 'category_icon') required this.categoryIcon,
       required this.name,
       required this.price,
-      @JsonKey(name: 'balance_snapshoot') required this.balanceSnapshoot,
+      @JsonKey(name: 'balance_snapshoot', defaultValue: 0)
+      required this.balanceSnapshoot,
       @JsonKey(name: 'is_income') required this.isIncome,
       required this.type,
       required this.date,
@@ -555,7 +556,7 @@ class _$SpendDTOImpl extends _SpendDTO {
   @override
   final int price;
   @override
-  @JsonKey(name: 'balance_snapshoot')
+  @JsonKey(name: 'balance_snapshoot', defaultValue: 0)
   final int balanceSnapshoot;
   @override
   @JsonKey(name: 'is_income')
@@ -660,7 +661,8 @@ abstract class _SpendDTO extends SpendDTO {
       @JsonKey(name: 'category_icon') required final int categoryIcon,
       required final String name,
       required final int price,
-      @JsonKey(name: 'balance_snapshoot') required final int balanceSnapshoot,
+      @JsonKey(name: 'balance_snapshoot', defaultValue: 0)
+      required final int balanceSnapshoot,
       @JsonKey(name: 'is_income') required final bool isIncome,
       required final int type,
       required final String date,
@@ -700,7 +702,7 @@ abstract class _SpendDTO extends SpendDTO {
   @override
   int get price;
   @override
-  @JsonKey(name: 'balance_snapshoot')
+  @JsonKey(name: 'balance_snapshoot', defaultValue: 0)
   int get balanceSnapshoot;
   @override
   @JsonKey(name: 'is_income')

@@ -74,7 +74,7 @@ class SpendRemoteRepository implements ISpendRemoteRepository {
   }) async {
     final requestUri = Uri.https(
       RemoteConfig.baseURL,
-      '/spends/from-pocket/{$pocketID}',
+      '/spends/from-pocket/$pocketID',
       {"page": "$page", "page_size": "$pageSize", "sort": sort}, // todo
     );
 

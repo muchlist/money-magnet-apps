@@ -54,7 +54,7 @@ class _SpendAddPageBodyState extends ConsumerState<SpendAddPageBody> {
   final GlobalKey<FormState> _formAddSpendkey = GlobalKey<FormState>();
   int _selectedIconIndex = 0;
   final int _selectedType = 0;
-  final String _spendDate = "2023-09-28T19:24:31.777716Z";
+  final String _spendDate = "2024-09-21T19:24:31.777716Z";
 
   void _addSpend() async {
     if (_formAddSpendkey.currentState?.validate() ?? false) {
@@ -63,8 +63,7 @@ class _SpendAddPageBodyState extends ConsumerState<SpendAddPageBody> {
 
       SpendReqDTO payload = SpendReqDTO(
         pocketID: widget.pocketID,
-        categoryID:
-            "26bd6a51-a75c-48ea-8f26-fd18e6d5fbdf", // TODO category getter
+        categoryID: "01J89Y8C0C7N8T8KDPWTBMPX4C", // TODO category getter
         name: spendName,
         price: int.parse(spendPrice),
         isIncome: true, // TODO category getter
