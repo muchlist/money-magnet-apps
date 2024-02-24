@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'spend_notifier.dart';
+part of 'spend_create_notifier.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,31 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$SpendState {
-  List<Spend> get spends => throw _privateConstructorUsedError;
+mixin _$SpendCreateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Spend> spends) initial,
-    required TResult Function(List<Spend> spends) loading,
-    required TResult Function(List<Spend> spends, bool isNextPageAvailable)
-        success,
-    required TResult Function(List<Spend> spends, DataFailure failure) failure,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Spend spend) success,
+    required TResult Function(DataFailure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Spend> spends)? initial,
-    TResult? Function(List<Spend> spends)? loading,
-    TResult? Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult? Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Spend spend)? success,
+    TResult? Function(DataFailure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Spend> spends)? initial,
-    TResult Function(List<Spend> spends)? loading,
-    TResult Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Spend spend)? success,
+    TResult Function(DataFailure failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,150 +66,94 @@ mixin _$SpendState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $SpendStateCopyWith<SpendState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SpendStateCopyWith<$Res> {
-  factory $SpendStateCopyWith(
-          SpendState value, $Res Function(SpendState) then) =
-      _$SpendStateCopyWithImpl<$Res, SpendState>;
-  @useResult
-  $Res call({List<Spend> spends});
+abstract class $SpendCreateStateCopyWith<$Res> {
+  factory $SpendCreateStateCopyWith(
+          SpendCreateState value, $Res Function(SpendCreateState) then) =
+      _$SpendCreateStateCopyWithImpl<$Res, SpendCreateState>;
 }
 
 /// @nodoc
-class _$SpendStateCopyWithImpl<$Res, $Val extends SpendState>
-    implements $SpendStateCopyWith<$Res> {
-  _$SpendStateCopyWithImpl(this._value, this._then);
+class _$SpendCreateStateCopyWithImpl<$Res, $Val extends SpendCreateState>
+    implements $SpendCreateStateCopyWith<$Res> {
+  _$SpendCreateStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? spends = null,
-  }) {
-    return _then(_value.copyWith(
-      spends: null == spends
-          ? _value.spends
-          : spends // ignore: cast_nullable_to_non_nullable
-              as List<Spend>,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res>
-    implements $SpendStateCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Spend> spends});
 }
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SpendStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$SpendCreateStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? spends = null,
-  }) {
-    return _then(_$InitialImpl(
-      null == spends
-          ? _value._spends
-          : spends // ignore: cast_nullable_to_non_nullable
-              as List<Spend>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$InitialImpl extends _Initial {
-  const _$InitialImpl(final List<Spend> spends)
-      : _spends = spends,
-        super._();
-
-  final List<Spend> _spends;
-  @override
-  List<Spend> get spends {
-    if (_spends is EqualUnmodifiableListView) return _spends;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_spends);
-  }
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
-    return 'SpendState.initial(spends: $spends)';
+    return 'SpendCreateState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
-            const DeepCollectionEquality().equals(other._spends, _spends));
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_spends));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Spend> spends) initial,
-    required TResult Function(List<Spend> spends) loading,
-    required TResult Function(List<Spend> spends, bool isNextPageAvailable)
-        success,
-    required TResult Function(List<Spend> spends, DataFailure failure) failure,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Spend spend) success,
+    required TResult Function(DataFailure failure) failure,
   }) {
-    return initial(spends);
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Spend> spends)? initial,
-    TResult? Function(List<Spend> spends)? loading,
-    TResult? Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult? Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Spend spend)? success,
+    TResult? Function(DataFailure failure)? failure,
   }) {
-    return initial?.call(spends);
+    return initial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Spend> spends)? initial,
-    TResult Function(List<Spend> spends)? loading,
-    TResult Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Spend spend)? success,
+    TResult Function(DataFailure failure)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(spends);
+      return initial();
     }
     return orElse();
   }
@@ -254,123 +196,79 @@ class _$InitialImpl extends _Initial {
   }
 }
 
-abstract class _Initial extends SpendState {
-  const factory _Initial(final List<Spend> spends) = _$InitialImpl;
+abstract class _Initial extends SpendCreateState {
+  const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
-
-  @override
-  List<Spend> get spends;
-  @override
-  @JsonKey(ignore: true)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res>
-    implements $SpendStateCopyWith<$Res> {
+abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
       __$$LoadingImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Spend> spends});
 }
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$SpendStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$SpendCreateStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? spends = null,
-  }) {
-    return _then(_$LoadingImpl(
-      null == spends
-          ? _value._spends
-          : spends // ignore: cast_nullable_to_non_nullable
-              as List<Spend>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$LoadingImpl extends _Loading {
-  const _$LoadingImpl(final List<Spend> spends)
-      : _spends = spends,
-        super._();
-
-  final List<Spend> _spends;
-  @override
-  List<Spend> get spends {
-    if (_spends is EqualUnmodifiableListView) return _spends;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_spends);
-  }
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
-    return 'SpendState.loading(spends: $spends)';
+    return 'SpendCreateState.loading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadingImpl &&
-            const DeepCollectionEquality().equals(other._spends, _spends));
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_spends));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
-      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Spend> spends) initial,
-    required TResult Function(List<Spend> spends) loading,
-    required TResult Function(List<Spend> spends, bool isNextPageAvailable)
-        success,
-    required TResult Function(List<Spend> spends, DataFailure failure) failure,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Spend spend) success,
+    required TResult Function(DataFailure failure) failure,
   }) {
-    return loading(spends);
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Spend> spends)? initial,
-    TResult? Function(List<Spend> spends)? loading,
-    TResult? Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult? Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Spend spend)? success,
+    TResult? Function(DataFailure failure)? failure,
   }) {
-    return loading?.call(spends);
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Spend> spends)? initial,
-    TResult Function(List<Spend> spends)? loading,
-    TResult Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Spend spend)? success,
+    TResult Function(DataFailure failure)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(spends);
+      return loading();
     }
     return orElse();
   }
@@ -413,32 +311,25 @@ class _$LoadingImpl extends _Loading {
   }
 }
 
-abstract class _Loading extends SpendState {
-  const factory _Loading(final List<Spend> spends) = _$LoadingImpl;
+abstract class _Loading extends SpendCreateState {
+  const factory _Loading() = _$LoadingImpl;
   const _Loading._() : super._();
-
-  @override
-  List<Spend> get spends;
-  @override
-  @JsonKey(ignore: true)
-  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res>
-    implements $SpendStateCopyWith<$Res> {
+abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({List<Spend> spends, bool isNextPageAvailable});
+  $Res call({Spend spend});
+
+  $SpendCopyWith<$Res> get spend;
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$SpendStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$SpendCreateStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -447,44 +338,36 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? spends = null,
-    Object? isNextPageAvailable = null,
+    Object? spend = null,
   }) {
     return _then(_$SuccessImpl(
-      null == spends
-          ? _value._spends
-          : spends // ignore: cast_nullable_to_non_nullable
-              as List<Spend>,
-      isNextPageAvailable: null == isNextPageAvailable
-          ? _value.isNextPageAvailable
-          : isNextPageAvailable // ignore: cast_nullable_to_non_nullable
-              as bool,
+      null == spend
+          ? _value.spend
+          : spend // ignore: cast_nullable_to_non_nullable
+              as Spend,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SpendCopyWith<$Res> get spend {
+    return $SpendCopyWith<$Res>(_value.spend, (value) {
+      return _then(_value.copyWith(spend: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$SuccessImpl extends _Success {
-  const _$SuccessImpl(final List<Spend> spends,
-      {required this.isNextPageAvailable})
-      : _spends = spends,
-        super._();
-
-  final List<Spend> _spends;
-  @override
-  List<Spend> get spends {
-    if (_spends is EqualUnmodifiableListView) return _spends;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_spends);
-  }
+  const _$SuccessImpl(this.spend) : super._();
 
   @override
-  final bool isNextPageAvailable;
+  final Spend spend;
 
   @override
   String toString() {
-    return 'SpendState.success(spends: $spends, isNextPageAvailable: $isNextPageAvailable)';
+    return 'SpendCreateState.success(spend: $spend)';
   }
 
   @override
@@ -492,14 +375,11 @@ class _$SuccessImpl extends _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._spends, _spends) &&
-            (identical(other.isNextPageAvailable, isNextPageAvailable) ||
-                other.isNextPageAvailable == isNextPageAvailable));
+            (identical(other.spend, spend) || other.spend == spend));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_spends), isNextPageAvailable);
+  int get hashCode => Object.hash(runtimeType, spend);
 
   @JsonKey(ignore: true)
   @override
@@ -510,37 +390,36 @@ class _$SuccessImpl extends _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Spend> spends) initial,
-    required TResult Function(List<Spend> spends) loading,
-    required TResult Function(List<Spend> spends, bool isNextPageAvailable)
-        success,
-    required TResult Function(List<Spend> spends, DataFailure failure) failure,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Spend spend) success,
+    required TResult Function(DataFailure failure) failure,
   }) {
-    return success(spends, isNextPageAvailable);
+    return success(spend);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Spend> spends)? initial,
-    TResult? Function(List<Spend> spends)? loading,
-    TResult? Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult? Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Spend spend)? success,
+    TResult? Function(DataFailure failure)? failure,
   }) {
-    return success?.call(spends, isNextPageAvailable);
+    return success?.call(spend);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Spend> spends)? initial,
-    TResult Function(List<Spend> spends)? loading,
-    TResult Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Spend spend)? success,
+    TResult Function(DataFailure failure)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(spends, isNextPageAvailable);
+      return success(spend);
     }
     return orElse();
   }
@@ -583,36 +462,30 @@ class _$SuccessImpl extends _Success {
   }
 }
 
-abstract class _Success extends SpendState {
-  const factory _Success(final List<Spend> spends,
-      {required final bool isNextPageAvailable}) = _$SuccessImpl;
+abstract class _Success extends SpendCreateState {
+  const factory _Success(final Spend spend) = _$SuccessImpl;
   const _Success._() : super._();
 
-  @override
-  List<Spend> get spends;
-  bool get isNextPageAvailable;
-  @override
+  Spend get spend;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res>
-    implements $SpendStateCopyWith<$Res> {
+abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
           _$FailureImpl value, $Res Function(_$FailureImpl) then) =
       __$$FailureImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({List<Spend> spends, DataFailure failure});
+  $Res call({DataFailure failure});
 
   $DataFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$SpendStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$SpendCreateStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
@@ -621,14 +494,9 @@ class __$$FailureImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? spends = null,
     Object? failure = null,
   }) {
     return _then(_$FailureImpl(
-      null == spends
-          ? _value._spends
-          : spends // ignore: cast_nullable_to_non_nullable
-              as List<Spend>,
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -648,24 +516,14 @@ class __$$FailureImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FailureImpl extends _Failure {
-  const _$FailureImpl(final List<Spend> spends, this.failure)
-      : _spends = spends,
-        super._();
-
-  final List<Spend> _spends;
-  @override
-  List<Spend> get spends {
-    if (_spends is EqualUnmodifiableListView) return _spends;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_spends);
-  }
+  const _$FailureImpl(this.failure) : super._();
 
   @override
   final DataFailure failure;
 
   @override
   String toString() {
-    return 'SpendState.failure(spends: $spends, failure: $failure)';
+    return 'SpendCreateState.failure(failure: $failure)';
   }
 
   @override
@@ -673,13 +531,11 @@ class _$FailureImpl extends _Failure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailureImpl &&
-            const DeepCollectionEquality().equals(other._spends, _spends) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_spends), failure);
+  int get hashCode => Object.hash(runtimeType, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -690,37 +546,36 @@ class _$FailureImpl extends _Failure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Spend> spends) initial,
-    required TResult Function(List<Spend> spends) loading,
-    required TResult Function(List<Spend> spends, bool isNextPageAvailable)
-        success,
-    required TResult Function(List<Spend> spends, DataFailure failure) failure,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Spend spend) success,
+    required TResult Function(DataFailure failure) failure,
   }) {
-    return failure(spends, this.failure);
+    return failure(this.failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Spend> spends)? initial,
-    TResult? Function(List<Spend> spends)? loading,
-    TResult? Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult? Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Spend spend)? success,
+    TResult? Function(DataFailure failure)? failure,
   }) {
-    return failure?.call(spends, this.failure);
+    return failure?.call(this.failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Spend> spends)? initial,
-    TResult Function(List<Spend> spends)? loading,
-    TResult Function(List<Spend> spends, bool isNextPageAvailable)? success,
-    TResult Function(List<Spend> spends, DataFailure failure)? failure,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Spend spend)? success,
+    TResult Function(DataFailure failure)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(spends, this.failure);
+      return failure(this.failure);
     }
     return orElse();
   }
@@ -763,15 +618,11 @@ class _$FailureImpl extends _Failure {
   }
 }
 
-abstract class _Failure extends SpendState {
-  const factory _Failure(final List<Spend> spends, final DataFailure failure) =
-      _$FailureImpl;
+abstract class _Failure extends SpendCreateState {
+  const factory _Failure(final DataFailure failure) = _$FailureImpl;
   const _Failure._() : super._();
 
-  @override
-  List<Spend> get spends;
   DataFailure get failure;
-  @override
   @JsonKey(ignore: true)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;

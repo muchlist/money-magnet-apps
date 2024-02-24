@@ -8,10 +8,10 @@ import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
 import 'package:money_magnet/src/commons/widgets/snackbar.dart';
 import 'package:money_magnet/src/commons/widgets/input_decorator.dart';
 import 'package:money_magnet/src/commons/widgets/white_button.dart';
+import 'package:money_magnet/src/features/spend/application/spend_create_notifier.dart';
 import 'package:money_magnet/src/features/spend/presentation/provider/text_controller_providers.dart';
 
 import '../../../../commons/theme/colors.dart';
-import '../../application/spend_notifier.dart';
 import '../../data/spend_dto.dart';
 import '../provider/providers.dart';
 
@@ -72,25 +72,29 @@ class _SpendAddPageBodyState extends ConsumerState<SpendAddPageBody> {
         date: _spendDate,
       );
 
-      await ref
-          .read(spendNotifierProvider(widget.pocketID).notifier)
-          .createSpend(payload);
+      await ref.read(spendCreateNotifierProvider.notifier).createSpend(payload);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     // final state = ref.watch(spendNotifierProvider(widget.pocketID));
-    ref.listen<SpendState>(spendNotifierProvider(widget.pocketID), (_, next) {
+    ref.listen<SpendCreateState>(spendCreateNotifierProvider, (_, next) {
       next.maybeWhen(
           orElse: () {},
-          success: (_, __) {
+          success: (spend) {
             ref
                 .read(pageStateNotifierProvider.notifier)
                 .setIsDetailPageNeedUpdate(true);
+
+            // this logic can be moved to logic, but must called ref
+            ref
+                .read(spendListNotifierProvider(widget.pocketID).notifier)
+                .addSpend(spend);
+
             AutoRouter.of(context).pop();
           },
-          failure: (_, failure) {
+          failure: (failure) {
             failure.when(server: (msg) {
               showToastError(
                   context: context,
@@ -183,9 +187,9 @@ class _SpendAddPageBodyState extends ConsumerState<SpendAddPageBody> {
           ),
           verticalSpaceSmall,
           Consumer(builder: ((context, ref, child) {
-            final state = ref.watch(spendNotifierProvider(widget.pocketID));
+            final state = ref.watch(spendCreateNotifierProvider);
             return state.maybeWhen(
-              loading: (_) => const ButtonWLoading(title: "Sedang memuat..."),
+              loading: () => const ButtonWLoading(title: "Sedang memuat..."),
               orElse: () => ButtonW(
                 title: "Tambahkan",
                 onPressed: _addSpend,

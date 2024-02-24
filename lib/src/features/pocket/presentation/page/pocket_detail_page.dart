@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:money_magnet/src/commons/data/page_state.dart';
-import 'package:money_magnet/src/commons/dev/logger.dart';
 import 'package:money_magnet/src/commons/provider/providers.dart';
 import 'package:money_magnet/src/features/pocket/presentation/provider/providers.dart';
 import 'package:money_magnet/src/features/pocket/presentation/widget/balance_widget.dart';
@@ -53,7 +52,7 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
   @override
   void initState() {
     Future.delayed(Duration.zero).then((value) => ref
-        .read(spendNotifierProvider(widget.pocketDetail.id).notifier)
+        .read(spendListNotifierProvider(widget.pocketDetail.id).notifier)
         .getSpendList(widget.pocketDetail.id));
 
     super.initState();
@@ -63,10 +62,7 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
   Widget build(BuildContext context) {
     // listener page state
     ref.listen<PageState>(pageStateNotifierProvider, (previous, next) {
-      MyLogger().d("Listener Aktif =========");
-
       if (next.isDetailPageNeedUpdate) {
-        MyLogger().d("isDetailPageNeedUpdate true ========");
         Future.delayed(Duration.zero).then((value) => ref
             .read(pocketNotifierProvider.notifier)
             .getPocketDetail(widget.pocketDetail.id));
@@ -74,11 +70,10 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
         ref
             .read(pageStateNotifierProvider.notifier)
             .setIsDetailPageNeedUpdate(false);
-        MyLogger().d("isDetailPageNeedUpdate harusnya false ========");
       }
     });
 
-    final state = ref.watch(spendNotifierProvider(widget.pocketDetail.id));
+    final state = ref.watch(spendListNotifierProvider(widget.pocketDetail.id));
 
     final todaySpends = state.todaySpendItems();
     final notTodaySpends = state.notTodaySpendItems();
