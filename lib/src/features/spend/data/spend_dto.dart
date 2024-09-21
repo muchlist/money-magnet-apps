@@ -30,7 +30,8 @@ class SpendDTO with _$SpendDTO {
     @JsonKey(name: 'category_icon') required int categoryIcon,
     required String name,
     required int price,
-    @JsonKey(name: 'balance_snapshoot') required int balanceSnapshoot,
+    @JsonKey(name: 'balance_snapshoot', defaultValue: 0)
+    required int balanceSnapshoot,
     @JsonKey(name: 'is_income') required bool isIncome,
     required int type,
     required String date,
@@ -75,7 +76,6 @@ class SpendReqDTO with _$SpendReqDTO {
     @JsonKey(name: 'is_income') required bool isIncome,
     required int type,
     required String date,
-    required int version,
   }) = _SpendReqDTO;
 
   factory SpendReqDTO.fromJson(Map<String, dynamic> json) =>

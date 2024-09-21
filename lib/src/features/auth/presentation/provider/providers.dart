@@ -9,11 +9,19 @@ import 'package:money_magnet/src/features/auth/data/user_local_repo.dart';
 import 'package:money_magnet/src/features/auth/data/user_remote_repo.dart';
 import 'package:money_magnet/src/commons/provider/providers.dart';
 import 'package:money_magnet/src/features/auth/application/user_usecase.dart';
+import 'package:talker_dio_logger/talker_dio_logger.dart';
 
 final flutterSecureStorageProvider =
     Provider((ref) => const FlutterSecureStorage());
 
-final dioForAuthProvider = Provider((ref) => Dio());
+final dioForAuthProvider = Provider((ref) => Dio()
+  ..interceptors.add(
+    TalkerDioLogger(
+      settings: const TalkerDioLoggerSettings(
+        printResponseMessage: true,
+      ),
+    ),
+  ));
 
 final authInterceptorProvider = Provider(
   (ref) => AuthInterceptor(

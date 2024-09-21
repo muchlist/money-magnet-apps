@@ -62,10 +62,10 @@ class _PocketAddPageBodyState extends ConsumerState<PocketAddPageBody> {
     ref.listen<PocketState>(pocketNotifierProvider, (_, next) {
       next.maybeWhen(
           orElse: () {},
-          success: (_, __, ___) {
+          success: (_, __, ___, ____) {
             AutoRouter.of(context).pop();
           },
-          failure: (_, failure) {
+          failure: (_, __, failure) {
             failure.when(server: (msg) {
               showToastError(
                   context: context,
@@ -134,7 +134,8 @@ class _PocketAddPageBodyState extends ConsumerState<PocketAddPageBody> {
           ),
           verticalSpaceSmall,
           state.maybeWhen(
-            loading: (_, __) => const ButtonWLoading(title: "Sedang memuat..."),
+            loading: (_, __, ___) =>
+                const ButtonWLoading(title: "Sedang memuat..."),
             orElse: () => ButtonW(
               title: "Tambahkan",
               onPressed: _addPocket,

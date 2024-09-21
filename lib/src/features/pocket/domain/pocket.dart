@@ -19,6 +19,22 @@ class Pocket with _$Pocket {
     required String createdAt,
     required String updatedAt,
   }) = _Pocket;
+
+  // Empty constructor with default values
+  factory Pocket.empty() => const Pocket(
+        id: '',
+        pocketName: '',
+        balance: 0,
+        currency: '',
+        icon: 0,
+        level: 0,
+        ownerID: '',
+        editorID: [],
+        watcherID: [],
+        users: [],
+        createdAt: '',
+        updatedAt: '',
+      );
 }
 
 @freezed

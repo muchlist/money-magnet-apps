@@ -75,25 +75,25 @@ class _$RemoteResponseCopyWithImpl<T, $Res, $Val extends RemoteResponse<T>>
 }
 
 /// @nodoc
-abstract class _$$_NoConnectionCopyWith<T, $Res> {
-  factory _$$_NoConnectionCopyWith(
-          _$_NoConnection<T> value, $Res Function(_$_NoConnection<T>) then) =
-      __$$_NoConnectionCopyWithImpl<T, $Res>;
+abstract class _$$NoConnectionImplCopyWith<T, $Res> {
+  factory _$$NoConnectionImplCopyWith(_$NoConnectionImpl<T> value,
+          $Res Function(_$NoConnectionImpl<T>) then) =
+      __$$NoConnectionImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
-class __$$_NoConnectionCopyWithImpl<T, $Res>
-    extends _$RemoteResponseCopyWithImpl<T, $Res, _$_NoConnection<T>>
-    implements _$$_NoConnectionCopyWith<T, $Res> {
-  __$$_NoConnectionCopyWithImpl(
-      _$_NoConnection<T> _value, $Res Function(_$_NoConnection<T>) _then)
+class __$$NoConnectionImplCopyWithImpl<T, $Res>
+    extends _$RemoteResponseCopyWithImpl<T, $Res, _$NoConnectionImpl<T>>
+    implements _$$NoConnectionImplCopyWith<T, $Res> {
+  __$$NoConnectionImplCopyWithImpl(
+      _$NoConnectionImpl<T> _value, $Res Function(_$NoConnectionImpl<T>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NoConnection<T> extends _NoConnection<T> {
-  const _$_NoConnection() : super._();
+class _$NoConnectionImpl<T> extends _NoConnection<T> {
+  const _$NoConnectionImpl() : super._();
 
   @override
   String toString() {
@@ -101,9 +101,9 @@ class _$_NoConnection<T> extends _NoConnection<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NoConnection<T>);
+        (other.runtimeType == runtimeType && other is _$NoConnectionImpl<T>);
   }
 
   @override
@@ -173,15 +173,15 @@ class _$_NoConnection<T> extends _NoConnection<T> {
 }
 
 abstract class _NoConnection<T> extends RemoteResponse<T> {
-  const factory _NoConnection() = _$_NoConnection<T>;
+  const factory _NoConnection() = _$NoConnectionImpl<T>;
   const _NoConnection._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_WithNewDataCopyWith<T, $Res> {
-  factory _$$_WithNewDataCopyWith(
-          _$_WithNewData<T> value, $Res Function(_$_WithNewData<T>) then) =
-      __$$_WithNewDataCopyWithImpl<T, $Res>;
+abstract class _$$WithNewDataImplCopyWith<T, $Res> {
+  factory _$$WithNewDataImplCopyWith(_$WithNewDataImpl<T> value,
+          $Res Function(_$WithNewDataImpl<T>) then) =
+      __$$WithNewDataImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T data, MetadataDTO? meta});
 
@@ -189,11 +189,11 @@ abstract class _$$_WithNewDataCopyWith<T, $Res> {
 }
 
 /// @nodoc
-class __$$_WithNewDataCopyWithImpl<T, $Res>
-    extends _$RemoteResponseCopyWithImpl<T, $Res, _$_WithNewData<T>>
-    implements _$$_WithNewDataCopyWith<T, $Res> {
-  __$$_WithNewDataCopyWithImpl(
-      _$_WithNewData<T> _value, $Res Function(_$_WithNewData<T>) _then)
+class __$$WithNewDataImplCopyWithImpl<T, $Res>
+    extends _$RemoteResponseCopyWithImpl<T, $Res, _$WithNewDataImpl<T>>
+    implements _$$WithNewDataImplCopyWith<T, $Res> {
+  __$$WithNewDataImplCopyWithImpl(
+      _$WithNewDataImpl<T> _value, $Res Function(_$WithNewDataImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -202,7 +202,7 @@ class __$$_WithNewDataCopyWithImpl<T, $Res>
     Object? data = freezed,
     Object? meta = freezed,
   }) {
-    return _then(_$_WithNewData<T>(
+    return _then(_$WithNewDataImpl<T>(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -229,8 +229,8 @@ class __$$_WithNewDataCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$_WithNewData<T> extends _WithNewData<T> {
-  const _$_WithNewData({required this.data, this.meta}) : super._();
+class _$WithNewDataImpl<T> extends _WithNewData<T> {
+  const _$WithNewDataImpl({required this.data, this.meta}) : super._();
 
   @override
   final T data;
@@ -243,10 +243,10 @@ class _$_WithNewData<T> extends _WithNewData<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WithNewData<T> &&
+            other is _$WithNewDataImpl<T> &&
             const DeepCollectionEquality().equals(other.data, data) &&
             (identical(other.meta, meta) || other.meta == meta));
   }
@@ -258,8 +258,9 @@ class _$_WithNewData<T> extends _WithNewData<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WithNewDataCopyWith<T, _$_WithNewData<T>> get copyWith =>
-      __$$_WithNewDataCopyWithImpl<T, _$_WithNewData<T>>(this, _$identity);
+  _$$WithNewDataImplCopyWith<T, _$WithNewDataImpl<T>> get copyWith =>
+      __$$WithNewDataImplCopyWithImpl<T, _$WithNewDataImpl<T>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -326,12 +327,12 @@ class _$_WithNewData<T> extends _WithNewData<T> {
 
 abstract class _WithNewData<T> extends RemoteResponse<T> {
   const factory _WithNewData({required final T data, final MetadataDTO? meta}) =
-      _$_WithNewData<T>;
+      _$WithNewDataImpl<T>;
   const _WithNewData._() : super._();
 
   T get data;
   MetadataDTO? get meta;
   @JsonKey(ignore: true)
-  _$$_WithNewDataCopyWith<T, _$_WithNewData<T>> get copyWith =>
+  _$$WithNewDataImplCopyWith<T, _$WithNewDataImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

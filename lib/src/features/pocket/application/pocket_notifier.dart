@@ -11,41 +11,99 @@ part 'pocket_notifier.freezed.dart';
 class PocketState with _$PocketState {
   const PocketState._();
 
-  const factory PocketState.initial(List<Pocket> pockets) = _Initial;
+  const factory PocketState.initial(
+    List<Pocket> pockets,
+    Pocket detail,
+  ) = _Initial;
 
-  const factory PocketState.loading(List<Pocket> pockets, String balanceInfo) =
-      _Loading;
+  const factory PocketState.loading(
+    List<Pocket> pockets,
+    Pocket detail,
+    String balanceInfo,
+  ) = _Loading;
 
   const factory PocketState.success(
     List<Pocket> pockets,
+    Pocket detail,
     String balanceInfo, {
     required bool isNextPageAvailable,
   }) = _Success;
 
-  const factory PocketState.failure(List<Pocket> pockets, DataFailure failure) =
-      _Failure;
+  const factory PocketState.failure(
+    List<Pocket> pockets,
+    Pocket detail,
+    DataFailure failure,
+  ) = _Failure;
+
+  String getBalanceByPocketIDFromList(String pocketID) {
+    var pocket =
+        pockets.firstWhere((e) => e.id == pocketID, orElse: Pocket.empty);
+    return pocket.balance.toString();
+  }
 }
 
 class PocketNotifier extends StateNotifier<PocketState> {
   final PocketService _service;
-  PocketNotifier(this._service) : super(const PocketState.initial([]));
+  PocketNotifier(this._service)
+      : super(
+          PocketState.initial(
+            [],
+            Pocket.empty(),
+          ),
+        );
 
   @protected
   void resetState() {
-    state = const PocketState.initial([]);
+    state = PocketState.initial([], Pocket.empty());
   }
 
   Future<void> getPocketList() async {
-    state = PocketState.loading(state.pockets, _getTotalBalance(state.pockets));
+    state = PocketState.loading(
+        state.pockets, state.detail, _getTotalBalance(state.pockets));
     final failureOrSuccess = await _service.findPocket(1);
     state = failureOrSuccess.fold(
       (l) {
-        return PocketState.failure(state.pockets, l);
+        return PocketState.failure(state.pockets, state.detail, l);
       },
       (r) {
         final totalBalance = _getTotalBalance(r);
         return PocketState.success(
           r,
+          state.detail,
+          totalBalance,
+          isNextPageAvailable: _service.hasNextPage(),
+        );
+      },
+    );
+  }
+
+  Future<void> getPocketDetail(String pocketID) async {
+    state = PocketState.loading(
+      state.pockets,
+      state.detail,
+      _getTotalBalance(state.pockets),
+    );
+
+    final failureOrSuccess = await _service.getDetail(pocketID);
+    state = failureOrSuccess.fold(
+      (l) {
+        return PocketState.failure(state.pockets, state.detail, l);
+      },
+      (r) {
+        var modifiedPockets = state.pockets.map((e) {
+          if (e.id == pocketID && r != null) {
+            return r;
+          } else {
+            return e;
+          }
+        }).toList();
+
+        modifiedPockets.sort(((a, b) => a.pocketName.compareTo(b.pocketName)));
+
+        final totalBalance = _getTotalBalance(modifiedPockets);
+        return PocketState.success(
+          modifiedPockets,
+          r ?? state.detail,
           totalBalance,
           isNextPageAvailable: _service.hasNextPage(),
         );
@@ -54,13 +112,14 @@ class PocketNotifier extends StateNotifier<PocketState> {
   }
 
   Future<void> getNextPocketList() async {
-    state = PocketState.loading(state.pockets, _getTotalBalance(state.pockets));
+    state = PocketState.loading(
+        state.pockets, state.detail, _getTotalBalance(state.pockets));
     final failureOrSuccess = await _service.findNextPocket();
     state = failureOrSuccess.fold((l) {
-      return PocketState.failure(state.pockets, l);
+      return PocketState.failure(state.pockets, state.detail, l);
     }, (r) {
       final totalBalance = _getTotalBalance(r);
-      return PocketState.success(r, totalBalance,
+      return PocketState.success(r, state.detail, totalBalance,
           isNextPageAvailable: _service.hasNextPage());
     });
   }
@@ -73,15 +132,21 @@ class PocketNotifier extends StateNotifier<PocketState> {
     return balance.toCurrencyString();
   }
 
+  String getBalanceByPocketIDFromList(String pocketID) {
+    var pocket = state.pockets.firstWhere((e) => e.id == pocketID);
+    return pocket.balance.toString();
+  }
+
   Future<void> createPocket(
       String pocketName, String currency, int icon) async {
-    state = PocketState.loading(state.pockets, _getTotalBalance(state.pockets));
+    state = PocketState.loading(
+        state.pockets, state.detail, _getTotalBalance(state.pockets));
     final failureOrSuccess =
         await _service.createPocket(pocketName, currency, icon);
 
     state = failureOrSuccess.fold(
       (l) {
-        return PocketState.failure(state.pockets, l);
+        return PocketState.failure(state.pockets, state.detail, l);
       },
       (r) {
         final List<Pocket> tempPockets = [];
@@ -94,6 +159,7 @@ class PocketNotifier extends StateNotifier<PocketState> {
 
         return PocketState.success(
           tempPockets,
+          state.detail,
           totalBalance,
           isNextPageAvailable: _service.hasNextPage(),
         );

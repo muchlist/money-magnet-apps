@@ -92,11 +92,12 @@ class _$PocketListResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PocketListResponseDTOCopyWith<$Res>
+abstract class _$$PocketListResponseDTOImplCopyWith<$Res>
     implements $PocketListResponseDTOCopyWith<$Res> {
-  factory _$$_PocketListResponseDTOCopyWith(_$_PocketListResponseDTO value,
-          $Res Function(_$_PocketListResponseDTO) then) =
-      __$$_PocketListResponseDTOCopyWithImpl<$Res>;
+  factory _$$PocketListResponseDTOImplCopyWith(
+          _$PocketListResponseDTOImpl value,
+          $Res Function(_$PocketListResponseDTOImpl) then) =
+      __$$PocketListResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +110,12 @@ abstract class _$$_PocketListResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PocketListResponseDTOCopyWithImpl<$Res>
-    extends _$PocketListResponseDTOCopyWithImpl<$Res, _$_PocketListResponseDTO>
-    implements _$$_PocketListResponseDTOCopyWith<$Res> {
-  __$$_PocketListResponseDTOCopyWithImpl(_$_PocketListResponseDTO _value,
-      $Res Function(_$_PocketListResponseDTO) _then)
+class __$$PocketListResponseDTOImplCopyWithImpl<$Res>
+    extends _$PocketListResponseDTOCopyWithImpl<$Res,
+        _$PocketListResponseDTOImpl>
+    implements _$$PocketListResponseDTOImplCopyWith<$Res> {
+  __$$PocketListResponseDTOImplCopyWithImpl(_$PocketListResponseDTOImpl _value,
+      $Res Function(_$PocketListResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +125,7 @@ class __$$_PocketListResponseDTOCopyWithImpl<$Res>
     Object? metaData = null,
     Object? error = freezed,
   }) {
-    return _then(_$_PocketListResponseDTO(
+    return _then(_$PocketListResponseDTOImpl(
       data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -142,8 +144,8 @@ class __$$_PocketListResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PocketListResponseDTO extends _PocketListResponseDTO {
-  const _$_PocketListResponseDTO(
+class _$PocketListResponseDTOImpl extends _PocketListResponseDTO {
+  const _$PocketListResponseDTOImpl(
       {@JsonKey(name: 'data', defaultValue: [])
       required final List<PocketDTO>? data,
       @JsonKey(name: 'metadata') required this.metaData,
@@ -151,8 +153,8 @@ class _$_PocketListResponseDTO extends _PocketListResponseDTO {
       : _data = data,
         super._();
 
-  factory _$_PocketListResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_PocketListResponseDTOFromJson(json);
+  factory _$PocketListResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PocketListResponseDTOImplFromJson(json);
 
   final List<PocketDTO>? _data;
   @override
@@ -178,10 +180,10 @@ class _$_PocketListResponseDTO extends _PocketListResponseDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PocketListResponseDTO &&
+            other is _$PocketListResponseDTOImpl &&
             const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.metaData, metaData) ||
                 other.metaData == metaData) &&
@@ -196,13 +198,13 @@ class _$_PocketListResponseDTO extends _PocketListResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PocketListResponseDTOCopyWith<_$_PocketListResponseDTO> get copyWith =>
-      __$$_PocketListResponseDTOCopyWithImpl<_$_PocketListResponseDTO>(
-          this, _$identity);
+  _$$PocketListResponseDTOImplCopyWith<_$PocketListResponseDTOImpl>
+      get copyWith => __$$PocketListResponseDTOImplCopyWithImpl<
+          _$PocketListResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PocketListResponseDTOToJson(
+    return _$$PocketListResponseDTOImplToJson(
       this,
     );
   }
@@ -214,11 +216,11 @@ abstract class _PocketListResponseDTO extends PocketListResponseDTO {
           required final List<PocketDTO>? data,
           @JsonKey(name: 'metadata') required final MetadataDTO metaData,
           @JsonKey(name: 'error') required final String? error}) =
-      _$_PocketListResponseDTO;
+      _$PocketListResponseDTOImpl;
   const _PocketListResponseDTO._() : super._();
 
   factory _PocketListResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_PocketListResponseDTO.fromJson;
+      _$PocketListResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'data', defaultValue: [])
@@ -231,6 +233,6 @@ abstract class _PocketListResponseDTO extends PocketListResponseDTO {
   String? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_PocketListResponseDTOCopyWith<_$_PocketListResponseDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PocketListResponseDTOImplCopyWith<_$PocketListResponseDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

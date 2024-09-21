@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money_magnet/src/commons/provider/providers.dart';
-import 'package:money_magnet/src/features/spend/application/spend_notifier.dart';
+import 'package:money_magnet/src/features/spend/application/spend_create_notifier.dart';
+import 'package:money_magnet/src/features/spend/application/spend_list_notifier.dart';
 import 'package:money_magnet/src/features/spend/application/spend_service.dart';
 import 'package:money_magnet/src/features/spend/data/spend_remote_repo.dart';
 
@@ -13,10 +14,10 @@ final spendRemoteRepositoryProvider = Provider((ref) => SpendRemoteRepository(
 final spendServiceProvider =
     Provider((ref) => SpendService(ref.watch(spendRemoteRepositoryProvider)));
 
-final spendNotifierProvider =
-    StateNotifierProvider.autoDispose.family<SpendNotifier, SpendState, String>(
+final spendListNotifierProvider = StateNotifierProvider.autoDispose
+    .family<SpendListNotifier, SpendListState, String>(
   (ref, pocketID) {
-    // id is just for create copy state per pocketID
+    // id just for create copy state per pocketID
 
     // keep alive for 60 second when state closes
     final link = ref.keepAlive();
@@ -29,17 +30,15 @@ final spendNotifierProvider =
       timer.cancel();
     });
 
-    return SpendNotifier(
+    return SpendListNotifier(
       ref.watch(spendServiceProvider),
     );
   },
 );
 
-final sharedSpendNotifierProvider =
-    StateNotifierProvider<SpendNotifier, SpendState>(
-  (ref) {
-    return SpendNotifier(
-      ref.watch(spendServiceProvider),
-    );
-  },
+final spendCreateNotifierProvider =
+    StateNotifierProvider.autoDispose<SpendCreateNotifier, SpendCreateState>(
+  (ref) => SpendCreateNotifier(
+    ref.watch(spendServiceProvider),
+  ),
 );

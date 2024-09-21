@@ -2,17 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:money_magnet/src/commons/data/page_state.dart';
+import 'package:money_magnet/src/commons/provider/providers.dart';
+import 'package:money_magnet/src/features/pocket/presentation/provider/providers.dart';
 import 'package:money_magnet/src/features/pocket/presentation/widget/balance_widget.dart';
 import 'package:money_magnet/src/commons/theme/colors.dart';
 import 'package:money_magnet/src/commons/widgets/disable_glow.dart';
-import 'package:money_magnet/src/commons/theme/ui_helper.dart';
 import 'package:money_magnet/src/commons/widgets/spend_tile_widget.dart';
 import 'package:money_magnet/src/features/pocket/domain/pocket.dart';
-import 'package:money_magnet/src/features/pocket/presentation/widget/search_bar.dart';
 import 'package:money_magnet/src/features/spend/domain/spend.dart';
 import 'package:money_magnet/src/features/spend/presentation/provider/providers.dart';
 import 'package:money_magnet/src/routes/app_router.gr.dart';
-import 'package:money_magnet/src/utils/strings.dart';
 
 @RoutePage()
 class PocketPage extends StatelessWidget {
@@ -27,7 +27,7 @@ class PocketPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(LineIcons.plus),
         onPressed: () {
-          AutoRouter.of(context).push<String>(
+          AutoRouter.of(context).push(
             SpendAddRoute(pocketID: pocketDetail.id),
           );
         },
@@ -52,7 +52,7 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
   @override
   void initState() {
     Future.delayed(Duration.zero).then((value) => ref
-        .read(spendNotifierProvider(widget.pocketDetail.id).notifier)
+        .read(spendListNotifierProvider(widget.pocketDetail.id).notifier)
         .getSpendList(widget.pocketDetail.id));
 
     super.initState();
@@ -60,7 +60,21 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(spendNotifierProvider(widget.pocketDetail.id));
+    // listener page state
+    ref.listen<PageState>(pageStateNotifierProvider, (previous, next) {
+      if (next.isDetailPageNeedUpdate) {
+        Future.delayed(Duration.zero).then((value) => ref
+            .read(pocketNotifierProvider.notifier)
+            .getPocketDetail(widget.pocketDetail.id));
+
+        ref
+            .read(pageStateNotifierProvider.notifier)
+            .setIsDetailPageNeedUpdate(false);
+      }
+    });
+
+    final state = ref.watch(spendListNotifierProvider(widget.pocketDetail.id));
+
     final todaySpends = state.todaySpendItems();
     final notTodaySpends = state.notTodaySpendItems();
 
@@ -93,9 +107,18 @@ class _PocketPageBodyState extends ConsumerState<PocketPageBody> {
             padding:
                 const EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 20),
             sliver: SliverToBoxAdapter(
-              child: BalanceWidget(
-                balanceValue: widget.pocketDetail.balance.toCurrencyString(),
-                editors: widget.pocketDetail.users.map((e) => e.name).toList(),
+              child: Consumer(
+                builder: ((context, ref, child) {
+                  final pocketState = ref.watch(pocketNotifierProvider);
+
+                  return BalanceWidget(
+                    balanceValue: pocketState
+                        .getBalanceByPocketIDFromList(widget.pocketDetail.id),
+                    // balanceValue: widget.pocketDetail.balance.toCurrencyString(),
+                    editors:
+                        widget.pocketDetail.users.map((e) => e.name).toList(),
+                  );
+                }),
               ),
             ),
           ),
